@@ -1,0 +1,51 @@
+﻿@model SetSail.Models.TourDates
+
+@{
+    ViewBag.Title = "TourDatesCreate";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+
+    <div class="form-horizontal">
+        <h4>TourDates</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-10">
+                <label>Tours</label>
+                <select class="form-control" name="TourId">
+                    <option value="value">Choose</option>
+                    @foreach (var item in ViewBag.Categories)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateFrom, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.DateFromString, new { @class = "form-control datepicker", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.DateFromString, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateTo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.DateToString, new { @class = "form-control datepicker", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.DateToString, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    @Html.ActionLink("Back to List", "TourDatesIndex")
+</div>

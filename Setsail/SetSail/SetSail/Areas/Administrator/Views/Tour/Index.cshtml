@@ -1,0 +1,132 @@
+﻿@model IEnumerable<SetSail.Models.Tour>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tour</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FrontImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BgImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TourImages)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.About)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeparturePlace)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartureTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReturnTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DressCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketsNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Admin.Fullname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TourCity.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TourCity.Destination.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            <img src="~/Uploads/@item.FrontImage" alt="@item.FrontImage" height="100" />
+        </td>
+        <td>
+            <img src="~/Uploads/@item.BgImage" alt="@item.BgImage" height="100" />
+        </td>
+        <td style="display:flex;flex-wrap:wrap">
+            @foreach (var image in item.TourImages)
+            {
+                <img src="~/Uploads/@image.ImageName" alt="@image.ImageName" height="100" />
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @(item.About.Length > 100 ? item.About.Substring(0, 100) + "..." : item.About)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeparturePlace)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartureTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReturnTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DressCode)
+        </td>
+        <td>
+            @(item.Text.Length > 100 ? item.Text.Substring(0, 100) + "..." : item.Text)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TicketsNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Admin.Fullname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TourCity.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TourCity.Destination.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Update", new { id=item.Id }) |
+            <a href="@Url.Action("Delete","Tour", new { id = item.Id })" onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+    </tr>
+}
+
+</table>

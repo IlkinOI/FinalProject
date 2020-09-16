@@ -1,0 +1,336 @@
+﻿@model SetSail.ViewModels.VmSummer
+@{
+    ViewBag.Title = "Summer";
+}
+
+<section id="intro">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="introCarousel">
+                    <div class="owl-carousel owl-theme">
+                        <div class="item">
+                            <div class="sliderWrapper">
+                                <div class="imageWrapper">
+                                    <img class="img1" src="~/Uploads/@Model.SummerPage.IntroImage1" alt="img1">
+                                </div>
+                                <div class="textWrapper">
+                                    <div class="upperTitle">
+                                        <h3 class="satisfy">
+                                            @Model.SummerPage.TopTitle1
+                                        </h3>
+                                    </div>
+                                    <div class="title">
+                                        <h1 class="bigTitle">
+                                            @Model.SummerPage.Title1
+                                        </h1>
+                                    </div>
+                                    <div class="text">
+                                        <h5 class="textContent">
+                                            @Model.SummerPage.introText1
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="sliderWrapper">
+                                <div class="imageWrapper">
+                                    <img class="img2" src="~/Uploads/@Model.SummerPage.IntroImage2" alt="img1">
+                                </div>
+                                <div class="textWrapper">
+                                    <div class="upperTitle">
+                                        <h3 class="satisfy">
+                                            @Model.SummerPage.TopTitle2
+                                        </h3>
+                                    </div>
+                                    <div class="title">
+                                        <h1 class="bigTitle">
+                                            @Model.SummerPage.Title2
+                                        </h1>
+                                    </div>
+                                    <div class="text">
+                                        <h5 class="textContent">
+                                            @Model.SummerPage.introText2
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="sliderWrapper">
+                                <div class="imageWrapper">
+                                    <img class="img1" src="~/Uploads/@Model.SummerPage.IntroImage3" alt="img1">
+                                </div>
+                                <div class="textWrapper">
+                                    <div class="upperTitle">
+                                        <h3 class="satisfy">
+                                            @Model.SummerPage.TopTitle3
+                                        </h3>
+                                    </div>
+                                    <div class="title">
+                                        <h1 class="bigTitle">
+                                            @Model.SummerPage.Title3
+                                        </h1>
+                                    </div>
+                                    <div class="text">
+                                        <h5 class="textContent">
+                                            @Model.SummerPage.introText3
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="sliderWrapper">
+                                <div class="imageWrapper">
+                                    <img class="img2" src="~/Uploads/@Model.SummerPage.IntroImage4" alt="img1">
+                                </div>
+                                <div class="textWrapper">
+                                    <div class="upperTitle">
+                                        <h3 class="satisfy">
+                                            @Model.SummerPage.TopTitle4
+                                        </h3>
+                                    </div>
+                                    <div class="title">
+                                        <h1 class="bigTitle">
+                                            @Model.SummerPage.Title4
+                                        </h1>
+                                    </div>
+                                    <div class="text">
+                                        <h5 class="textContent">
+                                            @Model.SummerPage.introText4
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="medi" style="background-color: white;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="slogan" style="padding-top:80px;">
+                    <div class="textWrapper">
+                        <div class="upperTitle">
+                            <h3>
+                                Your Perfect
+                            </h3>
+                        </div>
+                        <div class="title">
+                            <h1>
+                                Summer Holidays
+                            </h1>
+                        </div>
+                        <div class="text">
+                            <h5>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua.
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap">
+                @foreach (var cat in Model.TourCategories.Where(c => c.Name == "Summer"))
+                {
+                    foreach (var tour in Model.Tours.Where(t => t.TourCity.Destination.DesToCats == cat.DesToCats).Take(3))
+                    {
+                        <div class="col-lg-4">
+                            <div class="mediTour">
+                                <div class="layer"></div>
+                                <div class="img">
+                                    <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"><img src="~/Uploads/@tour.FrontImage" alt=""></a>
+                                </div>
+                                <div class="info">
+                                    <div class="name">
+                                        <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})">
+                                            <h6>@tour.Name</h6>
+                                        </a>
+                                    </div>
+                                    <div class="price">
+                                        <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})">
+                                            <h6>$@tour.Price.ToString("0")</h6>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="parallaxSummer" style="background-image: url(/Uploads/@Model.SummerPage.ParallaxImage1);">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="slogan">
+                    <div class="textWrapper">
+                        <div class="upperTitle">
+                            <h3>
+                                Go & Enjoy
+                            </h3>
+                        </div>
+                        <div class="title">
+                            <h1>
+                                Warm Sands
+                            </h1>
+                        </div>
+                        <div class="text">
+                            <h5>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua.
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="video">
+                    <div class="picture">
+                        <img src="~/Uploads/@Model.SummerPage.VideoImage" alt="">
+                        <div class="icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="parallaxReviews" style="background-image: url(/Uploads/@Model.SummerPage.ParallaxImage2);">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="slogan">
+                    <div class="textWrapper">
+                        <div class="upperTitle">
+                            <h3>
+                                Read The Top
+                            </h3>
+                        </div>
+                        <div class="title">
+                            <h1>
+                                Travel Reviews
+                            </h1>
+                        </div>
+                        <div class="text">
+                            <h5>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua.
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="reviewsCarousel">
+                    <div class="owl-carousel owl-theme">
+                        @foreach (var item in Model.TourReviews)
+                        {
+                            <div class="item">
+                                <div class="img">
+                                    <img src="~/Uploads/@item.User.Photo" alt="">
+                                </div>
+                                <div class="info">
+                                    <h4 class="tour">
+                                        <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.TourId })">@item.Tour.TourCity.Name @item.Tour.Name</a>
+                                    </h4>
+                                    <div class="starts">
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>
+                                            @(item.Message.Length>65? item.Message.Substring(0,65)+"...":item.Message)
+                                        </p>
+                                    </div>
+                                    <h6 class="fullname">
+                                        @item.User.Fullname
+                                    </h6>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="Blog">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="blogText">
+                    <h2>
+                        From Our Blog
+                    </h2>
+                    <p class="text">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aene an commodo ligula eget
+                        dolor. Aenean massa. Cum sociis the
+                    </p>
+                    @foreach (var item in Model.Blogs.OrderByDescending(b => b.Id).Take(2))
+                    {
+                        <div class="userblogs">
+                            <div class="img">
+                                <img src="~/Uploads/@item.MainImage" alt="">
+                            </div>
+                            <div class="about">
+                                <h4 class="tourName">
+                                    <a href="#">@item.Name</a>
+                                </h4>
+                                <p class="tourtext">
+                                    @(item.TopText.Length>65? item.TopText.Substring(0,65)+"...":item.TopText)
+                                </p>
+                                <div class="details">
+                                    <span class="date">@item.CreatedDate.ToString("MMMM,dd,yyyy")</span>
+                                    <span class="icon"><i class="far fa-comment"></i></span>
+                                    <span class="commentCount">@item.BlogComments.Count()</span>
+                                    <span>Comment</span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="bestOffer">
+                    <div class="bg">
+                        <a href="@Url.Action("TourDetailIndex","Tour", new {id=Model.BestTour.Id })"><img src="~/Front/img/home/bestofferimg1.jpg" alt=""></a>
+                        <a href="#" class="advert">
+                            <p class="site">Setsail.com</p>
+                            <h5>Our Best Offer @Model.BestTour.Name</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="popupHome">
+    <div class="videoWrapper">
+        <div class="popupVideo">
+            <iframe width="560" height="315" src="@Model.SummerPage.Video" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+        <div class="icon">
+            <i class="fas fa-times"></i>
+        </div>
+    </div>
+</section>
+

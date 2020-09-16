@@ -1,0 +1,115 @@
+﻿@model SetSail.Models.Destination
+@{
+    ViewBag.Title = "DestinationDetails";
+}
+
+<section id="introDesDetail" style="background-image: url(/Uploads/@Model.BgImage);">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="slogan">
+                    <div class="upperTitle">
+                        <h3>
+                            Destinations
+                        </h3>
+                    </div>
+                    <div class="title">
+                        <h1>
+                            @Model.Name
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="desDetail">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="wrap">
+                    <h2 class="title">
+                        @Model.Name
+                    </h2>
+                    <p class="text">
+                        @Model.Text1
+                    </p>
+                    <div class="pics">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="pic">
+                                <img src="~/Uploads/@Model.Pic1" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="pic">
+                                <img src="~/Uploads/@Model.Pic2" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text">
+                        @Model.Text2
+                    </p>
+                    <div class="info">
+                        <h2 class="infotitle">
+                            Good to Know
+                        </h2>
+                        <p class="infotext">
+                            Read the basic info and also some fun facts about Australia! Here you will find
+                            everything you should know about the ‘’Land of Plenty’’!
+                        </p>
+                        <div class="item">
+                            <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                            <div class="detail">Country</div>
+                            <div class="name">@Model.Name</div>
+                        </div>
+                        <div class="item">
+                            <span class="icon"><i class="fab fa-cc-visa"></i></span>
+                            <div class="detail">Visa Requirements</div>
+                            <div class="name">@Model.Visa</div>
+                        </div>
+                        <div class="item">
+                            <span class="icon"><i class="far fa-comment"></i></span>
+                            <div class="detail">Languages spoken</div>
+                            <div class="name">@Model.Language</div>
+                        </div>
+                        <div class="item">
+                            <span class="icon"><i class="far fa-compass"></i></span>
+                            <div class="detail">Area (km2)</div>
+                            <div class="name">@Model.Area</div>
+                        </div>
+                    </div>
+                    <h2 class="title">
+                        Municipalities
+                    </h2>
+                    <p class="text">
+                        @Model.MunText
+                    </p>
+                    <div class="pics">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="pic">
+                                <img src="~/Uploads/@Model.Pic3" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="pic">
+                                <img src="~/Uploads/@Model.Pic4" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="pic">
+                                <img src="~/Uploads/@Model.Pic5" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="pic">
+                                <img src="~/Uploads/@Model.Pic6" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

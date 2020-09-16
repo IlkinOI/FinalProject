@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SetSail.Models.TeamSocial>
+
+@{
+    ViewBag.Title = "TeamSocialIndex";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Team Social Networks</h2>
+
+<p>
+    @Html.ActionLink("Create New", "TeamSocialCreate")
+</p>
+<table class="table table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Icon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Link)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Team.Fullname)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Icon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Link)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Team.Fullname)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "TeamSocialUpdate", new { id=item.Id }) |
+            <a href="@Url.Action("TeamSocialDelete","Team", new { id = item.Id })" onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,630 @@
+﻿@model SetSail.ViewModels.VmHome
+@{
+    ViewBag.Title = "Home Page";
+}
+<section id="intro">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="introCarousel">
+                    <div class="owl-carousel owl-theme">
+                        <div class="item">
+                            <div class="sliderWrapper">
+                                <div class="imageWrapper">
+                                    <img class="img1" src="/Uploads/@Model.HomePage.IntroImage1" alt="img1">
+                                </div>
+                                <div class="textWrapper">
+                                    <div class="upperTitle">
+                                        <h3 class="satisfy">
+                                            @Model.HomePage.TopTitle1
+                                        </h3>
+                                    </div>
+                                    <div class="title">
+                                        <h1 class="bigTitle">
+                                            @Model.HomePage.Title1
+                                        </h1>
+                                    </div>
+                                    <div class="text">
+                                        <h5 class="textContent">
+                                            @Model.HomePage.introText1
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="sliderWrapper">
+                                <div class="imageWrapper">
+                                    <img class="img2" src="/Uploads/@Model.HomePage.IntroImage2" alt="img2">
+                                </div>
+                                <div class="textWrapper">
+                                    <div class="upperTitle">
+                                        <h3 class="satisfy">
+                                            @Model.HomePage.TopTitle2
+                                        </h3>
+                                    </div>
+                                    <div class="title">
+                                        <h1 class="bigTitle">
+                                            @Model.HomePage.Title2
+                                        </h1>
+                                    </div>
+                                    <div class="text">
+                                        <h5 class="textContent">
+                                            @Model.HomePage.introText2
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="search">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <form method="post" class="searchInputs">
+                    <div class="form-group">
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option disabled selected value="default">Destinations</option>
+                            @foreach (var item in Model.Destinations)
+                            {
+                                <option value="@item.Name">@item.Name</option>
+                            }
+                        </select>
+                        <i class="fas fa-compass"></i>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option disabled selected value="default">Tour Categories</option>
+                            @foreach (var item in Model.TourCategories)
+                            {
+                                <option value="@item.Name">@item.Name</option>
+                            }
+                        </select>
+                        <i class="fas fa-map-pin"></i>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option disabled selected value="default">Tour Type</option>
+                            @foreach (var item in Model.TourTypes)
+                            {
+                                <option value="@item.Name">@item.Name</option>
+                            }
+                        </select>
+                        <i class="fas fa-thumbtack"></i>
+                    </div>
+                    <div class="submit">
+                        <button type="submit">FIND NOW</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="Tours">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="slogan">
+                    <div class="textWrapper">
+                        <div class="upperTitle">
+                            <h3>
+                                Choose Your
+                            </h3>
+                        </div>
+                        <div class="title">
+                            <h1>
+                                Perfect Holiday
+                            </h1>
+                        </div>
+                        <div class="text">
+                            <h5>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua.
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="tourCountry">
+                    <div class="BgImg">
+                        <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination1.Id })"><img src="~/Uploads/@Model.Destination1.Pic3" alt=""></a>
+                    </div>
+                    <h5>
+                        @Model.Destination1.Name
+                    </h5>
+                </div>
+            </div>
+
+            @foreach (var item in Model.ToursDes1.Take(3))
+            {
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="tourCity">
+                        <div class="BgImg">
+                            <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.Id })"><img src="~/Uploads/@item.FrontImage" alt=""></a>
+                        </div>
+                        <div class="info">
+                            <div class="name">
+                                <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.Id })">
+                                    <p>@item.Name @item.TourCity.Name</p>
+                                </a>
+                            </div>
+                            <div class="details">
+                                <span class="star"><i class="fas fa-star-half-alt"></i></span>
+                                <span class="rating">5.0</span>
+                                <span class="expression">Good</span>
+                                <span class="price">$@item.Price.ToString("0")</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @foreach (var item in Model.ToursDes2.Take(3))
+            {
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="tourCity">
+                        <div class="BgImg">
+                            <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.Id })"><img src="~/Uploads/@item.FrontImage" alt=""></a>
+                        </div>
+                        <div class="info">
+                            <div class="name">
+                                <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.Id })">
+                                    <p>@item.Name @item.TourCity.Name</p>
+                                </a>
+                            </div>
+                            <div class="details">
+                                <span class="star"><i class="fas fa-star-half-alt"></i></span>
+                                <span class="rating">5.0</span>
+                                <span class="expression">Good</span>
+                                <span class="price">$@item.Price.ToString("0")</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="tourCountry">
+                    <div class="BgImg">
+                        <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination2.Id })"><img src="~/Uploads/@Model.Destination2.Pic4" alt=""></a>
+                    </div>
+                    <h5>
+                        @Model.Destination2.Name
+                    </h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="tourCountry">
+                    <div class="BgImg">
+                        <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination3.Id })"><img src="~/Uploads/@Model.Destination3.Pic5" alt=""></a>
+                    </div>
+                    <h5>
+                        @Model.Destination3.Name
+                    </h5>
+                </div>
+            </div>
+            @foreach (var item in Model.ToursDes3.Take(3))
+            {
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="tourCity">
+                        <div class="BgImg">
+                            <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.Id })"><img src="~/Uploads/@item.FrontImage" alt=""></a>
+                        </div>
+                        <div class="info">
+                            <div class="name">
+                                <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.Id })">
+                                    <p>@item.Name @item.TourCity.Name</p>
+                                </a>
+                            </div>
+                            <div class="details">
+                                <span class="star"><i class="fas fa-star-half-alt"></i></span>
+                                <span class="rating">5.0</span>
+                                <span class="expression">Good</span>
+                                <span class="price">$@item.Price.ToString("0")</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section id="ourOffer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="offer">
+                    <div class="upperTitle">
+                        <h3>
+                            Our Best Offer
+                        </h3>
+                    </div>
+                    <div class="img">
+                        <a href="@Url.Action("TourDetailIndex","Tour", new {id=Model.TourParis.Id })"><img src="~/Front/img/home/paris.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="parallaxCities" style="background-image: url(/Uploads/@Model.HomePage.ParallaxImage1);">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="slogan">
+                    <div class="textWrapper">
+                        <div class="upperTitle">
+                            <h3>
+                                @Model.CityPage.TopTitle1
+                            </h3>
+                        </div>
+                        <div class="title">
+                            <h1>
+                                @Model.CityPage.Title1
+                            </h1>
+                        </div>
+                        <div class="text">
+                            <h5>
+                                @Model.CityPage.introText1
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="video">
+                    <div class="picture">
+                        <img src="~/Uploads/@Model.HomePage.VideoImage" alt="">
+                        <div class="icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="popupHome">
+    <div class="videoWrapper">
+        <div class="popupVideo">
+            <iframe width="560" height="315" src="@Model.CityPage.Video" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+        <div class="icon">
+            <i class="fas fa-times"></i>
+        </div>
+    </div>
+</section>
+
+<section id="winter">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="slogan">
+                    <div class="textWrapper">
+                        <div class="upperTitle">
+                            <h3>
+                                @Model.WinterPage.TopTitle1
+                            </h3>
+                        </div>
+                        <div class="title">
+                            <h1>
+                                @Model.WinterPage.Title1
+                            </h1>
+                        </div>
+                        <div class="text">
+                            <h5>
+                                @Model.WinterPage.introText1
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="winterCarousel">
+                    <!-- WINTER TOURS-->
+                    <div class="owl-carousel owl-theme">
+                        @foreach (var cat in Model.TourCategories.Where(c => c.Name == "Winter"))
+                        {
+                            foreach (var tour in Model.Tours.Where(t => t.TourCity.Destination.DesToCats == cat.DesToCats))
+                            {
+                                <div class="item">
+                                    <div class="img">
+                                        <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"><img src="~/Uploads/@tour.FrontImage" alt=""></a>
+                                    </div>
+                                    <div class="reviews">
+                                        <div class="span">
+                                            <span><i class="far fa-comment"></i></span>
+                                            <span>@tour.TourReviews.Count.ToString()</span>
+                                        </div>
+                                        <div class="span">
+                                            <span><i class="fas fa-user"></i></span>
+                                            <span>13</span>
+                                        </div>
+                                        <div class="span">
+                                            <span><i class="fas fa-map-marker-alt"></i></span>
+                                            <a href="@Url.Action("DestinationDetails","Tour", new {id=tour.TourCity.DestinationId })"><span>@tour.TourCity.Destination.Name</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="info">
+                                        <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"> <span>@tour.TourCity.Name</span> </a>
+                                        <p>
+                                            @(tour.About.Length>50?tour.About.Substring(0,50)+"...":tour.About)
+                                        </p>
+                                        <div class="details">
+                                            <span class="price">$@tour.Price.ToString("0")</span>
+                                            <span class="star"><i class="fas fa-star-half-alt"></i></span>
+                                            <span class="rating">5.0</span>
+                                            <span class="expression">Good</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="testmonial">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="review">
+                    <div class="owl-carousel owl-theme">
+                        @foreach (var item in Model.Blogs)
+                        {
+                            <div class="item">
+                                <div class="img">
+                                    <img src="~/Uploads/@(item.User.Photo!=null?item.User.Photo:"")" alt="">
+                                </div>
+                                <div class="text">
+                                    <p>
+                                        @item.Quote
+                                    </p>
+                                </div>
+                                <div class="fullname">
+                                    <p>@item.User.Fullname</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="medi" style="background-image: url(/Front/img/home/mediterranianBG1.jpg);">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="slogan">
+                    <div class="textWrapper">
+                        <div class="upperTitle">
+                            <h3>
+                                The Unforgettable
+                            </h3>
+                        </div>
+                        <div class="title">
+                            <h1>
+                                Mediterranean
+                            </h1>
+                        </div>
+                        <div class="text">
+                            <h5>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua.
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap">
+                <!-- EXOTIC TOURS-->
+                @foreach (var cat in Model.TourCategories.Where(c => c.Name == "Exotic"))
+                {
+                    foreach (var tour in Model.Tours.Where(t => t.TourCity.Destination.DesToCats == cat.DesToCats).Take(3))
+                    {
+                        <div class="col-lg-4">
+                            <div class="mediTour">
+                                <div class="layer"></div>
+                                <div class="img">
+                                    <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"><img src="~/Uploads/@tour.FrontImage" alt=""></a>
+                                </div>
+                                <div class="info">
+                                    <div class="name">
+                                        <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})">
+                                            <h6>@tour.Name</h6>
+                                        </a>
+                                    </div>
+                                    <div class="price">
+                                        <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})">
+                                            <h6>$@tour.Price.ToString("0")</h6>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="parallaxReviews" style="background-image: url(/Uploads/@Model.HomePage.ParallaxImage2);">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="slogan">
+                    <div class="textWrapper">
+                        <div class="upperTitle">
+                            <h3>
+                                Read The Top
+                            </h3>
+                        </div>
+                        <div class="title">
+                            <h1>
+                                Travel Reviews
+                            </h1>
+                        </div>
+                        <div class="text">
+                            <h5>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua.
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="reviewsCarousel">
+                    <div class="owl-carousel owl-theme">
+                        @foreach (var item in Model.TourReviews)
+                        {
+                            <div class="item">
+                                <div class="img">
+                                    <img src="~/Uploads/@item.User.Photo" alt="">
+                                </div>
+                                <div class="info">
+                                    <h4 class="tour">
+                                        <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.TourId })">@item.Tour.TourCity.Name @item.Tour.Name</a>
+                                    </h4>
+                                    <div class="starts">
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>
+                                            @(item.Message.Length>65? item.Message.Substring(0,65)+"...":item.Message)
+                                        </p>
+                                    </div>
+                                    <h6 class="fullname">
+                                        @item.User.Fullname
+                                    </h6>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="Blog">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="blogText">
+                    <h2>
+                        From Our Blog
+                    </h2>
+                    <p class="text">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aene an commodo ligula eget
+                        dolor. Aenean massa. Cum sociis the
+                    </p>
+                    @foreach (var item in Model.Blogs.OrderByDescending(b => b.Id).Take(2))
+                    {
+                        <div class="userblogs">
+                            <div class="img">
+                                <img src="~/Uploads/@item.MainImage" alt="">
+                            </div>
+                            <div class="about">
+                                <h4 class="tourName">
+                                    <a href="#">@item.Name</a>
+                                </h4>
+                                <p class="tourtext">
+                                    @(item.TopText.Length>65? item.TopText.Substring(0,65)+"...":item.TopText)
+                                </p>
+                                <div class="details">
+                                    <span class="date">@item.CreatedDate.ToString("MMMM,dd,yyyy")</span>
+                                    <span class="icon"><i class="far fa-comment"></i></span>
+                                    <span class="commentCount">@item.BlogComments.Count()</span>
+                                    <span>Comment</span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="bestOffer">
+                    <div class="bg">
+                        <a href="@Url.Action("TourDetailIndex","Tour", new {id=Model.TourTaipei.Id })"><img src="~/Front/img/home/bestofferimg1.jpg" alt=""></a>
+                        <a href="#" class="advert">
+                            <p class="site">Setsail.com</p>
+                            <h5>Our Best Offer @Model.TourTaipei.Name</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="Destinations" style="background-image: url(/Uploads/@Model.Destinations);">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="slogan">
+                    <div class="textWrapper">
+                        <div class="upperTitle">
+                            <h3>
+                                Choose Your
+                            </h3>
+                        </div>
+                        <div class="title">
+                            <h1>
+                                Destination
+                            </h1>
+                        </div>
+                        <div class="text">
+                            <h5>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua.
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap">
+                @foreach (var item in Model.Destinations.Take(3))
+                {
+                    <div class="col-lg-4">
+                        <div class="destination">
+                            <div class="img">
+                                <a href="@Url.Action("DestinationDetails","Tour", new {id=item.Id })"><img src="~/Uploads/@item.Pic6" alt=""></a>
+                            </div>
+                            <div class="name">
+                                <a href="@Url.Action("DestinationDetails","Tour", new {id=item.Id })">
+                                    <h5>@item.Name</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>

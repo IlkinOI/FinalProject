@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SetSail.Models.TourCategory>
+
+@{
+    ViewBag.Title = "TourCategoryIndex";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tour Categories</h2>
+
+<p>
+    @Html.ActionLink("Create New", "TourCategoryCreate")
+</p>
+<table class="table table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Edit", "TourCategoryUpdate", new { id=item.Id }) |
+            <a href="@Url.Action("TourCategoryDelete","Tour", new { id = item.Id })" onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+    </tr>
+}
+
+</table>

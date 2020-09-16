@@ -1,0 +1,255 @@
+﻿@model SetSail.ViewModels.VmCity
+@{
+    ViewBag.Title = "City";
+}
+
+<section id="intro">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="introCarousel">
+                    <div class="owl-carousel owl-theme">
+                        <div class="item">
+                            <div class="sliderWrapper">
+                                <div class="imageWrapper">
+                                    <img class="img1" src="~/Uploads/@Model.CityPage.IntroImage1" alt="img1">
+                                </div>
+                                <div class="textWrapper">
+                                    <div class="upperTitle">
+                                        <h3 class="satisfy">
+                                            @Model.CityPage.TopTitle1
+                                        </h3>
+                                    </div>
+                                    <div class="title">
+                                        <h1 class="bigTitle">
+                                            @Model.CityPage.Title1
+                                        </h1>
+                                    </div>
+                                    <div class="text">
+                                        <h5 class="textContent">
+                                            @Model.CityPage.introText1
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="sliderWrapper">
+                                <div class="imageWrapper">
+                                    <img class="img2" src="~/Uploads/@Model.CityPage.IntroImage2" alt="img1">
+                                </div>
+                                <div class="textWrapper">
+                                    <div class="upperTitle">
+                                        <h3 class="satisfy">
+                                            @Model.CityPage.TopTitle2
+                                        </h3>
+                                    </div>
+                                    <div class="title">
+                                        <h1 class="bigTitle">
+                                            @Model.CityPage.Title2
+                                        </h1>
+                                    </div>
+                                    <div class="text">
+                                        <h5 class="textContent">
+                                            @Model.CityPage.introText2
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="sliderWrapper">
+                                <div class="imageWrapper">
+                                    <img class="img2" src="~/Uploads/@Model.CityPage.IntroImage3" alt="img1">
+                                </div>
+                                <div class="textWrapper">
+                                    <div class="upperTitle">
+                                        <h3 class="satisfy">
+                                            @Model.CityPage.TopTitle3
+                                        </h3>
+                                    </div>
+                                    <div class="title">
+                                        <h1 class="bigTitle">
+                                            @Model.CityPage.Title3
+                                        </h1>
+                                    </div>
+                                    <div class="text">
+                                        <h5 class="textContent">
+                                            @Model.CityPage.introText3
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="Details">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="item">
+                    <img src="/Front/img/cities/icon1.png" alt="">
+                    <h6>Restaurants</h6>
+                    <p class="text">Aenean commodo ligula eget dolor. Lorem ipsum</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="item">
+                    <img src="/Front/img/cities/icon2.png" alt="">
+                    <h6>Sightseeing</h6>
+                    <p class="text">Aenean commodo ligula eget dolor. Lorem ipsum</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="item">
+                    <img src="/Front/img/cities/icon3.png" alt="">
+                    <h6>Shops & Boutiques</h6>
+                    <p class="text">Aenean commodo ligula eget dolor. Lorem ipsum</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="item">
+                    <img src="/Front/img/cities/icon4.png" alt="">
+                    <h6>Where to Stay</h6>
+                    <p class="text">Aenean commodo ligula eget dolor. Lorem ipsum</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ToursCities">
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var cat in Model.TourCategories.Where(c => c.Name == "City"))
+            {
+                foreach (var tour in Model.Tours.Where(t => t.TourCity.Destination.DesToCats == cat.DesToCats).Take(8))
+                {
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="tourCity">
+                            <div class="BgImg">
+                                <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"><img src="~/Uploads/@tour.FrontImage" alt=""></a>
+                            </div>
+                            <div class="info">
+                                <div class="name">
+                                    <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})">
+                                        <p>@tour.Name @tour.TourCity.Name</p>
+                                    </a>
+                                </div>
+                                <div class="details">
+                                    <span class="star"><i class="fas fa-star-half-alt"></i></span>
+                                    <span class="rating">5.0</span>  <!--rating stuff-->
+                                    <span class="expression">Good</span>
+                                    <span class="price">$@tour.Price.ToString("0")</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</section>
+ 
+<section id="tourProgress">       <!--rating stuff-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="left">
+                    <div class="img">
+                        <img src="~/up/img/cities/populartourimg1.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="right">
+                    <h2>Our Popular Cities</h2>
+                    <h6>
+                        Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero,
+                        sit amet adipiscing sem
+                    </h6>
+                    <div class="bar">
+                        <div class="countryName">
+                            <span class="name">
+                                Countryside
+                            </span>
+                            <span class="percentage">%</span>
+                            <span class="num">
+                                76
+                            </span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="76" aria-valuemin="0"
+                                 aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="bar">
+                        <div class="countryName">
+                            <span class="name">
+                                Countryside
+                            </span>
+                            <span class="percentage">%</span>
+                            <span class="num">
+                                76
+                            </span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="76" aria-valuemin="0"
+                                 aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="bar">
+                        <div class="countryName">
+                            <span class="name">
+                                Countryside
+                            </span>
+                            <span class="percentage">%</span>
+                            <span class="num">
+                                76
+                            </span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="76" aria-valuemin="0"
+                                 aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ourTeamCities">
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var man in Model.Teams.Where(t => t.Position.Name == "Winter Quide"))
+            {
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="team">
+                        <div class="img">
+                            <img src="~/Uploads/@man.Photo" alt="">
+                        </div>
+                        <div class="info disappear">
+                            <h6>@man.Fullname</h6>
+                            <p class="p">@(man.About.Length>50?man.About.Substring(0,50)+"...":man.About)</p>
+                            <div class="socials">
+                                @foreach (var social in Model.TeamSocials.Where(s => s.TeamId == man.Id))
+                                {
+                                    <a href="@social.Link"><span><i class="fab fa-@social.Icon" aria-hidden="true"></i></span></a>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
