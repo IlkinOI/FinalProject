@@ -61,7 +61,7 @@ namespace SetSail.Controllers
                     }
                     else if (user.Page == "FAQ")
                     {
-                        return RedirectToAction("Index", "FAQ");
+                        return RedirectToAction("FAQ", "About");
                     }
                     else if (user.Page == "Blog")
                     {
