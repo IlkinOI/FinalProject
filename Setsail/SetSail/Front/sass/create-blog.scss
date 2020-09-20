@@ -1,0 +1,148 @@
+#introCreate {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  height: 440px;
+  .slogan {
+    padding: 145px 0px;
+    .upperTitle {
+      h3 {
+        font-family: Satisfy;
+        color: white;
+        font-weight: 500;
+        font-size: 35px;
+        padding-bottom: 5px;
+      }
+    }
+    .title {
+      margin-bottom: 10px;
+      h1 {
+        color: white;
+        font-size: 70px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+#createblog {
+    padding: 40px 60px;
+    background-color: #f8f8f8 ;
+    .blogwrapper {
+      margin: 5px;
+      padding: 15px;
+      box-shadow: 0 9px 16px 13px rgba(0, 0, 0, 0.03);
+      .item {
+        margin-bottom: 30px;
+        .detail {
+          margin-bottom: 30px;
+          img {
+            width: 100%;
+          }
+        }
+        p {
+        }
+        .form-group {
+          margin-bottom: 0;
+          position: relative;
+          border-right: 1px solid #efecec;
+          select {
+            -webkit-appearance: none;
+          }
+    
+          &:focus {
+            outline: unset;
+          }
+          &:last-child {
+            border-right: unset;
+          }
+          .form-control {
+            border: unset;
+            border-radius: unset;
+            margin-bottom: 5px;
+            color: #a9a9a9;
+            background-color: white;
+            margin: 0;
+            margin-right: 38px;
+            &:focus {
+              box-shadow: unset;
+              border: unset;
+            }
+            option {
+              border: unset;
+              outline: unset;
+              font-weight: 400;
+              margin-bottom: 5px;
+              color: #a9a9a9;
+              background-color: white;
+              transition: all 0.2s linear;
+              &:hover {
+                background-color: unset !important;
+                color: #3fd0d4 !important;
+                transition: all 0.2s linear !important;
+              }
+            }
+          }
+          i {
+            position: absolute;
+            left: 40px;
+            bottom: 30px;
+            color: #a9a9a9;
+            font-size: 16px;
+          }
+        }
+        .edit {
+          width: 100%;
+          textarea{
+            display: block;
+            width: 100%;
+            border: unset;
+            background-color: white;
+            padding-left: 10px;
+            margin-bottom: 3px;
+            height: 200px;
+            &:focus{
+              outline: unset;
+            }
+          }
+          .heit {
+            height: 30px !important;
+          }
+          input {
+            display: block;
+            width: 100%;
+            height: 55px;
+            border: unset;
+            background-color: white;
+            color: #3fd0d4 ;
+            padding-left: 10px;
+            margin-bottom: 3px;
+            &:focus {
+              outline: unset;
+            }
+            &::placeholder {
+              color: white;
+            }
+          }
+        }
+      }
+      button {
+        display: block;
+        width: 100%;
+        height: 55px;
+        border: unset;
+        background-color: #3abdc1;
+        color: white;
+        transition: all 0.2s linear;
+        &:focus {
+          outline: unset;
+        }
+        &:hover {
+          color: black;
+          background-color: white;
+        }
+      }
+    }
+}

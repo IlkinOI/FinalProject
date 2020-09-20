@@ -1,0 +1,140 @@
+#introFaq {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  height: 440px;
+  .slogan {
+    padding: 145px 0px;
+    .upperTitle {
+      h3 {
+        font-family: Satisfy;
+        color: white;
+        font-weight: 500;
+        font-size: 35px;
+        padding-bottom: 5px;
+      }
+    }
+    .title {
+      margin-bottom: 10px;
+      h1 {
+        color: white;
+        font-size: 70px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+#Faq {
+  margin: 50px 80px;
+  .acc {
+    .title {
+      margin-bottom: 25px;
+      font-weight: 600;
+      letter-spacing: -1px;
+    }
+    .text {
+      margin-bottom: 25px;
+    }
+    .accordion {
+      .card {
+        border-radius: unset;
+        border: unset;
+        margin-bottom: 5px;
+        .card-header {
+          h2 {
+            .btn {
+              font-weight: 600;
+              &:focus {
+                outline: unset;
+                box-shadow: unset;
+              }
+              &:focus {
+                outline: unset;
+                box-shadow: unset;
+              }
+            }
+          }
+        }
+        .collapse {
+          .card-body {
+          }
+        }
+      }
+    }
+  }
+  .newsletter {
+    padding: 15px 20px;
+    margin: 80px 40px;
+    background-color: #3abdc1;
+    .title {
+      margin: 10px 0;
+      color: white;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .text {
+      font-family: Poppins;
+      font-size: 13px;
+      line-height: 1.64em;
+      font-weight: 400;
+      color: white;
+      margin: 0 0 17px 0;
+    }
+    .details {
+      .inputs {
+        .input {
+          position: relative;
+          margin: 5px 0;
+          input {
+            width: 100%;
+            height: 55px;
+            border: unset;
+            padding: 10px 40px;
+            margin-bottom: 5px;
+            color: white;
+            background-color: #3fd0d4;
+
+            &::placeholder {
+              color: white;
+            }
+            &:focus {
+              outline: unset;
+            }
+          }
+          i {
+            position: absolute;
+            left: 16px;
+            bottom: 24px;
+            color: white;
+            font-size: 16px;
+          }
+        }
+      }
+      .submit {
+        margin-bottom: 15px;
+        button {
+          width: 100%;
+          background-color: white;
+          color: #212121;
+          letter-spacing: 1px;
+          font-weight: 500;
+          border: unset;
+          padding: 10px 20px;
+          transition: all 0.2s linear;
+          &:hover {
+            background-color: #3fd0d4;
+            color: white;
+            transition: all 0.2s linear;
+          }
+          &:focus {
+            outline: unset;
+            box-shadow: unset;
+          }
+        }
+      }
+    }
+  }
+}

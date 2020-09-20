@@ -1,0 +1,147 @@
+#Details{
+    text-align: center;
+    margin: 40px 10px;
+    .item{
+        padding: 0 35px;
+        img{
+            margin-bottom: 10px;
+            transition: all 0.2s linear;
+            &:hover{
+                transform: translateY(-3px);
+            }
+        }
+        h6{
+            margin-bottom: 10px;
+        }
+        .text{
+
+        }
+    }
+}
+
+#ToursCities {
+    display: flex;
+    background-color: white;
+  
+    .tourCountry {
+      border-radius: 50%;
+    }
+    .tourCity {
+      position: relative;
+      overflow: hidden;
+      transition: all 1s linear;
+      cursor: pointer;
+      .BgImg {
+        transition: all 1s linear;
+        img {
+          transition: all 1s linear;
+          width: 100%;
+        }
+      }
+      h5 {
+        font-family: Satisfy;
+        color: white;
+        font-weight: 500;
+        position: absolute;
+        top: 95px;
+        left: 75px;
+        font-size: 50px;
+        display: block;
+      }
+      .info {
+        position: absolute;
+        bottom: 20px;
+        left: 30px;
+        color: white;
+        font-size: 17px;
+        font-weight: 500;
+        .name {
+          margin-bottom: 5px;
+          a{
+            text-decoration: none;
+            color: white;
+            p {
+              font-weight: 500;
+              font-size: 20px;
+              margin: 0 !important;
+            }
+          }
+        }
+        .details {
+          display: flex;
+          .star {
+            margin-right: 5px;
+          }
+          .rating {
+            margin-right: 5px;
+          }
+          .expression {
+            margin-right: 5px;
+          }
+          .price {
+            margin: 0 30px;
+          }
+        }
+      }
+      &:hover {
+        .BgImg {
+          img {
+            transform: scale(1.05);
+            transition: all 1s linear;
+          }
+        }
+      }
+    }
+  }
+  .appearCities {
+    bottom: 0px;
+  }
+  .disappearCities {
+    bottom: -154px;
+  }
+  #ourTeamCities {
+    display: flex;
+    .team {
+      position: relative;
+      overflow: hidden;
+      .img {
+        overflow: hidden;
+        img {
+          width: 100%;
+        }
+      }
+      .info {
+        background-color: #3fd0d4;
+        padding: 18px 30px;
+        text-align: center;
+        color: white;
+        position: absolute;
+        transition: all 0.5s ease-in-out;
+        width: 100% !important;
+        h6 {
+          font-size: 18px;
+          font-weight: 600;
+        }
+        .p {
+          padding: 0 5px;
+        }
+        .socials {
+          a {
+            margin: 0 10px;
+            text-decoration: none;
+            span {
+              i {
+                transition: all 0.3s linear;
+                color: white;
+              }
+            }
+            &:hover {
+              i {
+                color: #3abdc1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }

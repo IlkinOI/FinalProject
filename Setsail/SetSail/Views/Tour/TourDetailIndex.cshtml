@@ -1,0 +1,563 @@
+﻿@model SetSail.ViewModels.VmTourDetails
+@{
+    ViewBag.Title = "TourDetailIndex";
+}
+
+<section id="introTour" style="background-image: url(/Uploads/@Model.Tour.BgImage)">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="slogan">
+                    <div class="upperTitle">
+                        <h3>
+                            Amazing Tour
+                        </h3>
+                    </div>
+                    <div class="title">
+                        <h1>
+                            @Model.Tour.Name
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="Switch">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="wrapper">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item active infor">
+                            <i class="fas fa-info-circle"></i>
+                            <a class="nav-link">INFORMATION</a>
+                        </li>
+                        <li class="nav-item plan">
+                            <i class="far fa-calendar"></i>
+                            <a class="nav-link">TOUR PLAN</a>
+                        </li>
+                        <li class="nav-item loc">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <a class="nav-link">LOCATION</a>
+                        </li>
+                        <li class="nav-item gal">
+                            <i class="far fa-images"></i>
+                            <a class="nav-link">GALLERY</a>
+                        </li>
+                        <li class="nav-item rev">
+                            <i class="far fa-comment"></i>
+                            <a class="nav-link">REVIEWS</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="myTour">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="information">
+                    <div class="title">
+                        <h1>@Model.Tour.Name</h1>
+                        <span class="price">$@Model.Tour.Price.ToString("0")</span>
+                        <span>/ per person</span>
+                    </div>
+                    <div class="rating">
+                        <div class="starts">
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="far fa-star"></i></span>
+                        </div>
+                        <span>(@Model.TourReviews.Count().ToString("0") Reviews)</span>
+                    </div>
+                    <p class="content">
+                        @Model.Tour.About
+                    </p>
+                    <div class="more">
+                        <table class="table table-borderless table-responsive-msm table-responsive-md table-responsive-lg">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" colspan="2">Available Dates</th>
+                                    <td colspan="2">
+                                        @foreach (var date in Model.TourDates)
+                                        {
+                                            <span style="color:#3fd0d4">From :  </span>
+                                            @date.DateFrom.ToString("dd.mm.yyyy")
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="2">Age</th>
+                                    <td colspan="2">+ @Model.Tour.Age.ToString("0")</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="2">Destination</th>
+                                    <td colspan="2">@Model.Tour.TourCity.Destination.Name, @Model.Tour.TourCity.Name</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="2">Departure</th>
+                                    <td colspan="2">@Model.Tour.DeparturePlace</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="2">Departure Time </th>
+                                    <td colspan="2">Approximately @Model.Tour.DepartureTime</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="2">Return Time</th>
+                                    <td colspan="2">Approximately @Model.Tour.ReturnTime</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="2">Dress Code</th>
+                                    <td colspan="2">@Model.Tour.DressCode</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="2" rowspan="2">Included</th>
+                                    @foreach (var item in Model.Includes.Take(2))
+                                    {
+                                        <td colspan="1">@item.Feature</td>
+                                    }
+                                </tr>
+                                <tr>
+                                    @foreach (var item in Model.Includes.Skip(2).Take(2))
+                                    {
+                                        <td colspan="1">@item.Feature</td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="2">Not Included</th>
+                                    @foreach (var item in Model.NotIncludes.Take(2))
+                                    {
+                                        <td colspan="1">@item.Feature</td>
+                                    }
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="content">
+                        @Model.Tour.Text
+                    </p>
+                    <div class="subtitle">
+                        <h4>From Our Gallery</h4>
+                    </div>
+                    <h6 class="toptext">
+                        Si elit omnes impedit ius, vel et hinc agam fabulas. Ut audiam invenire iracundia vim.
+                        Tn eam dimo diam ea. Piber Korem sit amet. Cconsequat tin sit, stet cibo blandit.
+                    </h6>
+                    <div class="images">
+                        @foreach (var item in Model.TourImages.Skip(1).Take(3))
+                        {
+                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                <div class="img">
+                                    <img src="~/Uploads/@item.ImageName" alt="">
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="tourPlan">
+                    <div class="subtitle">
+                        <h4>Tour Plan</h4>
+                    </div>
+                    <div class="plan">
+                        @{ int i = 0;}
+                        @foreach (var day in Model.Days)
+                        {
+                            i++;
+                            <div class="day">
+                                <span class="count">@i</span>
+                                <h4>Day @i: @day.Title</h4>
+                                <p class="content">
+                                    @day.Consist
+                                </p>
+                                <ul>
+                                    @foreach (var inc in Model.DayIncludes.Where(di => di.DayId == day.Id))
+                                    {
+                                        <li class="include">
+                                            @inc.Feature
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="tourLocation">
+                    <div class="subtitle">
+                        <h4>Tour Location</h4>
+                    </div>
+                    <h6 class="toptext">
+                        Si elit omnes impedit ius, vel et hinc agam fabulas. Ut audiam invenire iracundia vim.
+                        Tn eam dimo diam ea. Piber Korem sit amet. Cconsequat tin sit, stet cibo blandit.
+                    </h6>
+                    <div class="map">
+                        <iframe src="@Model.TourCity.Map"
+                                width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""
+                                aria-hidden="false" tabindex="0">
+                        </iframe>
+                    </div>
+                    <div class="subtitle">
+                        <h4>Hystory of the City</h4>
+                    </div>
+                    <p class="content">
+                        @Model.TourCity.History
+                    </p>
+
+                </div>
+                <div class="tourGallery">
+                    <div class="subtitle">
+                        <h4>Tour Gallery</h4>
+                    </div>
+                    <h6 class="toptext">
+                        Si elit omnes impedit ius, vel et hinc agam fabulas. Ut audiam invenire iracundia vim.
+                        Tn eam dimo diam ea. Piber Korem sit amet. Cconsequat tin sit, stet cibo blandit.
+                    </h6>
+                   
+                    <div class="grid">
+                        @{ int count = 0;}
+                        @foreach (var item in Model.TourImages)
+                        {
+                            count++;
+                            <div class="grid-item @(count==1 || count==9?"grid-item--width3":"") @(count==6?"grid-item--height3":"")">
+                                <a data-fancybox="gallery" href="~/Uploads/@item.ImageName">
+                                    <img src="~/Uploads/@item.ImageName"
+                                         alt="@item.ImageName">
+                                </a>
+                            </div>
+                        }
+                    </div>
+                    <div class="setReviews">
+                        <!--reviews rating again-->
+                        <div class="subtitle">
+                            <h4>Reviews Scores and Score Breakdown</h4>
+                        </div>
+                        <h6 class="toptext">
+                            Si elit omnes impedit ius, vel et hinc agam fabulas. Ut audiam invenire iracundia vim.
+                            Tn eam dimo diam ea. Piber Korem sit amet. Cconsequat tin sit, stet cibo blandit.
+                        </h6>
+                        <div class="wrap">
+                            <div class="col-lg-3">
+                                <div class="rate">
+                                    <div class="numbers">
+                                        <h1>7.7</h1>
+                                        <span class="rateWord">
+                                            <span><i class="fas fa-star"></i>SuperB</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="bar">
+                                    <div class="rateName">
+                                        <span class="name">
+                                            Rating
+                                        </span>
+                                        <span class="percentage">%</span>
+                                        <span class="num">
+                                            60
+                                        </span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="60"
+                                             aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="bar">
+                                    <div class="rateName">
+                                        <span class="name">
+                                            Food
+                                        </span>
+                                        <span class="percentage">%</span>
+                                        <span class="num">
+                                            100
+                                        </span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="100"
+                                             aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="bar">
+                                    <div class="rateName">
+                                        <span class="name">
+                                            Hospitality
+                                        </span>
+                                        <span class="percentage">%</span>
+                                        <span class="num">
+                                            60
+                                        </span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="60"
+                                             aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="bar">
+                                    <div class="rateName">
+                                        <span class="name">
+                                            Hygiene
+                                        </span>
+                                        <span class="percentage">%</span>
+                                        <span class="num">
+                                            85
+                                        </span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="85"
+                                             aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="bar">
+                                    <div class="rateName">
+                                        <span class="name">
+                                            Comfort
+                                        </span>
+                                        <span class="percentage">%</span>
+                                        <span class="num">
+                                            100
+                                        </span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="100"
+                                             aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="bar">
+                                    <div class="rateName">
+                                        <span class="name">
+                                            Reception
+                                        </span>
+                                        <span class="percentage">%</span>
+                                        <span class="num">
+                                            72
+                                        </span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="72"
+                                             aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @foreach (var item in Model.TourReviews)
+                        {
+                            <div class="review">
+                                <div class="img">
+                                    <img src="~/Uploads/@(item.User.Photo!=null?item.User.Photo:"")" alt="">
+                                </div>
+                                <div class="details">
+                                    <h5>@item.User.Fullname</h5>
+                                    <p>
+                                    @item.Message
+                                    </p>
+                                    <!--<div class="rating">
+                                        <div class="stars">
+                                            <h5>Rating</h5>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="far fa-star"></i></span>
+                                        </div>
+                                        <div class="stars">
+                                            <h5>Comfort</h5>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="far fa-star"></i></span>
+                                        </div>
+                                        <div class="stars">
+                                            <h5>Food</h5>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="far fa-star"></i></span>
+                                        </div>
+                                        <div class="stars">
+                                            <h5>Hospitality</h5>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="far fa-star"></i></span>
+                                        </div>
+                                        <div class="stars">
+                                            <h5>Hygiene</h5>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="far fa-star"></i></span>
+                                        </div>
+                                        <div class="stars">
+                                            <h5>Reception</h5>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="far fa-star"></i></span>
+                                        </div>
+                                    </div>--> <!--rating-->
+                                    <div class="date">
+                                        <span class="date">@item.CreatedDate.ToString("MMMM dd, yyyy")</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        
+                        @if (Session["User"] != null)
+                        {
+                            <form action="@Url.Action("TourReviewCreate","Tour")" class="comment" method="post">
+                                <h1 class="title">
+                                    Post a comment
+                                </h1>
+                                @*<div class="ratingUse">
+                                    <div class="stars">
+                                        <h5>Rating</h5>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="far fa-star"></i></span>
+                                    </div>
+                                    <div class="stars">
+                                        <h5>Comfort</h5>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="far fa-star"></i></span>
+                                    </div>
+                                    <div class="stars">
+                                        <h5>Food</h5>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="far fa-star"></i></span>
+                                    </div>
+                                    <div class="stars">
+                                        <h5>Hospitality</h5>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="far fa-star"></i></span>
+                                    </div>
+                                    <div class="stars">
+                                        <h5>Hygiene</h5>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="far fa-star"></i></span>
+                                    </div>
+                                    <div class="stars">
+                                        <h5>Reception</h5>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="far fa-star"></i></span>
+                                    </div>
+                                </div>*@
+                                <div class="input-group hei">
+                                    <i class="far fa-comments"></i>
+                                    <textarea class="form-control" style="color:white;" type="text" name="Message"
+                                               placeholder="Comment*" required></textarea>
+                                </div>
+                                <div class="wrap">
+                                    <div class="input-group mr-1">
+                                        <i class="far fa-envelope"></i>
+                                        <input class="form-control" type="email" name="Email"
+                                               placeholder="Email*" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <i class="fas fa-user"></i>
+                                        <input class="form-control" type="text" name="Fullname"
+                                               placeholder="Fullname*" required>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="TourId" value="@Model.Tour.Id" />
+                                <button class="btn" type="submit">SUBMIT</button>
+                                @if (Session["TourReviewSent"] != null)
+                                {
+                                    Session["TourReviewSent"] = null;
+
+                                    <div class="alert alert-success">
+                                        You sent a Tour Review!
+                                    </div>
+                                }
+                            </form>
+                        }
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-3">
+                <div class="right">
+                    <div class="bookThis">
+                        <h5 class="title">
+                            Book This Tour
+                        </h5>
+                        <h6 class="text">
+                            Arrange your trip in advance - book this tour now!
+                        </h6>
+                        <form action="@Url.Action("BookingCreate","Tour")" method="post" class="details">
+                            <div class="inputs">
+                                <div class="input">
+                                    <input type="text" name="BookingFullname" placeholder="Fullname">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="input">
+                                    <input type="email" name="BookingEmail" placeholder="Email">
+                                    <i class="far fa-envelope"></i>
+                                </div>
+                                <div class="input">
+                                    <input type="text" name="BookingPhone" placeholder="Phone">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="input">
+                                    <select class="form-control" name="dateId" >
+                                        <option disabled selected value="default">Available Dates</option>
+                                        @foreach (var date in Model.TourDates)
+                                        {
+                                            <option value="@date.Id">@date.DateFrom.ToString("dd.mm.yyyy")-@date.DateTo.ToString("dd.mm.yyyy")</option>
+                                        }
+                                    </select>
+                                    <i class="far fa-calendar bot"></i>
+                                </div>
+                                <div class="input">
+                                    <input type="number" name="BookingTickets" placeholder="Tickets">
+                                    <i class="fas fa-ticket-alt"></i>
+                                </div>
+                            </div>
+                            <input type="hidden" name="TourId" value="@Model.Tour.Id" />
+                            <div class="submit">
+                                <button type="submit">BOOK NOW</button>
+                            </div>
+                            @if (Session["BookSent"] != null)
+                            {
+                                Session["BookSent"] = null;
+
+                                <div class="alert alert-success">
+                                    You have Booked @Model.Tour.Name Tour!
+                                </div>
+                            }
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

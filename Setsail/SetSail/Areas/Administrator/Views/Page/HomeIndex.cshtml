@@ -1,0 +1,93 @@
+﻿@model IEnumerable<SetSail.Models.HomePage>
+
+@{
+    ViewBag.Title = "HomeIndex";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2> Home Page </h2>
+
+<p>
+    @Html.ActionLink("Create New", "HomeCreate")
+</p>
+<table class="table table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TopTitle1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.introText2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TopTitle2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.introText1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IntroImage1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IntroImage2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VideoImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParallaxImage1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParallaxImage2)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TopTitle1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.introText2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TopTitle2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.introText1)
+        </td>
+        <td>
+            <img src="~/Uploads/@item.IntroImage1" alt="@item.IntroImage1" height="100" />
+        </td>
+        <td>
+            <img src="~/Uploads/@item.IntroImage2" alt="@item.IntroImage2" height="100" />
+        </td>
+        <td>
+            <img src="~/Uploads/@item.VideoImage" alt="@item.VideoImage" height="100" />
+        </td>
+        <td>
+            <img src="~/Uploads/@item.ParallaxImage1" alt="@item.ParallaxImage1" height="100" />
+        </td>
+        <td>
+            <img src="~/Uploads/@item.ParallaxImage2" alt="@item.ParallaxImage2" height="100" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "HomeUpdate", new { id=item.Id }) |
+            <a href="@Url.Action("HomeDelete","Page", new { id = item.Id })" onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+    </tr>
+}
+
+</table>

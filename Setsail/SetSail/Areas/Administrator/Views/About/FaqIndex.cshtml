@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SetSail.Models.Faq>
+
+@{
+    ViewBag.Title = "FaqIndex";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>FAQ</h2>
+
+<p>
+    @Html.ActionLink("Create New", "FaqCreate")
+</p>
+<table class="table table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BgImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Question)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Answer)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img src="~/Uploads/@item.BgImage" alt="@item.BgImage" height="100" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Question)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Answer)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "FaqUpdate", new { id=item.Id }) |
+            <a href="@Url.Action("FaqDelete","About", new { id = item.Id })" onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SetSail.Models.Include>
+
+@{
+    ViewBag.Title = "IncludeIndex";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tour Includes</h2>
+
+<p>
+    @Html.ActionLink("Create New", "IncludeCreate")
+</p>
+<table class="table table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tour.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Feature)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tour.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Feature)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "IncludeUpdate", new { id=item.Id }) |
+            <a href="@Url.Action("IncludeDelete","Tour", new { id = item.Id })" onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+    </tr>
+}
+
+</table>

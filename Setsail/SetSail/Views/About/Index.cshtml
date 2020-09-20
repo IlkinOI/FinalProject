@@ -1,0 +1,243 @@
+﻿@model SetSail.ViewModels.VmAbout
+@{
+    ViewBag.Title = "Index";
+}
+
+<section id="introAbout" style="background-image: url(/Uploads/@Model.About.BgImage);">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="slogan">
+                    <div class="upperTitle">
+                        <h3>
+                            Little Bit
+                        </h3>
+                    </div>
+                    <div class="title">
+                        <h1>
+                            About Us
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<secition id="ourTours">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-7 col-md-7 col-sm-12">
+                <div class="text">
+                    <h2>Our Popular Tours</h2>
+                    <h6>
+                        @Model.About.TopText
+                    </h6>
+                    <p>
+                        @Model.About.Text
+                    </p>
+                    <div class="go">
+                        <a href="@Url.Action("Search","Tour")">Our Tours</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <div class="pic">
+                    <img src="~/Uploads/@Model.About.Image" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</secition>
+
+<section id="video">
+    <div class="picture">
+        <img src="~/Uploads/@Model.About.VideoImage" alt="">
+        <div class="icon"><i class="fas fa-play-circle"></i></div>
+    </div>
+</section>
+
+<section id="ourTeam">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="slogan">
+                    <div class="textWrapper">
+                        <div class="upperTitle">
+                            <h3>
+                                Our Team
+                            </h3>
+                        </div>
+                        <div class="title">
+                            <h1>
+                                Travel Experts
+                            </h1>
+                        </div>
+                        <div class="text">
+                            <h5>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua.
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @foreach (var man in Model.Teams.Where(t => t.Position.Name == "Travel Expert"))
+            {
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="team">
+                        <div class="img">
+                            <img src="~/Uploads/@man.Photo" alt="">
+                        </div>
+                        <div class="info disappear">
+                            <h6>@man.Fullname</h6>
+                            <p class="p">@(man.About.Length>50?man.About.Substring(0,50)+"...":man.About)</p>
+                            <div class="socials">
+                                @foreach (var social in Model.TeamSocials.Where(s => s.TeamId == man.Id))
+                                {
+                                    <a href="@social.Link"><span><i class="fab fa-@social.Icon" aria-hidden="true"></i></span></a>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section id="tourProgress">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="left">
+                    <div class="img">
+                        <img src="~/Uploads/@Model.About.PopImage" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="right">
+                    <h2>Our Popular Tours</h2>
+                    <h6>
+                        Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero,
+                        sit amet adipiscing sem
+                    </h6> <!-- TOUR RATING-->
+                    <div class="bar">
+                        <div class="countryName">
+                            <span class="name">
+                                City Tours
+                            </span>
+                            <span class="percentage">%</span>
+                            <span class="num">
+                                73
+                            </span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="73"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="bar">
+                        <div class="countryName">
+                            <span class="name">
+                                Wine Tours
+                            </span>
+                            <span class="percentage">%</span>
+                            <span class="num">
+                                67
+                            </span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="67"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="bar">
+                        <div class="countryName">
+                            <span class="name">
+                                Summer
+                            </span>
+                            <span class="percentage">%</span>
+                            <span class="num">
+                                89
+                            </span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="89"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="popularTours">
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var tour in Model.Tours.Take(8))
+            {
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="tourCity">
+                        <div class="BgImg">
+                            <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"><img src="~/Uploads/@tour.FrontImage" alt=""></a>
+                        </div>
+                        <div class="info">
+                            <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})">
+                                <p>@tour.Name</p>
+                            </a>
+                            <span class="price">$@tour.Price.ToString("0")</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section id="popupAbout">
+    <div class="videoWrapper">
+        <div class="popupVideo">
+            <iframe width="560" height="315" src="@Model.About.Video" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+        <div class="icon">
+            <i class="fas fa-times"></i>
+        </div>
+    </div>
+</section>
+
+<section id="testmonial">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="review">
+                    <div class="owl-carousel owl-theme">
+                        @foreach (var item in Model.Blogs)
+                        {
+                            <div class="item">
+                                <div class="img">
+                                    <img src="~/Uploads/@(item.User.Photo!=null?item.User.Photo:"")" alt="">
+                                </div>
+                                <div class="text">
+                                    <p>
+                                        @item.Quote
+                                    </p>
+                                </div>
+                                <div class="fullname">
+                                    <p>@item.User.Fullname</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
