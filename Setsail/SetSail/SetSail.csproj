@@ -1967,6 +1967,8 @@
     <Content Include="Front\assets\dtp\bootstrap-datepicker.standalone.css" />
     <Content Include="Front\assets\dtp\bootstrap-datepicker3.css" />
     <Content Include="Front\assets\dtp\bootstrap-datepicker3.standalone.css" />
+    <Content Include="Front\assets\rating\dist\rating.js" />
+    <Content Include="Front\assets\rating\src\rating.js" />
     <Content Include="Front\assets\tp\index.html" />
     <Content Include="Front\assets\tp\timepicker.js" />
     <Content Include="Front\css\main.css" />

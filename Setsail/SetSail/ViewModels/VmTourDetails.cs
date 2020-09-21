@@ -27,11 +27,11 @@ namespace SetSail.ViewModels
         public string Message { get; set; }
         public string Fullname { get; set; }
         public string Email { get; set; }
-        public byte Rating { get; set; }
-        public byte Comfort { get; set; }
-        public byte Food { get; set; }
-        public byte Hospitality { get; set; }
-        public byte Hygiene { get; set; }
-        public byte Reception { get; set; }
+        public byte? Rating { get; set; }
+        public byte? Comfort { get; set; }
+        public byte? Food { get; set; }
+        public byte? Hospitality { get; set; }
+        public byte? Hygiene { get; set; }
+        public byte? Reception { get; set; }
     }
 }

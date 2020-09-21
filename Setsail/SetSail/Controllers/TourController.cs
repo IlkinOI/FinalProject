@@ -96,7 +96,7 @@ namespace SetSail.Controllers
             winter.Destinations = db.Destinations.Include("DesToCats").Include("DesToCats.TourCategory").ToList();
             winter.DesToCats = db.DesToCats.Include("Destination").Include("TourCategory").Where(dc => dc.TourCategory.Name == "Winter").ToList();
             winter.Tours = db.Tours.Include("TourDates").Include("TourCity").Include("TourCity.Destination").ToList();
-            winter.TourReviews = db.TourReviews.Include("User").Include("Tour").Include("Tour.TourCity").ToList();
+            winter.TourReviews = db.TourReviews.Include("User").Include("Tour").Include("Tour.TourCity").OrderBy(t=>t.Id).Take(9).ToList();
             winter.TourCategories = db.TourCategories.Include("DesToCats").Include("DesToCats.Destination").ToList();
             winter.Teams = db.Teams.Include("TeamSocials").Include("Position").ToList();
             winter.TeamSocials = db.TeamSocials.Include("Team").ToList();
@@ -152,25 +152,29 @@ namespace SetSail.Controllers
         public ActionResult TourReviewCreate(VmTourDetails vmtr)
         {
             if (string.IsNullOrEmpty(vmtr.Message) || string.IsNullOrEmpty(vmtr.Fullname) ||
-                string.IsNullOrEmpty(vmtr.Email))
+                string.IsNullOrEmpty(vmtr.Email) || string.IsNullOrEmpty(vmtr.Rating.ToString()) ||
+                string.IsNullOrEmpty(vmtr.Reception.ToString()) || string.IsNullOrEmpty(vmtr.Comfort.ToString()) ||
+                string.IsNullOrEmpty(vmtr.Food.ToString()) || string.IsNullOrEmpty(vmtr.Hospitality.ToString()) ||
+                string.IsNullOrEmpty(vmtr.Hygiene.ToString()))
             {
                 Session["EmptyReview"] = true;
-                return RedirectToAction("TourDetailIndex", "Tour", new { id = vmtr.Tour.Id });
+
+                return RedirectToAction("TourDetailIndex", "Tour", new { id = vmtr.TourId });
             }
-            if (Session["User"] != null)
-            {
                 TourReview tr = new TourReview();
 
                 tr.Message = vmtr.Message;
                 tr.Fullname = vmtr.Fullname;
                 tr.Email = vmtr.Email;
-                tr.Rating = vmtr.Rating;
-                tr.Comfort = vmtr.Comfort;
-                tr.Food = vmtr.Food;
-                tr.Hospitality = vmtr.Hospitality;
-                tr.Hygiene = vmtr.Hygiene;
-                tr.Reception = vmtr.Reception;
-                tr.TourId = vmtr.Tour.Id;
+
+                tr.Rating = Convert.ToByte(vmtr.Rating);
+                tr.Comfort = Convert.ToByte(vmtr.Comfort);
+                tr.Food = Convert.ToByte(vmtr.Food);
+                tr.Hospitality = Convert.ToByte(vmtr.Hospitality);
+                tr.Hygiene = Convert.ToByte(vmtr.Hygiene);
+                tr.Reception = Convert.ToByte(vmtr.Reception);
+            
+                tr.TourId = vmtr.TourId;
                 tr.CreatedDate = DateTime.Now;
                 tr.UserId = (int)Session["UserId"];
 
@@ -178,8 +182,7 @@ namespace SetSail.Controllers
                 db.SaveChanges();
 
                 Session["TourReviewSent"] = true;
-            }
-            return RedirectToAction("TourDetailIndex", "Tour", new { id = vmtr.Tour.Id });
+            return RedirectToAction("TourDetailIndex", "Tour", new { id = vmtr.TourId });
         }
         public ActionResult TourReviewUpdate(int id)
         {
@@ -195,24 +198,26 @@ namespace SetSail.Controllers
         public ActionResult TourReviewUpdate(VmTourDetails vmtr)
         {
             if (string.IsNullOrEmpty(vmtr.Message) || string.IsNullOrEmpty(vmtr.Fullname) ||
-                string.IsNullOrEmpty(vmtr.Email))
+                string.IsNullOrEmpty(vmtr.Email) || string.IsNullOrEmpty(vmtr.Rating.ToString()) ||
+                string.IsNullOrEmpty(vmtr.Reception.ToString()) || string.IsNullOrEmpty(vmtr.Comfort.ToString()) ||
+                string.IsNullOrEmpty(vmtr.Food.ToString()) || string.IsNullOrEmpty(vmtr.Hospitality.ToString()) ||
+                string.IsNullOrEmpty(vmtr.Hygiene.ToString()))
             {
                 Session["EmptyReview"] = true;
-                return RedirectToAction("TourDetailIndex", "Tour", new { id = vmtr.Tour.Id });
+                return RedirectToAction("TourDetailIndex", "Tour", new { id = vmtr.TourId });
             }
-            if (Session["User"] != null)
-            {
-                TourReview tr = db.TourReviews.FirstOrDefault(c => c.Id == vmtr.Tour.Id);
+           
+                TourReview tr = db.TourReviews.FirstOrDefault(c => c.Id == vmtr.TourId);
 
                 tr.Message = vmtr.Message;
                 tr.Fullname = vmtr.Fullname;
                 tr.Email = vmtr.Email;
-                tr.Rating = vmtr.Rating;
-                tr.Comfort = vmtr.Comfort;
-                tr.Food = vmtr.Food;
-                tr.Hospitality = vmtr.Hospitality;
-                tr.Hygiene = vmtr.Hygiene;
-                tr.Reception = vmtr.Reception;
+                tr.Rating = Convert.ToByte(vmtr.Rating);
+                tr.Comfort = Convert.ToByte(vmtr.Comfort);
+                tr.Food = Convert.ToByte(vmtr.Food);
+                tr.Hospitality = Convert.ToByte(vmtr.Hospitality);
+                tr.Hygiene = Convert.ToByte(vmtr.Hygiene);
+                tr.Reception = Convert.ToByte(vmtr.Reception);
                 tr.TourId = vmtr.Tour.Id;
                 tr.CreatedDate = tr.CreatedDate;
                 tr.UserId = (int)Session["UserId"];
@@ -221,8 +226,7 @@ namespace SetSail.Controllers
                 db.SaveChanges();
 
                 Session["TourReviewSent"] = true;
-            }
-            return RedirectToAction("TourDetailIndex", "Tour", new { id = vmtr.Tour.Id });
+            return RedirectToAction("TourDetailIndex", "Tour", new { id = vmtr.TourId });
         }
 
         public ActionResult TourReviewDelete(int id)

@@ -14,6 +14,10 @@
 a {
     text-decoration: none;
 }
+.filech {
+    width: 250px !important;
+    padding: 10px !important;
+}
 /* upper header */
 .commons {
     display: inline-block;
@@ -779,7 +783,7 @@ a {
 
 #Log {
     text-align: center;
-    padding: 50px 0;
+    padding: 15px 0;
     background-color: #ffffff9c;
     position: fixed;
     top: 0;
@@ -1920,6 +1924,7 @@ a {
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
+    padding-bottom: 30px;
 }
 
     #parallaxReviews .slogan {
@@ -1963,6 +1968,17 @@ a {
         height: 215px;
         padding: 30px;
     }
+        #parallaxReviews .reviewsCarousel .owl-carousel .item .img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+            #parallaxReviews .reviewsCarousel .owl-carousel .item .img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
 
         #parallaxReviews .reviewsCarousel .owl-carousel .item .info {
             text-align: left;
@@ -1974,6 +1990,7 @@ a {
                 color: #505050;
                 font-weight: 600;
                 transition: all 0.3s linear;
+                font-size:16px;
             }
 
             #parallaxReviews .reviewsCarousel .owl-carousel .item .info .tour:hover a {
@@ -3764,6 +3781,7 @@ a {
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
+    padding-bottom: 30px;
 }
 
     #parallaxReviewsWinter .slogan {
@@ -3805,6 +3823,18 @@ a {
         display: flex;
         padding: 30px;
     }
+        #parallaxReviewsWinter .reviewsCarousel .owl-carousel .item .img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+            #parallaxReviewsWinter .reviewsCarousel .owl-carousel .item .img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
 
         #parallaxReviewsWinter .reviewsCarousel .owl-carousel .item .info {
             text-align: left;
@@ -3816,6 +3846,7 @@ a {
                 color: #505050;
                 font-weight: 600;
                 transition: all 0.3s linear;
+                font-size: 16px;
             }
 
             #parallaxReviewsWinter .reviewsCarousel .owl-carousel .item .info .tour:hover a {
@@ -6117,7 +6148,7 @@ a {
         }
 
             #myBlog .blog .images .img {
-                margin: 0 20px;
+                margin: auto auto;
                 height: 238px;
             }
 
@@ -7090,18 +7121,26 @@ a {
                 }
 
         #myTour .setReviews .review {
-            padding: 40px 20px;
+            margin: 0;
+            padding: 20px;
             display: flex;
             border-top: 1px solid lightgray;
-            margin-bottom: 30px;
         }
 
             #myTour .setReviews .review .img {
                 margin: 10px 20px;
+                min-width: 150px;
+                min-height: 150px;
+                max-width: 150px;
+                max-height: 150px;
+                overflow: hidden;
+                border-radius: 50%;
             }
 
                 #myTour .setReviews .review .img img {
-                    min-width: 100%;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
                 }
 
             #myTour .setReviews .review .details h5 {
@@ -7111,7 +7150,6 @@ a {
 
             #myTour .setReviews .review .details .rating {
                 display: flex;
-                margin-bottom: 10px;
                 flex-wrap: wrap;
             }
 
@@ -7158,31 +7196,35 @@ a {
                 font-size: 30px;
                 margin-bottom: 30px;
             }
-
-            #myTour .setReviews .comment .ratingUse {
+            #myTour .setReviews .comment .ratingUse{
                 display: flex;
                 margin-bottom: 10px;
                 flex-wrap: wrap;
             }
 
-                #myTour .setReviews .comment .ratingUse .stars {
+                #myTour .setReviews .comment .ratingUse .ratwrap {
+                    display: flex;
+                }
+
+                #myTour .setReviews .comment .ratingUse .ratwrap .stars {
                     margin: 5px 40px 5px 0px;
                     display: flex;
                     align-items: baseline;
                 }
 
-                    #myTour .setReviews .comment .ratingUse .stars h5 {
-                        margin-right: 10px;
-                        font-size: 15px;
-                        font-weight: 600;
-                        color: white;
-                    }
+                #myTour .setReviews .comment .ratingUse .ratwrap h5 {
+                    margin-right: 10px;
+                    font-size: 15px;
+                    font-weight: 600;
+                    color: white;
+                    line-height: unset;
+                }
 
-                    #myTour .setReviews .comment .ratingUse .stars span i {
-                        margin-right: 2px;
-                        color: white;
-                        cursor: pointer;
-                    }
+                #myTour .setReviews .comment .ratingUse .ratwrap .stars span i {
+                    margin-right: 2px;
+                    color: white;
+                    cursor: pointer;
+                }
 
             #myTour .setReviews .comment .hei {
                 height: 120px;

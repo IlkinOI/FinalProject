@@ -204,7 +204,7 @@
                     <div class="reg">
                         <h4>Register Now!</h4>
                         <p>Join the SetSail community today & set up a free account.</p>
-                        <form action="@Url.Action("Register","Home")" method="post" class="inputs">
+                        <form action="@Url.Action("Register","Home")" enctype="multipart/form-data" method="post" class="inputs">
                             <div class="input">
                                 @Html.TextBoxFor(u => u.RFullname, null, new { @placeholder = "Fullname" })
                                 @Html.ValidationMessageFor(u => u.RFullname, null, new { @class = "text-danger" })
@@ -224,6 +224,11 @@
                                 @Html.TextBoxFor(u => u.RPassword, null, new { @placeholder = "Enter Password...", @type = "password" })
                                 @Html.ValidationMessageFor(u => u.RPassword, null, new { @class = "text-danger", })
                                 <i class="fas fa-unlock-alt"></i>
+
+                            </div>
+                            <div class="input">
+                                @Html.TextBoxFor(u => u.RPhotoFile, null, new { @class = "filech", @type = "file" })
+                                @Html.ValidationMessageFor(u => u.RPhotoFile, null, new { @class = "text-danger", })
                             </div>
                             <button type="submit">REGISTER</button>
                             @if (ViewBag.Id != null)

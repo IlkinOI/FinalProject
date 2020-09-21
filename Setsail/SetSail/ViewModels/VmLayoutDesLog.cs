@@ -3,6 +3,7 @@ using SetSail.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -33,5 +34,7 @@ namespace SetSail.ViewModels
         public string RPassword { get; set; }
         [Required]
         public string RFullname { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase RPhotoFile { get; set; }
     }
 }

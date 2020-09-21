@@ -483,18 +483,28 @@
                                 </div>
                                 <div class="info">
                                     <h4 class="tour">
-                                        <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.TourId })">@item.Tour.TourCity.Name @item.Tour.Name</a>
+                                        <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.TourId })">@item.Tour.Name</a>
                                     </h4>
                                     <div class="starts">
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
+                                        @{
+                                            decimal total = (decimal)((item.Rating + item.Comfort + item.Food + item.Hospitality + item.Hygiene + item.Reception) / 6.0);
+                                            for (int s = 0; s < 5; s++)
+                                            {
+                                                if (Convert.ToInt32(total) <= s)
+                                                {
+                                                    <span><i class="far fa-star"></i></span>
+                                                }
+                                                else
+                                                {
+                                                    <span><i class="fas fa-star"></i></span>
+
+                                                }
+                                            }
+                                        }
                                     </div>
                                     <div class="text">
                                         <p>
-                                            @(item.Message.Length>65? item.Message.Substring(0,65)+"...":item.Message)
+                                            @(item.Message.Length>20? item.Message.Substring(0,20)+"...":item.Message)
                                         </p>
                                     </div>
                                     <h6 class="fullname">

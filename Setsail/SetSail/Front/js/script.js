@@ -301,7 +301,7 @@ $(document).ready(function () {
         nav: false,
         dotsEach: false,
         margin: 10,
-        autoplay: false,
+        autoplay: true,
         responsive: {
             0: {
                 items: 1,
@@ -867,5 +867,94 @@ $(document).ready(function () {
             main.append(tour);
         });
     });
+
+    // tour review rating //
+
+    $(function () {
+        $("#rating").rating({
+            "color": "white",  // "#3abdc1", //
+            "emptyStar": "far fa-star",
+            "filledStar": "fas fa-star",
+            "value":0,
+            "stars": 5,
+            "half": false,
+            "click": function (e) {
+                $(".ratval").val(e.stars);
+            }
+            //"readonly": true
+        });
+    });
+    $(function () {
+        $("#comfort").rating({
+            "color": "white",  // "#3abdc1", //
+            "emptyStar": "far fa-star",
+            "filledStar": "fas fa-star",
+            "value": 0,
+            "stars": 5,
+            "half": false,
+            "click": function (e) {
+                $(".comval").val(e.stars);
+            }
+            //"readonly": true
+        });
+    });
+    $(function () {
+        $("#food").rating({
+            "color": "white",  // "#3abdc1", //
+            "emptyStar": "far fa-star",
+            "filledStar": "fas fa-star",
+            "value": 0,
+            "stars": 5,
+            "half": false,
+            "click": function (e) {
+                $(".fooval").val(e.stars);
+            }
+            //"readonly": true
+        });
+    });
+    $(function () {
+        $("#hospitality").rating({
+            "color": "white",  // "#3abdc1", //
+            "emptyStar": "far fa-star",
+            "filledStar": "fas fa-star",
+            "value": 0,
+            "stars": 5,
+            "half": false,
+            "click": function (e) {
+                $(".hosval").val(e.stars);
+            }
+            //"readonly": true
+        });
+    });
+    $(function () {
+        $("#hygiene").rating({
+            "color": "white",  // "#3abdc1", //
+            "emptyStar": "far fa-star",
+            "filledStar": "fas fa-star",
+            "value": 0,
+            "stars": 5,
+            "half": false,
+            "click": function (e) {
+                $(".hygval").val(e.stars);
+            }
+            //"readonly": true
+        });
+    });
+    $(function () {
+        $("#reception").rating({
+            "color": "white",  // "#3abdc1", //
+            "emptyStar": "far fa-star",
+            "filledStar": "fas fa-star",
+            "value": 0,
+            "stars": 5,
+            "half": false,
+            "click": function (e) {
+                $(".recval").val(e.stars);
+            }
+            //"readonly": true
+        });
+    });
+    
+
 
 });

@@ -28,7 +28,7 @@ namespace SetSail.Controllers
             home.wDesToCats = db.DesToCats.Include("Destination").Include("TourCategory").Where(dc=>dc.TourCategory.Name=="Winter").ToList();
             home.eDesToCats = db.DesToCats.Include("Destination").Include("TourCategory").Where(dc=>dc.TourCategory.Name=="Exotic").ToList();
             home.Tours = db.Tours.Include("TourDates").Include("TourCity").Include("TourCity.Destination").ToList();
-            home.TourReviews = db.TourReviews.Include("User").Include("Tour").Include("Tour.TourCity").ToList();
+            home.TourReviews = db.TourReviews.Include("User").Include("Tour").Include("Tour.TourCity").OrderBy(t=>t.Id).Take(9).ToList();
             home.Blogs = db.Blogs.Include("User").Include("BlogComments").ToList();
             home.Destination1 = db.Destinations.FirstOrDefault(d=>d.Name == "Spain");
             home.ToursDes1 = db.Tours.Include("TourImages").Include("TourCity").Where(t=>t.TourCity.DestinationId == home.Destination1.Id).ToList();
@@ -61,7 +61,7 @@ namespace SetSail.Controllers
                     }
                     else if (user.Page == "FAQ")
                     {
-                        return RedirectToAction("FAQ", "About");
+                        return RedirectToAction("Index", "FAQ");
                     }
                     else if (user.Page == "Blog")
                     {
@@ -125,7 +125,92 @@ namespace SetSail.Controllers
                     }
                 }
 
+                
                 User User = new User();
+
+                if (user.RPhotoFile == null)
+                {
+                    ModelState.AddModelError("", "Image is requred!");
+                    if (user.Page == "About")
+                    {
+                        return RedirectToAction("Index", "About");
+                    }
+                    else if (user.Page == "FAQ")
+                    {
+                        return RedirectToAction("FAQ", "About");
+                    }
+                    else if (user.Page == "Blog")
+                    {
+                        return RedirectToAction("Index", "Blog");
+                    }
+                    else if (user.Page == "CreateBlog")
+                    {
+                        return RedirectToAction("Create", "Blog");
+                    }
+                    else if (user.Page == "Search")
+                    {
+                        return RedirectToAction("Search", "Tour");
+                    }
+                    else if (user.Page == "Summer")
+                    {
+                        return RedirectToAction("Summer", "Tour");
+                    }
+                    else if (user.Page == "Winter")
+                    {
+                        return RedirectToAction("Winter", "Tour");
+                    }
+                    else if (user.Page == "City")
+                    {
+                        return RedirectToAction("City", "Tour");
+                    }
+                    else if (user.Page == "Exotic")
+                    {
+                        return RedirectToAction("Exotic", "Tour");
+                    }
+                    else if (user.Page == "Wine")
+                    {
+                        return RedirectToAction("Wine", "Tour");
+                    }
+                    else if (user.Page == "Destinations")
+                    {
+                        return RedirectToAction("Destinations", "Tour");
+                    }
+                    else if (user.Page == "Contact")
+                    {
+                        return RedirectToAction("Index", "Contact");
+                    }
+                    else if (user.Page == "UpdateBlog")
+                    {
+                        return RedirectToAction("Update", "Blog", new { id = (int)user.pdId });
+                    }
+                    else if (user.Page == "BlogDetails")
+                    {
+                        return RedirectToAction("BlogDetailsIndex", "Blog", new { id = (int)user.pdId });
+                    }
+                    else if (user.Page == "MyPage")
+                    {
+                        return RedirectToAction("MyPage", "Home", new { id = (int)Session["UserId"] });
+                    }
+                    else if (user.Page == "DestinationDetails")
+                    {
+                        return RedirectToAction("DestinationDetails", "Tour", new { id = (int)user.pdId });
+                    }
+                    else if (user.Page == "TourDetails")
+                    {
+                        return RedirectToAction("TourDetailIndex", "Tour", new { id = (int)user.pdId });
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+
+                string pimageName = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + user.RPhotoFile.FileName;
+                string pimagePath = Path.Combine(Server.MapPath("~/Uploads/"), pimageName);
+
+                user.RPhotoFile.SaveAs(pimagePath);
+                User.Photo = pimageName;
+
                 User.Fullname = user.RFullname;
                 User.Email = user.REmail;
                 User.Phone = user.RPhone;

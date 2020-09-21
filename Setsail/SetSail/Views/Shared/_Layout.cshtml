@@ -419,7 +419,7 @@
                     <div class="reg">
                         <h4>Register Now!</h4>
                         <p>Join the SetSail community today & set up a free account.</p>
-                        <form action="@Url.Action("Register","Home")" method="post" class="inputs">
+                        <form action="@Url.Action("Register","Home")" method="post" enctype="multipart/form-data" class="inputs">
                             <div class="input">
                                 @Html.TextBoxFor(u => u.RFullname, null, new { @placeholder = "Fullname" })
                                 @Html.ValidationMessageFor(u => u.RFullname, null, new { @class = "text-danger" })
@@ -439,6 +439,10 @@
                                 @Html.TextBoxFor(u => u.RPassword, null, new { @placeholder = "Enter Password...", @type = "password" })
                                 @Html.ValidationMessageFor(u => u.RPassword, null, new { @class = "text-danger", })
                                 <i class="fas fa-unlock-alt"></i>
+                            </div>
+                            <div class="input">
+                                @Html.TextBoxFor(u => u.RPhotoFile, null, new {@class="filech", @type = "file" })
+                                @Html.ValidationMessageFor(u => u.RPhotoFile, null, new { @class = "text-danger", })
                             </div>
                             <button type="submit">REGISTER</button>
                             @if (ViewBag.Id != null)
@@ -479,6 +483,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="~/Front/assets/rating/dist/rating.js"></script>
     <script src="~/Front/js/script.js"></script>
 </body>
 
