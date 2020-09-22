@@ -23,6 +23,7 @@ namespace SetSail.Models
         public DateTime CreatedDate { get; set; }
         public int TourId { get; set; }
         public int? UserId { get; set; }
+        public int DateId { get; set; }
         public Tour Tour { get; set; }
         public User User { get; set; }
     }

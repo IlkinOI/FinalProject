@@ -36,7 +36,18 @@
                 @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <div class="form-group">
+            <div class="col-md-10">
+                <label>Tour Dates</label>
+                <select class="form-control" name="dateId" required>
+                    <option disable value="value">Choose</option>
+                    @foreach (var item in Model.Tour.TourDates)
+                    {
+                        <option value="@item.Id">From @item.DateFrom.ToString("dd.MM.yyyy") To @item.DateTo.ToString("dd.MM.yyyy") , Tour Name : @item.Tour.Name , T/A:  @item.TicketsNum </option>
+                    }
+                </select>
+            </div>
+        </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Tickets, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

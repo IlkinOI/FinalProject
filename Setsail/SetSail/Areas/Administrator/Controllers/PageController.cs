@@ -1,4 +1,5 @@
-﻿using SetSail.DAL;
+﻿using SetSail.Areas.Administrator.Filters;
+using SetSail.DAL;
 using SetSail.Models;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace SetSail.Areas.Administrator.Controllers
 {
+    [filterAdmin]
     public class PageController : Controller
     {
         // GET: Administrator/Page

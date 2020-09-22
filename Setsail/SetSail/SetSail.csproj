@@ -230,6 +230,14 @@
     <Compile Include="Migrations\202009161631355_tickets.designer.cs">
       <DependentUpon>202009161631355_tickets.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009212131319_upd2.cs" />
+    <Compile Include="Migrations\202009212131319_upd2.designer.cs">
+      <DependentUpon>202009212131319_upd2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009212300033_dateid.cs" />
+    <Compile Include="Migrations\202009212300033_dateid.designer.cs">
+      <DependentUpon>202009212300033_dateid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\About.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -2703,6 +2711,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009161631355_tickets.resx">
       <DependentUpon>202009161631355_tickets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009212131319_upd2.resx">
+      <DependentUpon>202009212131319_upd2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009212300033_dateid.resx">
+      <DependentUpon>202009212300033_dateid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -120,18 +120,7 @@
                                 <textarea class="form-control" style="color:white;" type="text" name="Message"
                                           placeholder="Comment*" required></textarea>
                             </div>
-                            <div class="wrap">
-                                <div class="input-group mr-1">
-                                    <i class="far fa-envelope"></i>
-                                    <input class="form-control" type="email" name="Email" id="Email"
-                                           placeholder="Email*" required>
-                                </div>
-                                <div class="input-group">
-                                    <i class="fas fa-user"></i>
-                                    <input class="form-control" type="text" name="Fullname" 
-                                           placeholder="Fullname*" required>
-                                </div>
-                            </div>
+                            
                             <input type="hidden" name="BlogId" value="@Model.Blog.Id" />
                             <button class="btn" type="submit">SUBMIT</button>
                             @if (Session["BlogCommentSent"] != null)

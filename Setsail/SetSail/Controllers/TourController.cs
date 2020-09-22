@@ -151,8 +151,7 @@ namespace SetSail.Controllers
         [HttpPost]
         public ActionResult TourReviewCreate(VmTourDetails vmtr)
         {
-            if (string.IsNullOrEmpty(vmtr.Message) || string.IsNullOrEmpty(vmtr.Fullname) ||
-                string.IsNullOrEmpty(vmtr.Email) || string.IsNullOrEmpty(vmtr.Rating.ToString()) ||
+            if (string.IsNullOrEmpty(vmtr.Message)|| string.IsNullOrEmpty(vmtr.Rating.ToString()) ||
                 string.IsNullOrEmpty(vmtr.Reception.ToString()) || string.IsNullOrEmpty(vmtr.Comfort.ToString()) ||
                 string.IsNullOrEmpty(vmtr.Food.ToString()) || string.IsNullOrEmpty(vmtr.Hospitality.ToString()) ||
                 string.IsNullOrEmpty(vmtr.Hygiene.ToString()))
@@ -164,8 +163,6 @@ namespace SetSail.Controllers
                 TourReview tr = new TourReview();
 
                 tr.Message = vmtr.Message;
-                tr.Fullname = vmtr.Fullname;
-                tr.Email = vmtr.Email;
 
                 tr.Rating = Convert.ToByte(vmtr.Rating);
                 tr.Comfort = Convert.ToByte(vmtr.Comfort);
@@ -197,8 +194,7 @@ namespace SetSail.Controllers
         [HttpPost]
         public ActionResult TourReviewUpdate(VmTourDetails vmtr)
         {
-            if (string.IsNullOrEmpty(vmtr.Message) || string.IsNullOrEmpty(vmtr.Fullname) ||
-                string.IsNullOrEmpty(vmtr.Email) || string.IsNullOrEmpty(vmtr.Rating.ToString()) ||
+            if (string.IsNullOrEmpty(vmtr.Message) || string.IsNullOrEmpty(vmtr.Rating.ToString()) ||
                 string.IsNullOrEmpty(vmtr.Reception.ToString()) || string.IsNullOrEmpty(vmtr.Comfort.ToString()) ||
                 string.IsNullOrEmpty(vmtr.Food.ToString()) || string.IsNullOrEmpty(vmtr.Hospitality.ToString()) ||
                 string.IsNullOrEmpty(vmtr.Hygiene.ToString()))
@@ -210,8 +206,6 @@ namespace SetSail.Controllers
                 TourReview tr = db.TourReviews.FirstOrDefault(c => c.Id == vmtr.TourId);
 
                 tr.Message = vmtr.Message;
-                tr.Fullname = vmtr.Fullname;
-                tr.Email = vmtr.Email;
                 tr.Rating = Convert.ToByte(vmtr.Rating);
                 tr.Comfort = Convert.ToByte(vmtr.Comfort);
                 tr.Food = Convert.ToByte(vmtr.Food);
@@ -269,6 +263,7 @@ namespace SetSail.Controllers
                 bk.Fullname = book.BookingFullname;
                 bk.Email = book.BookingEmail;
                 bk.Phone = book.BookingPhone;
+                bk.DateId = date.Id;
                 bk.TourId = TourId; ;
                 bk.CreatedDate = DateTime.Now;
                 if (Session["User"] != null)

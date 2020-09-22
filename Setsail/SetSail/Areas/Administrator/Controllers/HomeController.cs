@@ -111,7 +111,7 @@ namespace SetSail.Areas.Administrator.Controllers
         }
 
         // USER RD START //
-
+        [filterAdmin]
         public ActionResult UserIndex()
         {
             List<User> users = db.Users.ToList();
@@ -135,7 +135,7 @@ namespace SetSail.Areas.Administrator.Controllers
         // USER RD END //
 
         // USER SOCIAL RD START //
-
+        [filterAdmin]
         public ActionResult UserSocialIndex()
         {
             List<UserSocial> usocials = db.UserSocials.Include("User").ToList();

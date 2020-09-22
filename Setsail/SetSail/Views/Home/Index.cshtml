@@ -487,17 +487,17 @@
                                     </h4>
                                     <div class="starts">
                                         @{
-                                            decimal total = (decimal)((item.Rating + item.Comfort + item.Food + item.Hospitality + item.Hygiene + item.Reception) / 6.0);
+                                            double total = (double)((item.Rating + item.Comfort + item.Food + item.Hospitality + item.Hygiene + item.Reception) / 6.0);
+                                            
                                             for (int s = 0; s < 5; s++)
                                             {
-                                                if (Convert.ToInt32(total) <= s)
+                                                if (total <= s)
                                                 {
                                                     <span><i class="far fa-star"></i></span>
                                                 }
                                                 else
                                                 {
                                                     <span><i class="fas fa-star"></i></span>
-
                                                 }
                                             }
                                         }

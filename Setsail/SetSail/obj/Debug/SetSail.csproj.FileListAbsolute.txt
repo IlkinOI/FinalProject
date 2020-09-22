@@ -102,3 +102,5 @@ C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.Migrations.admi
 C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.Migrations.noreg.resources
 C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.Migrations.tickets.resources
 C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.csprojAssemblyReference.cache
+C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.Migrations.upd2.resources
+C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.Migrations.dateid.resources

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SetSail.Areas.Administrator.Filters;
 using SetSail.DAL;
 using SetSail.Models;
 using System;
@@ -16,6 +17,7 @@ using System.Web.Services.Description;
 
 namespace SetSail.Areas.Administrator.Controllers
 {
+    [filterAdmin]
     public class TourController : Controller
     {
         // GET: Administrator/Tour
@@ -1239,7 +1241,9 @@ namespace SetSail.Areas.Administrator.Controllers
         }
         public ActionResult BookingUpdate(int id)
         {
-            Booking bk = db.Bookings.Include("Tour").FirstOrDefault(b=>b.Id==id);
+
+            Booking bk = db.Bookings.Include("Tour").Include("Tour.TourDates").FirstOrDefault(b=>b.Id==id);
+
             if (bk == null)
             {
                 return HttpNotFound();
@@ -1249,15 +1253,25 @@ namespace SetSail.Areas.Administrator.Controllers
         }
 
         [HttpPost]
-        public ActionResult BookingUpdate(Booking book)
+        public ActionResult BookingUpdate(Booking book,int dateId)
         {
             if (ModelState.IsValid)
             {
-                Booking bk = db.Bookings.Find(book.Id);
-                TourDates date = db.TourDates.FirstOrDefault(td=>(td.DateFrom==book.DateFrom && td.DateTo==book.DateTo)&& td.TourId==book.TourId);
-               
 
-                date.TicketsNum +=  bk.Tickets;
+                Booking bk = db.Bookings.Find(book.Id);
+                TourDates date = db.TourDates.Find(dateId);
+                int exdate = bk.DateId;
+                byte ticbefore = bk.Tickets;
+                if (bk.DateId == date.Id)
+                {
+                    date.TicketsNum = Convert.ToByte(date.TicketsNum + ticbefore);
+                }
+                else
+                {
+                    TourDates td = db.TourDates.FirstOrDefault(d => d.Id == exdate);
+                    td.TicketsNum = Convert.ToByte(td.TicketsNum + ticbefore);
+                    db.Entry(td).State = EntityState.Modified;
+                }
                 if (date.TicketsNum >= book.Tickets)
                 {
                     date.TicketsNum = Convert.ToByte(date.TicketsNum - book.Tickets);
@@ -1268,11 +1282,16 @@ namespace SetSail.Areas.Administrator.Controllers
                     bk.Fullname = book.Fullname;
                     bk.Email = book.Email;
                     bk.Phone = book.Phone;
-                    bk.CreatedDate = book.CreatedDate;
-                    bk.UserId = book.UserId;
-                    bk.TourId = book.TourId;
-                    bk.DateFrom = book.DateFrom;
-                    bk.DateTo = book.DateTo;
+                    bk.CreatedDate = bk.CreatedDate;
+                    bk.UserId = bk.UserId;
+                    bk.TourId = bk.TourId;
+                    if (bk.DateId!=date.Id)
+                    {
+                        bk.DateId = bk.DateId;
+                    }
+                    bk.DateId = dateId;
+                    bk.DateFrom = date.DateFrom;
+                    bk.DateTo = date.DateTo;
 
                     db.Entry(bk).State = EntityState.Modified;
                     db.SaveChanges();

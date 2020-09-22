@@ -69,13 +69,34 @@
                     </div>
                     <div class="rating">
                         <div class="starts">
+                            <!-- review-->
+                            @{ int ra = 0;}
+                            @{ int co = 0;}
+                            @{ int fo = 0;}
+                            @{ int hos = 0;}
+                            @{ int hy = 0;}
+                            @{ int rec = 0;}
+                            @foreach (var item in Model.Tour.TourReviews)
+                            {
+                                ra += item.Rating;
+                                co += item.Comfort;
+                                fo += item.Food;
+                                hos += item.Hospitality;
+                                hy += item.Hygiene;
+                                rec += item.Reception;
+                            }
+                            @{ double total = ((ra + co + fo + hos + hy + rec) / 6.0);}
+                            @for (int star = 0; star < 5; star++)
+                            {
+                                
+                            }
                             <span><i class="fas fa-star"></i></span>
                             <span><i class="fas fa-star"></i></span>
                             <span><i class="fas fa-star"></i></span>
                             <span><i class="fas fa-star"></i></span>
-                            <span><i class="far fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
                         </div>
-                        <span>(@Model.TourReviews.Count().ToString("0") Reviews)</span>
+                        <span>(@Model.Tour.TourReviews.Count().ToString("0") Reviews)</span>
                     </div>
                     <p class="content">
                         @Model.Tour.About
@@ -500,18 +521,7 @@
                                     <textarea class="form-control" style="color:white;" type="text" name="Message"
                                               placeholder="Comment*" required></textarea>
                                 </div>
-                                <div class="wrap">
-                                    <div class="input-group mr-1">
-                                        <i class="far fa-envelope"></i>
-                                        <input class="form-control" type="email" name="Email"
-                                               placeholder="Email*" required>
-                                    </div>
-                                    <div class="input-group">
-                                        <i class="fas fa-user"></i>
-                                        <input class="form-control" type="text" name="Fullname"
-                                               placeholder="Fullname*" required>
-                                    </div>
-                                </div>
+                                
                                 <input type="hidden" name="TourId" value="@Model.Tour.Id" />
                                 <button class="btn" type="submit">SUBMIT</button>
                                 @if (Session["TourReviewSent"] != null)

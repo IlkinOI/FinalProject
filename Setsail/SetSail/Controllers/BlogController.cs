@@ -213,8 +213,7 @@ namespace SetSail.Controllers
         [HttpPost]
         public ActionResult BlogComment(VmBlogDetails vmbc)
         {
-            if (string.IsNullOrEmpty(vmbc.Message) || string.IsNullOrEmpty(vmbc.Fullname) ||
-                string.IsNullOrEmpty(vmbc.Email))
+            if (string.IsNullOrEmpty(vmbc.Message))
             {
                 Session["EmptyComment"] = true;
                 return RedirectToAction("BlogDetailsIndex", "Blog", new { id = vmbc.BlogId });
@@ -224,8 +223,6 @@ namespace SetSail.Controllers
                 BlogComment bc = new BlogComment();
                 
                 bc.Message = vmbc.Message;
-                bc.Fullname = vmbc.Fullname;
-                bc.Email = vmbc.Email;
                 bc.BlogId = vmbc.BlogId;
                 bc.CreatedDate = DateTime.Now;
                 bc.UserId = (int)Session["UserId"];

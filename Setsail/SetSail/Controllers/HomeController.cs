@@ -382,26 +382,24 @@ namespace SetSail.Controllers
         }
 
         [HttpPost]
-        public ActionResult UserUpdate(User user)
+        public ActionResult UserUpdate(VmMyPage user)
         {
-            if (ModelState.IsValid)
-            {
-                User userr = db.Users.Find(user.Id);
+                User userr = db.Users.Find(user.UserId);
 
                 if (user.PhotoFile != null)
                 {
-                    string imageName = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + user.PhotoFile.FileName;
+                    string imageName = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + user.User.PhotoFile.FileName;
                     string imagePath = Path.Combine(Server.MapPath("~/Uploads/"), imageName);
 
                     string OldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), userr.Photo);
                     System.IO.File.Delete(OldImagePath);
 
-                    user.PhotoFile.SaveAs(imagePath);
+                    user.User.PhotoFile.SaveAs(imagePath);
                     userr.Photo = imageName;
                 }
                 else
                 {
-                    string imageName = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + user.PhotoFile.FileName;
+                    string imageName = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + user.User.PhotoFile.FileName;
                     string imagePath = Path.Combine(Server.MapPath("~/Uploads/"), imageName);
 
                     userr.PhotoFile.SaveAs(imagePath);
@@ -409,17 +407,13 @@ namespace SetSail.Controllers
                 }
 
                 userr.Password = Crypto.HashPassword(user.Password);
-                userr.Fullname = user.Fullname;
-                userr.Email = user.Email;
-                userr.Phone = user.Phone;
+                userr.Fullname = user.User.Fullname;
+                userr.Email = user.User.Email;
+                userr.Phone = user.User.Phone;
 
                 db.Entry(userr).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("MyPage", new { id = userr.Id });
-            }
-            
-
-            return RedirectToAction("MyPage", new { id = user.Id });
+                return RedirectToAction("MyPage","Home", new { id = (int)Session["UserId"] });
         }
 
         // USER LOGN //

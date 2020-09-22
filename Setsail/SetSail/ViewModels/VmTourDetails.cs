@@ -25,8 +25,6 @@ namespace SetSail.ViewModels
         public int dateId { get; set; }
         public int TourId { get; set; }
         public string Message { get; set; }
-        public string Fullname { get; set; }
-        public string Email { get; set; }
         public byte? Rating { get; set; }
         public byte? Comfort { get; set; }
         public byte? Food { get; set; }

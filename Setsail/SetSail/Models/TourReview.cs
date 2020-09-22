@@ -12,10 +12,6 @@ namespace SetSail.Models
         public int Id { get; set; }
         [Required,MaxLength(500)]
         public string Message { get; set; }
-        [Required, MaxLength(50)]
-        public string Fullname { get; set; }
-        [Required, MaxLength(50)]
-        public string Email { get; set; }
         [Column(TypeName = "tinyint")]
         public byte Rating { get; set; }
         [Column(TypeName = "tinyint")]

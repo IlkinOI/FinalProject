@@ -87,7 +87,7 @@
                         </div>
                         <button type="submit" name="Update"> Update</button>
                     </div>
-                    
+                    <input type="hidden" name="UserId" value="@Model.User.Id" />
                 </form>
                 <form class="personal" method="post" action="@Url.Action("UserSocialCreate","Home")">
                     <div class="item">

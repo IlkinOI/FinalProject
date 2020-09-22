@@ -3733,11 +3733,13 @@ a {
 
     #videoWinter .video .picture {
         margin: 0 auto;
-        height: 385px;
+        height: 450px;
+        overflow:hidden;
     }
 
         #videoWinter .video .picture img {
             width: 100%;
+            object-fit:cover;
         }
 
         #videoWinter .video .picture .icon {
