@@ -803,7 +803,7 @@ namespace SetSail.Controllers
         [HttpPost]
         public ActionResult UserSocialCreate(VmMyPage model)
         {
-            if (ModelState.IsValid)
+            if (!string.IsNullOrEmpty(model.Link))
             {
                 UserSocial us = new UserSocial();
                 if (!model.UserSocials.Any(s=>s.Link.Contains("twitter")))

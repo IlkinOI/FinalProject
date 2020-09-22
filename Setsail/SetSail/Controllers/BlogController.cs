@@ -107,89 +107,94 @@ namespace SetSail.Controllers
             }
             return View(blog);
         }
-        public ActionResult Update(int id)
+        public ActionResult Update(VmLayoutDesLog blogonly,int id)
         {
-            Blog blog = db.Blogs.Find(id);
-            if (blog == null)
+            blogonly.Blog= db.Blogs.Include("BlogCategory").FirstOrDefault(b=>b.Id==id);
+
+            if (blogonly.Blog == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Categories = db.BlogCategories.ToList();
+            
             ViewBag.MyPage = true;
             ViewBag.Page = "UpdateBlog";
-            return View(blog);
+            ViewBag.Categories = db.BlogCategories.Include("Blogs").ToList();
+            return View(blogonly);
         }
 
         [HttpPost]
-        public ActionResult Update(Blog blog)
+        public ActionResult Update(VmLayoutDesLog blogonly)
         {
-            if (ModelState.IsValid)
+            if (!string.IsNullOrEmpty(blogonly.Blog.Name) || !string.IsNullOrEmpty(blogonly.Blog.TopText) ||
+                !string.IsNullOrEmpty(blogonly.Blog.Text1) || !string.IsNullOrEmpty(blogonly.Blog.Text2) ||
+                !string.IsNullOrEmpty(blogonly.Blog.Text3) || !string.IsNullOrEmpty(blogonly.Blog.Quote))
             {
-                Blog blogg = db.Blogs.Find(blog.Id);
-
-                if (blog.BgImageFile != null)
+                Blog blogg = db.Blogs.Include("BlogCategory").FirstOrDefault(b => b.Id == blogonly.blogId);
+                if (blogonly.Blog.BgImageFile != null)
                 {
-                    string bgimageName = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + blog.BgImageFile.FileName;
+                    string bgimageName = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + blogonly.Blog.BgImageFile.FileName;
                     string bgimagePath = Path.Combine(Server.MapPath("~/Uploads/"), bgimageName);
 
                     string OldbgImagePath = Path.Combine(Server.MapPath("~/Uploads/"), blogg.BgImage);
                     System.IO.File.Delete(OldbgImagePath);
 
-                    blog.BgImageFile.SaveAs(bgimagePath);
+                    blogonly.Blog.BgImageFile.SaveAs(bgimagePath);
                     blogg.BgImage = bgimageName;
                 }
 
-                if (blog.MainImageFile != null)
+                if (blogonly.Blog.MainImageFile != null)
                 {
-                    string mimageName = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + blog.MainImageFile.FileName;
+                    string mimageName = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + blogonly.Blog.MainImageFile.FileName;
                     string mimagePath = Path.Combine(Server.MapPath("~/Uploads/"), mimageName);
 
                     string OldmImagePath = Path.Combine(Server.MapPath("~/Uploads/"), blogg.MainImage);
                     System.IO.File.Delete(OldmImagePath);
 
-                    blog.MainImageFile.SaveAs(mimagePath);
+                    blogonly.Blog.MainImageFile.SaveAs(mimagePath);
                     blogg.MainImage = mimageName;
                 }
 
-                if (blog.Image1File != null)
+                if (blogonly.Blog.Image1File != null)
                 {
-                    string image1Name = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + blog.Image1File.FileName;
+                    string image1Name = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + blogonly.Blog.Image1File.FileName;
                     string image1Path = Path.Combine(Server.MapPath("~/Uploads/"), image1Name);
 
                     string OldImage1Path = Path.Combine(Server.MapPath("~/Uploads/"), blogg.Image1);
                     System.IO.File.Delete(OldImage1Path);
 
-                    blog.Image1File.SaveAs(image1Path);
+                    blogonly.Blog.Image1File.SaveAs(image1Path);
                     blogg.Image1 = image1Name;
                 }
 
-                if (blog.Image2File != null)
+                if (blogonly.Blog.Image2File != null)
                 {
-                    string image2Name = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + blog.Image2File.FileName;
+                    string image2Name = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + blogonly.Blog.Image2File.FileName;
                     string image2Path = Path.Combine(Server.MapPath("~/Uploads/"), image2Name);
 
                     string OldImage2Path = Path.Combine(Server.MapPath("~/Uploads/"), blogg.Image2);
                     System.IO.File.Delete(OldImage2Path);
 
-                    blog.Image2File.SaveAs(image2Path);
+                    blogonly.Blog.Image2File.SaveAs(image2Path);
                     blogg.Image2 = image2Name;
                 }
 
-                blogg.TopText = blog.TopText;
-                blogg.BlogCategoryId = blog.BlogCategoryId;
-                blogg.UserId = blog.UserId;
-                blogg.Text1 = blog.Text1;
-                blogg.Text2 = blog.Text2;
-                blogg.Text3 = blog.Text3;
-                blogg.Quote = blog.Quote;
+                blogg.Name = blogonly.Blog.Name;
+                blogg.TopText = blogonly.Blog.TopText;
+                blogg.BlogCategoryId = blogonly.BlogCategoryId;
+                blogg.UserId = (int)Session["UserId"];
+                blogg.Text1 = blogonly.Blog.Text1;
+                blogg.Text2 = blogonly.Blog.Text2;
+                blogg.Text3 = blogonly.Blog.Text3;
+                blogg.Quote = blogonly.Blog.Quote;
 
                 db.Entry(blogg).State = EntityState.Modified;
                 db.SaveChanges();
 
-                return RedirectToAction("BlogDetailsIndex", "Blog", new { id = blog.Id });
+                return RedirectToAction("BlogDetailsIndex", "Blog", new { id = blogonly.blogId });
             }
 
-            return View(blog);
+            ViewBag.Categories = db.BlogCategories.Include("Blogs").ToList();
+            return View(blogonly.Blog);
         }
 
         public ActionResult Delete(int id)
@@ -199,11 +204,35 @@ namespace SetSail.Controllers
             {
                 return HttpNotFound();
             }
-
+            List<BlogComment> blc = db.BlogComments.Where(c => c.BlogId == id).ToList();
+            foreach (var bc in blc)
+            {
+                db.BlogComments.Remove(bc);
+            }
+            if (blog.BgImageFile != null)
+            {
+                string OldbgImagePath = Path.Combine(Server.MapPath("~/Uploads/"), blog.BgImage);
+                System.IO.File.Delete(OldbgImagePath);
+            }
+            if (blog.MainImageFile != null)
+            {
+                string OldbgImagePath = Path.Combine(Server.MapPath("~/Uploads/"), blog.MainImage);
+                System.IO.File.Delete(OldbgImagePath);
+            }
+            if (blog.Image1File != null)
+            {
+                string OldbgImagePath = Path.Combine(Server.MapPath("~/Uploads/"), blog.Image1);
+                System.IO.File.Delete(OldbgImagePath);
+            }
+            if (blog.Image2File != null)
+            {
+                string OldbgImagePath = Path.Combine(Server.MapPath("~/Uploads/"), blog.Image2);
+                System.IO.File.Delete(OldbgImagePath);
+            }
             db.Blogs.Remove(blog);
             db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("MyPage","Home",new { id=(int)Session["UserId"]});
         }
 
         // BLOG CRUD END //

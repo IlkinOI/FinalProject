@@ -105,7 +105,8 @@
                         </div>
                         <p>Change Link?</p>
                         <div class="edit">
-                            <input type="text" name="Link" placeholder="Enter Your Insta Link">
+                            @Html.TextBoxFor(model => model.Link, new { @placeholder="Enter Your Twit Link Here" })
+                            @Html.ValidationMessageFor(model => model.Link, "", new { @class = "text-danger" })
                         </div>
                         @if (!Model.UserSocials.Any(u => u.Link.Contains("twitter")))
                         {

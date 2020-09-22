@@ -1,7 +1,136 @@
-﻿@model SetSail.Models.Blog
+﻿@model SetSail.ViewModels.VmLayoutDesLog
+@using SetSail.Models;
 @{
     ViewBag.Title = "Update";
+    
 }
 
+<section id="introCreate" style="background-image: url(/Front/img/createBlog/createBG.jpg);">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="slogan">
+                    <div class="upperTitle">
+                        <h3>
+                            Welcome To
+                        </h3>
+                    </div>
+                    <div class="title">
+                        <h1>
+                            Update Page
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-
+<section id="createblog">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <a href="@Url.Action("MyPage","Home",new { id=(int)Session["UserId"]})" style="text-decoration:none; color:#3abdc1; margin-left:15px">Back To My Page</a>
+                <form action="@Url.Action("Update","Blog")" enctype="multipart/form-data" method="post" class="blogwrapper">
+                    <div class="item">
+                        <p>Select Blog Category</p>
+                        <div class="form-group">
+                            <select class="form-control" name="BlogCategoryId">
+                                <option disabled selected value="value">Category</option>
+                                @foreach (var item in ViewBag.Categories)
+                                {
+                                    <option value="@item.Id" @(Model.Blog.BlogCategoryId == item.Id ? "selected" : "")>@item.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p>Name</p>
+                        <div class="edit">
+                            @Html.TextBoxFor(model => model.Blog.Name)
+                            @Html.ValidationMessageFor(model => model.Blog.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p>Background Image</p>
+                        <div class="detail">
+                            <img src="~/Uploads/@Model.Blog.BgImage" alt="Alternate Text" width="100"/>
+                        </div>
+                        <div class="edit">
+                            @Html.TextBoxFor(model => model.Blog.BgImageFile, new { @type="file" })
+                            @Html.ValidationMessageFor(model => model.Blog.BgImageFile, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p>Main Image</p>
+                        <div class="detail">
+                            <img src="~/Uploads/@Model.Blog.MainImage" alt="Alternate Text" width="100" />
+                        </div>
+                        <div class="edit">
+                            @Html.TextBoxFor(model => model.Blog.MainImageFile, new { @type = "file" })
+                            @Html.ValidationMessageFor(model => model.Blog.MainImageFile, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p>Top Text</p>
+                        <div class="edit">
+                            @Html.TextAreaFor(model => model.Blog.TopText)
+                            @Html.ValidationMessageFor(model => model.Blog.TopText, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p>Text 1</p>
+                        <div class="edit">
+                            @Html.TextAreaFor(model => model.Blog.Text1)
+                            @Html.ValidationMessageFor(model => model.Blog.Text1, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p>Quote</p>
+                        <div class="edit">
+                            @Html.TextAreaFor(model => model.Blog.Quote)
+                            @Html.ValidationMessageFor(model => model.Blog.Quote, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p>Text 2</p>
+                        <div class="edit">
+                            @Html.TextAreaFor(model => model.Blog.Text2)
+                            @Html.ValidationMessageFor(model => model.Blog.Text2, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p>Image 1</p>
+                        <div class="detail">
+                            <img src="~/Uploads/@Model.Blog.Image1" alt="Alternate Text" width="100" />
+                        </div>
+                        <div class="edit">
+                            @Html.TextBoxFor(model => model.Blog.Image1File, new { @type = "file" })
+                            @Html.ValidationMessageFor(model => model.Blog.Image1File, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p>Image 2</p>
+                        <div class="detail">
+                            <img src="~/Uploads/@Model.Blog.Image2" alt="Alternate Text" width="100" />
+                        </div>
+                        <div class="edit">
+                            @Html.TextBoxFor(model => model.Blog.Image2File, new { @type = "file" })
+                            @Html.ValidationMessageFor(model => model.Blog.Image2File, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p>Text 3</p>
+                        <div class="edit">
+                            @Html.TextAreaFor(model => model.Blog.Text3)
+                            @Html.ValidationMessageFor(model => model.Blog.Text3, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <input type="hidden" name="blogId" value="@Model.Blog.Id" />
+                    <button type="submit" value="Update">Update Blog</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+yy
