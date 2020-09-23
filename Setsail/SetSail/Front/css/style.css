@@ -5963,6 +5963,45 @@ a {
     margin: 0 30px;
     padding: 40px 25px;
 }
+    #Blogs .srch {
+        display: flex;
+        margin: 0px 40px 25px;
+        height: 55px;
+        width: 100%;
+    }
+
+        #Blogs .srch input {
+            height: 100%;
+            width: 84%;
+            border: 1px solid #3fd0d4;
+            padding-left: 20px;
+        }
+
+            #Blogs .srch input:focus {
+                outline: unset;
+            }
+
+        #Blogs .srch button {
+            background-color: #3fd0d4;
+            height: 100%;
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            width: 25%;
+            border: unset;
+            transition: all 0.3s linear;
+        }
+
+            #Blogs .srch button:focus {
+                outline: unset;
+            }
+
+            #Blogs .srch button:hover {
+                color: black;
+                background-color: white;
+                border: 1px solid #3fd0d4;
+            }
 
     #Blogs .blog {
         padding: 5px 25px;
@@ -7723,8 +7762,8 @@ select.ui-datepicker-year {
         margin: 5px;
         padding: 15px;
         box-shadow: 0 9px 16px 13px rgba(0, 0, 0, 0.03);
-        min-height: 1776px;
-        max-height: 1776px;
+        min-height: 1477px;
+        max-height: 1477px;
     }
 
         #myPage .myBlogs .title {

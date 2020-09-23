@@ -692,7 +692,7 @@ namespace SetSail.Areas.Administrator.Controllers
                 Tour.Text = tour.Text;
                 Tour.TourCityId = tour.TourCityId;
                 Tour.CreatedDate = DateTime.Now;
-                Tour.AdminId = 1;
+                Tour.AdminId = (int)Session["AdminId"];
 
                 Tour.DepartureTime = TimeSpan.Parse(tour.DepartureTimes);
                 Tour.ReturnTime = TimeSpan.Parse(tour.ReturnTimes);

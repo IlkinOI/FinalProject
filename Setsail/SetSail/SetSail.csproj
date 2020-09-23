@@ -238,6 +238,10 @@
     <Compile Include="Migrations\202009212300033_dateid.designer.cs">
       <DependentUpon>202009212300033_dateid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009231903269_usls.cs" />
+    <Compile Include="Migrations\202009231903269_usls.designer.cs">
+      <DependentUpon>202009231903269_usls.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\About.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -274,7 +278,6 @@
     <Compile Include="Models\TourReview.cs" />
     <Compile Include="Models\TourType.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserSocial.cs" />
     <Compile Include="Models\WinePage.cs" />
     <Compile Include="Models\WinterPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2600,7 +2603,6 @@
     <Content Include="Areas\Administrator\Views\Contact\ContactReplyIndex.cshtml" />
     <Content Include="Areas\Administrator\Views\Tour\TourReviewIndex.cshtml" />
     <Content Include="Areas\Administrator\Views\Home\UserIndex.cshtml" />
-    <Content Include="Areas\Administrator\Views\Home\UserSocialIndex.cshtml" />
     <Content Include="Areas\Administrator\Views\Tour\TourImagesIndex.cshtml" />
     <Content Include="Areas\Administrator\Views\Tour\Create.cshtml" />
     <Content Include="Areas\Administrator\Views\Tour\BookingIndex.cshtml" />
@@ -2717,6 +2719,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009212300033_dateid.resx">
       <DependentUpon>202009212300033_dateid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009231903269_usls.resx">
+      <DependentUpon>202009231903269_usls.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

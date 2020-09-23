@@ -43,7 +43,6 @@ namespace SetSail.DAL
         public DbSet<TourReview> TourReviews { get; set; }
         public DbSet<TourType> TourTypes { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<UserSocial> UserSocials { get; set; }
         public DbSet<WinterPage> WinterPages { get; set; }
         public DbSet<SummerPage> SummerPages { get; set; }
         public DbSet<WinePage> WinePages { get; set; }

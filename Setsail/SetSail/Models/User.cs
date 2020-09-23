@@ -23,7 +23,6 @@ namespace SetSail.Models
         [NotMapped]
         public HttpPostedFileBase PhotoFile { get; set; }
         public DateTime CreatedDate { get; set; }
-        public List<UserSocial> UserSocials { get; set; }
         public List<Blog> Blogs { get; set; }
         public List<ContactReply> ContactReplies { get; set; }
         public List<TourReview> TourReviews { get; set; }

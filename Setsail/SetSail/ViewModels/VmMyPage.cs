@@ -11,7 +11,6 @@ namespace SetSail.ViewModels
     public class VmMyPage: VmLayoutDesLog
     {
         public User User { get; set; }
-        public List<UserSocial> UserSocials { get; set; }
         public About About { get; set; }
         public List<Blog> Blogs { get; set; }
         public string Link { get; set; }

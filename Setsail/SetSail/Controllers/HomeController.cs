@@ -1,4 +1,5 @@
 ﻿using SetSail.DAL;
+using SetSail.Filters;
 using SetSail.Models;
 using SetSail.ViewModels;
 using System;
@@ -369,61 +370,6 @@ namespace SetSail.Controllers
 
         // USER UPDATE PROFILE AND ADD PHOTO//
 
-        public ActionResult MyPage(VmMyPage mypage,int id)
-        {
-            mypage.About = db.Abouts.FirstOrDefault();
-            mypage.Blogs = db.Blogs.Include("User").Where(b => b.UserId == id).ToList();
-            mypage.User = db.Users.Include("UserSocials").FirstOrDefault(u=>u.Id==id);
-            mypage.UserSocials = db.UserSocials.Include("User").Where(u => u.UserId == id).ToList();
-            ViewBag.MyPage = true;
-            ViewBag.Page = "MyPage";
-            return View(mypage);
-        }
-
-        [HttpPost]
-        public ActionResult UserUpdate(VmMyPage mp) // User Update//
-        {
-            if (mp.User == null)
-            {
-                return HttpNotFound();
-            }
-            if (!string.IsNullOrEmpty(mp.User.Fullname) || !string.IsNullOrEmpty(mp.User.Email) || 
-                !string.IsNullOrEmpty(mp.User.Phone))
-            {
-                User userr = db.Users.Find(mp.userId);
-
-                if (mp.PhotoFile!=null)
-                {
-                    string imageName = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + mp.PhotoFile.FileName;
-                    string imagePath = Path.Combine(Server.MapPath("~/Uploads/"), imageName);
-
-                    string OldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), userr.Photo);
-                    System.IO.File.Delete(OldImagePath);
-
-                    mp.PhotoFile.SaveAs(imagePath);
-                    userr.Photo = imageName;
-                }
-
-                if (!string.IsNullOrEmpty(mp.Password))
-                {
-                    userr.Password = Crypto.HashPassword(mp.Password);
-                }
-                else
-                {
-                    userr.Password = userr.Password;
-                    
-                }
-                userr.Fullname = mp.User.Fullname;
-                userr.Email = mp.User.Email;
-                userr.Phone = mp.User.Phone;
-
-                db.Entry(userr).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("MyPage", "Home", new { id = (int)Session["UserId"] });
-            }
-            return RedirectToAction("MyPage", "Home", new { id = (int)Session["UserId"] });
-        }
-
         // USER LOGN //
 
         [HttpPost]
@@ -654,7 +600,7 @@ namespace SetSail.Controllers
                     {
                         return RedirectToAction("Index", "Home");
                     }
-                } 
+                }
             }
 
             if (login.Page == "About")
@@ -728,242 +674,62 @@ namespace SetSail.Controllers
         }
 
         // USER LOGOUT //
-
-        public ActionResult Logout(VmLayoutDesLog logout)
+        [filterUser]
+        public ActionResult MyPage(VmMyPage mypage,int id)
         {
-            Session.Clear();
-            Session["User"] = null;
-            Session["UserId"] = null;
+            mypage.About = db.Abouts.FirstOrDefault();
+            mypage.Blogs = db.Blogs.Include("User").Where(b => b.UserId == id).ToList();
+            mypage.User = db.Users.FirstOrDefault(u=>u.Id==id);
 
-            if (logout.Page == "About")
-            {
-                return RedirectToAction("Index", "About");
-            }
-            else if (logout.Page == "FAQ")
-            {
-                return RedirectToAction("FAQ", "About");
-            }
-            else if (logout.Page == "Blog")
-            {
-                return RedirectToAction("Index", "Blog");
-            }
-            else if (logout.Page == "CreateBlog")
-            {
-                return RedirectToAction("Create", "Blog");
-            }
-            else if (logout.Page == "Search")
-            {
-                return RedirectToAction("Search", "Tour");
-            }
-            else if (logout.Page == "Summer")
-            {
-                return RedirectToAction("Summer", "Tour");
-            }
-            else if (logout.Page == "Winter")
-            {
-                return RedirectToAction("Winter", "Tour");
-            }
-            else if (logout.Page == "City")
-            {
-                return RedirectToAction("City", "Tour");
-            }
-            else if (logout.Page == "Exotic")
-            {
-                return RedirectToAction("Exotic", "Tour");
-            }
-            else if (logout.Page == "Wine")
-            {
-                return RedirectToAction("Wine", "Tour");
-            }
-            else if (logout.Page == "Destinations")
-            {
-                return RedirectToAction("Destinations", "Tour");
-            }
-            else if (logout.Page == "Contact")
-            {
-                return RedirectToAction("Index", "Contact");
-            }
-            else if (logout.Page == "BlogDetails")
-            {
-                return RedirectToAction("BlogDetailsIndex", "Blog", new { id = (int)logout.pdId });
-            }
-            else if (logout.Page == "MyPage")
-            {
-                return RedirectToAction("MyPage", "Home", new { id = (int)Session["UserId"] });
-            }
-            else if (logout.Page == "DestinationDetails")
-            {
-                return RedirectToAction("DestinationDetails", "Tour", new { id = (int)logout.pdId });
-            }
-            else if (logout.Page == "TourDetails")
-            {
-                return RedirectToAction("TourDetailIndex", "Tour", new { id = (int)logout.pdId });
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
-        }   
-
-
-        // USER SOCIAL CRUD START //
-
-        [HttpPost]
-        public ActionResult UserSocialCreate(VmMyPage model)
-        {
-            if (!string.IsNullOrEmpty(model.Link))
-            {
-                UserSocial us = new UserSocial();
-                if (!model.UserSocials.Any(s=>s.Link.Contains("twitter")))
-                {
-                    if (model.Link.Contains("twitter"))
-                    {
-                        us.Icon = "twitter";
-                        us.Link = model.Link;
-                        us.UserId = (int)Session["UserId"];
-                        db.UserSocials.Add(us);
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("Link","It is Not Twitter Link!");
-                    }
-                }
-                if (!model.UserSocials.Any(s => s.Link.Contains("pinterest")))
-                {
-                    if (model.Link.Contains("pinterest"))
-                    {
-                        us.Icon = "pinterest";
-                        us.Link = model.Link;
-                        us.UserId = (int)Session["UserId"];
-                        db.UserSocials.Add(us);
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("Link", "It is Not Pinterest Link!");
-                    }
-                }
-                if (!model.UserSocials.Any(s => s.Link.Contains("facebook")))
-                {
-                    if (model.Link.Contains("facebook"))
-                    {
-                        us.Icon = "facebook";
-                        us.Link = model.Link;
-                        us.UserId = (int)Session["UserId"];
-                        db.UserSocials.Add(us);
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("Link", "It is Not Facebook Link!");
-                    }
-                }
-                if (!model.UserSocials.Any(s => s.Link.Contains("instagram")))
-                {
-                    if (model.Link.Contains("instagram"))
-                    {
-                        us.Icon = "instagram";
-                        us.Link = model.Link;
-                        us.UserId = (int)Session["UserId"];
-                        db.UserSocials.Add(us);
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("Link", "It is Not Instagram Link!");
-                    }
-                }
-
-                db.SaveChanges();
-                return RedirectToAction("MyPage","Home",new { id= (int)Session["UserId"] });
-            }
-            return RedirectToAction("MyPage","Home", new { id = (int)Session["UserId"] });
+            ViewBag.MyPage = true;
+            ViewBag.Page = "MyPage";
+            return View(mypage);
         }
 
         [HttpPost]
-        public ActionResult UserSocialUpdate(VmMyPage model)
+        public ActionResult UserUpdate(VmMyPage mp) // User Update//
         {
-            if (ModelState.IsValid)
-            {
-                if (model.Link.Contains("twitter") || model.Link.Contains("pinteres") || model.Link.Contains("facebook") || model.Link.Contains("instagram"))
-                {
-                    
-                    if (model.Link.Contains("twitter"))
-                    {
-                        UserSocial us = db.UserSocials.Find(model.SocialId);
-                        us.Icon = "twitter";
-                        us.Link = model.Link;
-                        us.UserId = (int)Session["UserId"];
-                        db.Entry(us).State = EntityState.Modified;
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("Link", "It is Not Twitter Link!");
-                    }
-                    if (model.Link.Contains("pinterest"))
-                    {
-                        UserSocial us = db.UserSocials.Find(model.SocialId);
-                        us.Icon = "pinterest";
-                        us.Link = model.Link;
-                        us.UserId = (int)Session["UserId"];
-                        db.Entry(us).State = EntityState.Modified;
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("Link", "It is Not Pinterest Link!");
-                    }
-                    if (model.Link.Contains("facebook"))
-                    {
-                        UserSocial us = db.UserSocials.Find(model.SocialId);
-                        us.Icon = "facebook";
-                        us.Link = model.Link;
-                        us.UserId = (int)Session["UserId"];
-                        db.Entry(us).State = EntityState.Modified;
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("Link", "It is Not Facebook Link!");
-                    }
-                    if (model.Link.Contains("instagram"))
-                    {
-                        UserSocial us = db.UserSocials.Find(model.SocialId);
-                        us.Icon = "instagram";
-                        us.Link = model.Link;
-                        us.UserId = (int)Session["UserId"];
-                        db.Entry(us).State = EntityState.Modified;
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("Link", "It is Not Instagram Link!");
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError("Link", "Invalid Link");
-                }
-               
-                db.SaveChanges();
-                return RedirectToAction("MyPage","Home", new { id = (int)Session["UserId"] });
-            }
-
-            return RedirectToAction("MyPage","Home", new { id = (int)Session["UserId"] });
-        }
-
-        public ActionResult UserSocialDelete(VmMyPage model)
-        {
-            UserSocial usocial = db.UserSocials.Find(model.SocialId);
-            if (usocial == null)
+            if (mp.User == null)
             {
                 return HttpNotFound();
             }
+            if (!string.IsNullOrEmpty(mp.User.Fullname) || !string.IsNullOrEmpty(mp.User.Email) || 
+                !string.IsNullOrEmpty(mp.User.Phone))
+            {
+                User userr = db.Users.Find(mp.userId);
 
-            db.UserSocials.Remove(usocial);
-            db.SaveChanges();
+                if (mp.PhotoFile!=null)
+                {
+                    string imageName = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + mp.PhotoFile.FileName;
+                    string imagePath = Path.Combine(Server.MapPath("~/Uploads/"), imageName);
 
-            return RedirectToAction("MyPage","Home", new { id = (int)Session["UserId"]});
+                    string OldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), userr.Photo);
+                    System.IO.File.Delete(OldImagePath);
+
+                    mp.PhotoFile.SaveAs(imagePath);
+                    userr.Photo = imageName;
+                }
+
+                if (!string.IsNullOrEmpty(mp.Password))
+                {
+                    userr.Password = Crypto.HashPassword(mp.Password);
+                }
+                else
+                {
+                    userr.Password = userr.Password;
+                }
+                userr.Fullname = mp.User.Fullname;
+                userr.Email = mp.User.Email;
+                userr.Phone = mp.User.Phone;
+
+                db.Entry(userr).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("MyPage", "Home", new { id = (int)Session["UserId"] });
+            }
+            return RedirectToAction("MyPage", "Home", new { id = (int)Session["UserId"] });
         }
 
-
-        // USER SOCIAL CRUD END //
-
-        // MAIN SUBSCRIBTION //
+      
 
         public ActionResult Subscribe(VmLayoutDesLog subscribe)
         {
@@ -1104,6 +870,82 @@ namespace SetSail.Controllers
             else if (subscribe.Page == "TourDetails")
             {
                 return RedirectToAction("TourDetailIndex", "Tour", new { id = (int)subscribe.pdId });
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        public ActionResult Logout(VmLayoutDesLog logout)
+        {
+            Session.Clear();
+            Session["User"] = null;
+            Session["UserId"] = null;
+
+            if (logout.Page == "About")
+            {
+                return RedirectToAction("Index", "About");
+            }
+            else if (logout.Page == "FAQ")
+            {
+                return RedirectToAction("FAQ", "About");
+            }
+            else if (logout.Page == "Blog")
+            {
+                return RedirectToAction("Index", "Blog");
+            }
+            else if (logout.Page == "CreateBlog")
+            {
+                return RedirectToAction("Create", "Blog");
+            }
+            else if (logout.Page == "Search")
+            {
+                return RedirectToAction("Search", "Tour");
+            }
+            else if (logout.Page == "Summer")
+            {
+                return RedirectToAction("Summer", "Tour");
+            }
+            else if (logout.Page == "Winter")
+            {
+                return RedirectToAction("Winter", "Tour");
+            }
+            else if (logout.Page == "City")
+            {
+                return RedirectToAction("City", "Tour");
+            }
+            else if (logout.Page == "Exotic")
+            {
+                return RedirectToAction("Exotic", "Tour");
+            }
+            else if (logout.Page == "Wine")
+            {
+                return RedirectToAction("Wine", "Tour");
+            }
+            else if (logout.Page == "Destinations")
+            {
+                return RedirectToAction("Destinations", "Tour");
+            }
+            else if (logout.Page == "Contact")
+            {
+                return RedirectToAction("Index", "Contact");
+            }
+            else if (logout.Page == "BlogDetails")
+            {
+                return RedirectToAction("BlogDetailsIndex", "Blog", new { id = (int)logout.pdId });
+            }
+            else if (logout.Page == "MyPage")
+            {
+                return RedirectToAction("MyPage", "Home", new { id = (int)Session["UserId"] });
+            }
+            else if (logout.Page == "DestinationDetails")
+            {
+                return RedirectToAction("DestinationDetails", "Tour", new { id = (int)logout.pdId });
+            }
+            else if (logout.Page == "TourDetails")
+            {
+                return RedirectToAction("TourDetailIndex", "Tour", new { id = (int)logout.pdId });
             }
             else
             {

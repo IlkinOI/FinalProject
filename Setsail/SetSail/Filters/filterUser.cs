@@ -8,14 +8,14 @@ namespace SetSail.Filters
 {
     public class filterUser: ActionFilterAttribute
     {
-        //public override void OnActionExecuting(ActionExecutingContext filterContext)
-        //{
-        //    if (HttpContext.Current.Session["User"] == null)
-        //    {
-        //        filterContext.Result = new RedirectResult("~/Login/Home");
-        //        return;
-        //    }
-        //    base.OnActionExecuting(filterContext);
-        //}
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            if (HttpContext.Current.Session["User"] == null)
+            {
+                filterContext.Result = new RedirectResult("~/Index/Home");
+                return;
+            }
+            base.OnActionExecuting(filterContext);
+        }
     }
 }

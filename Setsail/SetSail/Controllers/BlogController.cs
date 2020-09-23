@@ -1,4 +1,5 @@
 ﻿using SetSail.DAL;
+using SetSail.Filters;
 using SetSail.Models;
 using SetSail.ViewModels;
 using System;
@@ -15,11 +16,19 @@ namespace SetSail.Controllers
     {
         // GET: Blog
         SetSailContext db = new SetSailContext();
-        public ActionResult Index(int page=1)  // Blogs page //
+        public ActionResult Index(string search,int page=1)  // Blogs page //
         {
             VmBlogs blogs = new VmBlogs();
             blogs.About = db.Abouts.FirstOrDefault();
-            blogs.Blogs = db.Blogs.Include("User").Include("BlogComments").OrderByDescending(o => o.Id).Skip((page - 1) * 4).Take(4).ToList();
+            blogs.Blogs = db.Blogs.Include("User").Include("BlogComments")
+                          .Where(b=>
+                          (!string.IsNullOrEmpty(search)? b.Name.Contains(search): true) || 
+                          (!string.IsNullOrEmpty(search) ? b.Quote.Contains(search) : true) ||
+                          (!string.IsNullOrEmpty(search) ? b.TopText.Contains(search) : true) ||
+                          (!string.IsNullOrEmpty(search) ? b.Text1.Contains(search) : true) ||
+                          (!string.IsNullOrEmpty(search) ? b.Text2.Contains(search) : true) ||
+                          (!string.IsNullOrEmpty(search) ? b.Text3.Contains(search) : true))
+                          .OrderByDescending(o => o.Id).Skip((page - 1) * 4).Take(4).ToList();
             blogs.CurrentPage = page;
             blogs.PageCount = Convert.ToInt32(Math.Ceiling(db.Blogs.Count() / 4.0));
             ViewBag.Blog = true;
@@ -30,7 +39,7 @@ namespace SetSail.Controllers
         public ActionResult BlogDetailsIndex(int id)  // Blog Details Page //
         {
             VmBlogDetails bldet = new VmBlogDetails();
-            bldet.Blog = db.Blogs.Include("BlogComments").Include("User").Include("User.UserSocials").FirstOrDefault(b=>b.Id==id);
+            bldet.Blog = db.Blogs.Include("BlogComments").Include("User").FirstOrDefault(b=>b.Id==id);
             bldet.BlogComments = db.BlogComments.Include("User").Include("Blog").Where(bc=>bc.BlogId==id).ToList();
             bldet.BlogCategories = db.BlogCategories.ToList();
             bldet.LatestBlogs = db.Blogs.OrderByDescending(b => b.Id).Take(3).ToList();
@@ -41,6 +50,7 @@ namespace SetSail.Controllers
         }
 
         // BLOG CRUD //
+        [filterUser]
         public ActionResult Create()
         {
             ViewBag.Categories = db.BlogCategories.ToList();
@@ -107,6 +117,7 @@ namespace SetSail.Controllers
             }
             return View(blog);
         }
+        [filterUser]
         public ActionResult Update(VmLayoutDesLog blogonly,int id)
         {
             blogonly.Blog= db.Blogs.Include("BlogCategory").FirstOrDefault(b=>b.Id==id);

@@ -131,31 +131,5 @@ namespace SetSail.Areas.Administrator.Controllers
 
             return RedirectToAction("UserIndex");
         }
-
-        // USER RD END //
-
-        // USER SOCIAL RD START //
-        [filterAdmin]
-        public ActionResult UserSocialIndex()
-        {
-            List<UserSocial> usocials = db.UserSocials.Include("User").ToList();
-            return View(usocials);
-        }
-
-        public ActionResult UserSocialDelete(int id)
-        {
-            UserSocial usocial = db.UserSocials.Find(id);
-            if (usocial == null)
-            {
-                return HttpNotFound();
-            }
-
-            db.UserSocials.Remove(usocial);
-            db.SaveChanges();
-
-            return RedirectToAction("UserSocialIndex");
-        }
-
-        // USER SOCIAL RD END //
     }
 }

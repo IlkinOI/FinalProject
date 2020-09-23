@@ -187,13 +187,6 @@
                     <div class="fullname">
                         <h6>@Model.Blog.User.Fullname</h6>
                     </div>
-                    <h5>Follow</h5>
-                    <div class="socials">
-                        @foreach (var item in Model.Blog.User.UserSocials)
-                        {
-                            <a href="@item.Link"><i class="fab fa-@item.Icon"></i></a>
-                        }
-                    </div>
                 </div>
                 <div class="blogCats">
                     <h5>Blog Categories</h5>

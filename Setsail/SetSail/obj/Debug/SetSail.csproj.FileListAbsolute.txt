@@ -104,3 +104,4 @@ C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.Migrations.tick
 C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.csprojAssemblyReference.cache
 C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.Migrations.upd2.resources
 C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.Migrations.dateid.resources
+C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.Migrations.usls.resources

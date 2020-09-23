@@ -27,6 +27,10 @@
 <section id="Blogs">
     <div class="container-fluid">
         <div class="row">
+            <form action="@Url.Action("Index","Blog")" class="srch">
+                <input type="text" name="search" placeholder="Search...">
+                <button type="submit">Find</button>
+            </form>
             @foreach (var item in Model.Blogs)
             {
                 <div class="col-lg-12">

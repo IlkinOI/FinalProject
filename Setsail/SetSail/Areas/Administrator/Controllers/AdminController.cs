@@ -22,7 +22,7 @@ namespace SetSail.Areas.Administrator.Controllers
             List<Admin> admins = db.Admins.ToList();
             return View(admins);
         }
-        public ActionResult Details(int id)
+        public ActionResult Details(int id) //Online Admin Page//
         {
             Admin admin = db.Admins.Find(id);
 
