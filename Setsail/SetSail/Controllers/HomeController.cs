@@ -369,51 +369,59 @@ namespace SetSail.Controllers
 
         // USER UPDATE PROFILE AND ADD PHOTO//
 
-        public ActionResult MyPage(int id)
+        public ActionResult MyPage(VmMyPage mypage,int id)
         {
-            VmMyPage mypage = new VmMyPage();
             mypage.About = db.Abouts.FirstOrDefault();
-            mypage.Blogs = db.Blogs.Where(b => b.UserId == id).ToList();
+            mypage.Blogs = db.Blogs.Include("User").Where(b => b.UserId == id).ToList();
             mypage.User = db.Users.Include("UserSocials").FirstOrDefault(u=>u.Id==id);
-            mypage.UserSocials = db.UserSocials.Where(u => u.UserId == id).ToList();
+            mypage.UserSocials = db.UserSocials.Include("User").Where(u => u.UserId == id).ToList();
             ViewBag.MyPage = true;
             ViewBag.Page = "MyPage";
             return View(mypage);
         }
 
         [HttpPost]
-        public ActionResult UserUpdate(VmMyPage user)
+        public ActionResult UserUpdate(VmMyPage mp) // User Update//
         {
-                User userr = db.Users.Find(user.UserId);
+            if (mp.User == null)
+            {
+                return HttpNotFound();
+            }
+            if (!string.IsNullOrEmpty(mp.User.Fullname) || !string.IsNullOrEmpty(mp.User.Email) || 
+                !string.IsNullOrEmpty(mp.User.Phone))
+            {
+                User userr = db.Users.Find(mp.userId);
 
-                if (user.PhotoFile != null)
+                if (mp.PhotoFile!=null)
                 {
-                    string imageName = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + user.User.PhotoFile.FileName;
+                    string imageName = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + mp.PhotoFile.FileName;
                     string imagePath = Path.Combine(Server.MapPath("~/Uploads/"), imageName);
 
                     string OldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), userr.Photo);
                     System.IO.File.Delete(OldImagePath);
 
-                    user.User.PhotoFile.SaveAs(imagePath);
+                    mp.PhotoFile.SaveAs(imagePath);
                     userr.Photo = imageName;
+                }
+
+                if (!string.IsNullOrEmpty(mp.Password))
+                {
+                    userr.Password = Crypto.HashPassword(mp.Password);
                 }
                 else
                 {
-                    string imageName = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + user.User.PhotoFile.FileName;
-                    string imagePath = Path.Combine(Server.MapPath("~/Uploads/"), imageName);
-
-                    userr.PhotoFile.SaveAs(imagePath);
-                    userr.Photo = imageName;
+                    userr.Password = userr.Password;
+                    
                 }
-
-                userr.Password = Crypto.HashPassword(user.Password);
-                userr.Fullname = user.User.Fullname;
-                userr.Email = user.User.Email;
-                userr.Phone = user.User.Phone;
+                userr.Fullname = mp.User.Fullname;
+                userr.Email = mp.User.Email;
+                userr.Phone = mp.User.Phone;
 
                 db.Entry(userr).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("MyPage","Home", new { id = (int)Session["UserId"] });
+                return RedirectToAction("MyPage", "Home", new { id = (int)Session["UserId"] });
+            }
+            return RedirectToAction("MyPage", "Home", new { id = (int)Session["UserId"] });
         }
 
         // USER LOGN //

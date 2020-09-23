@@ -16,10 +16,9 @@ namespace SetSail.ViewModels
         public List<Blog> Blogs { get; set; }
         public string Link { get; set; }
         public int SocialId { get; set; }
+        public int userId { get; set; }
         public string Password { get; set; }
-        public string Photo { get; set; }
         [NotMapped]
-        public string PhotoFile { get; set; }
-        public int UserId { get; set; }
+        public HttpPostedFileBase PhotoFile { get; set; }
     }
 }

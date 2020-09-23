@@ -1,4 +1,5 @@
 ﻿@model SetSail.ViewModels.VmMyPage
+@using SetSail.Models;
 @{
     ViewBag.Title = "MyPage";
 }
@@ -29,14 +30,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6">
-                <form class="personal" method="post" enctype="multipart/form-data" action="@Url.Action("UserUpdate","Home")">
+                <form action="@Url.Action("UserUpdate","Home")" enctype="multipart/form-data" method="post" class="personal">
                     <h2>Personal Information</h2>
                     <div class="item">
                         <h4>Your Name</h4>
+                        @*@Html.HiddenFor(model => model.User.Id)*@
                         <div class="detail">
                             <h6>@Model.User.Fullname</h6>
-                            @Html.TextBoxFor(u => u.User.Fullname, null, new {@type="hidden"})
-                            @Html.ValidationMessageFor(u => u.User.Fullname, null, new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.User.Fullname)
                         </div>
                     </div>
                     <div class="item">
@@ -45,53 +46,46 @@
                             <h6>@Model.User.Email</h6>
                         </div>
                         <p>Wanna Edit Email?</p>
-                        <div class="edit Email">
-                            @Html.TextBoxFor(u => u.User.Email, null, new { @placeholder = "Enter Email..." })
-                            @Html.ValidationMessageFor(u => u.User.Email, null, new { @class = "text-danger" })
+                        <div class="edit">
+                            @Html.TextBoxFor(model => model.User.Email)
+                            @Html.ValidationMessageFor(model => model.User.Email, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="item">
                         <h4>Your Phone</h4>
-                        <div class="detail phone">
+                        <div class="detail">
                             <h6>@Model.User.Phone</h6>
                         </div>
                         <p>Wanna Edit Phone Number?</p>
                         <div class="edit Phone">
-                            @Html.TextBoxFor(u => u.User.Phone, null, new { @placeholder = "Enter Phone..." })
-                            @Html.ValidationMessageFor(u => u.User.Phone, null, new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.User.Phone)
+                            @Html.ValidationMessageFor(model => model.User.Phone, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="item">
-                        <div class="detail password">
+                        <div class="detail">
                             <h6>Change Password</h6>
                         </div>
-                        <div class="edit Pass changePassword">
-                            <input type="password" name="Password" placeholder="Password"/>
+                        <div class="edit">
+                            <input type="password" name="Password" placeholder="Enter New Password" />
                         </div>
                     </div>
                     <div class="item">
-                        <div class="detail image">
-                            @if (Model.User.Photo != null)
-                            {
-                                <img src="~/Uploads/@(Model.User.Photo!=null?Model.User.Photo:"")">
-                            }
-                            else
-                            {
-                                <img src="~/Front/img/mypage/User.jpg" alt="img">
-                            }
+                        <div class="detail">
+                            <img src="~/Uploads/@(Model.User.Photo!=null?Model.User.Photo:"")">
                         </div>
                         <p>Wanna Change Your Image?</p>
-                        <div class="edit upload">
-                            @Html.TextBoxFor(u => u.User.PhotoFile, new { @class = "centered", @type = "file" })
-                            @Html.ValidationMessageFor(u => u.User.PhotoFile, "", new { @class = "text-danger" })
+                        <div class="edit">
+                            @Html.TextBoxFor(model => model.PhotoFile, new { @class="centered", @type = "file" })
+                            @Html.ValidationMessageFor(model => model.PhotoFile, "", new { @class = "text-danger" })
                         </div>
-                        <button type="submit" name="Update"> Update</button>
+                        <input type="hidden" name="userId" value="@Model.User.Id" />
+                        <button type="submit" value="UserUpdate">Update</button>
                     </div>
-                    <input type="hidden" name="UserId" value="@Model.User.Id" />
                 </form>
                 <form class="personal" method="post" action="@Url.Action("UserSocialCreate","Home")">
                     <div class="item">
-                        <h4>Your Twitter Link</h4>
+                        <h4>Your Social Network Links</h4>
                         <div class="detail">
                             @if (Model.UserSocials.Any(s => s.Link.Contains("twitter")))
                             {
@@ -103,9 +97,42 @@
                             }
 
                         </div>
+                        <div class="detail">
+                            @if (Model.UserSocials.Any(s => s.Link.Contains("pinterest")))
+                            {
+                                <h6>@Model.UserSocials.FirstOrDefault(s => s.Link.Contains("pinterest")).Link</h6>
+                            }
+                            else
+                            {
+                                <h6>Your Link Is Empty</h6>
+                            }
+
+                        </div>
+                        <div class="detail">
+                            @if (Model.UserSocials.Any(s => s.Link.Contains("facebook")))
+                            {
+                                <h6>@Model.UserSocials.FirstOrDefault(s => s.Link.Contains("facebook")).Link</h6>
+                            }
+                            else
+                            {
+                                <h6>Your Link Is Empty</h6>
+                            }
+
+                        </div>
+                        <div class="detail">
+                            @if (Model.UserSocials.Any(s => s.Link.Contains("instagram")))
+                            {
+                                <h6>@Model.UserSocials.FirstOrDefault(s => s.Link.Contains("instagram")).Link</h6>
+                            }
+                            else
+                            {
+                                <h6>Your Link Is Empty</h6>
+                            }
+
+                        </div>
                         <p>Change Link?</p>
                         <div class="edit">
-                            @Html.TextBoxFor(model => model.Link, new { @placeholder="Enter Your Twit Link Here" })
+                            @Html.TextBoxFor(model => model.Link, new { @placeholder = "Enter Your S/N Link Here" })
                             @Html.ValidationMessageFor(model => model.Link, "", new { @class = "text-danger" })
                         </div>
                         @if (!Model.UserSocials.Any(u => u.Link.Contains("twitter")))
@@ -118,91 +145,6 @@
                             <a href="@Url.Action("UserSocialDelete","Home",new { SocialId=Model.UserSocials.FirstOrDefault(s => s.Link.Contains("twitter")).Id})">Delete Twitter Link</a>
                         }
 
-                    </div>
-                </form>
-                <form class="personal" method="post" action="@Url.Action("UserSocialCreate","Home")">
-                    <div class="item">
-                        <h4>Your Pinterest Link</h4>
-                        <div class="detail">
-                            @if (Model.UserSocials.Any(s => s.Link.Contains("pinterest")))
-                            {
-                                <h6>@Model.UserSocials.FirstOrDefault(s => s.Link.Contains("pinterest")).Link</h6>
-                            }
-                            else
-                            {
-                                <h6>Your Link Is Empty</h6>
-                            }
-                        </div>
-                        <p>Change Link?</p>
-                        <div class="edit">
-                            <input type="text" name="Link" placeholder="Enter Your Pin Link">
-                        </div>
-                        @if (!Model.UserSocials.Any(u => u.Link.Contains("pinterest")))
-                        {
-                            <button type="submit" name="Create">Save</button>
-                        }
-                        else
-                        {
-                            <a href="@Url.Action("UserSocialUpdate","Home",new { SocialId=Model.UserSocials.FirstOrDefault(s => s.Link.Contains("pinterest")).Id})">Update Twitter Link</a>
-                            <a href="@Url.Action("UserSocialDelete","Home",new { SocialId=Model.UserSocials.FirstOrDefault(s => s.Link.Contains("pinterest")).Id})">Delete Twitter Link</a>
-                        }
-
-                    </div>
-                </form>
-                <form class="personal" method="post" action="@Url.Action("UserSocialCreate","Home")">
-                    <div class="item">
-                        <h4>Your Facebook Link</h4>
-                        <div class="detail">
-                            @if (Model.UserSocials.Any(s => s.Link.Contains("facebook")))
-                            {
-                                <h6>@Model.UserSocials.FirstOrDefault(s => s.Link.Contains("facebook")).Link</h6>
-                            }
-                            else
-                            {
-                                <h6>Your Link Is Empty</h6>
-                            }
-                        </div>
-                        <p>Create/Change Link?</p>
-                        <div class="edit">
-                            <input type="text" name="Link" placeholder="Enter Your Face Link">
-                        </div>
-                        @if (!Model.UserSocials.Any(u => u.Link.Contains("facebook")))
-                        {
-                            <button type="submit" name="Create">Save</button>
-                        }
-                        else
-                        {
-                            <a href="@Url.Action("UserSocialUpdate","Home",new { SocialId=Model.UserSocials.FirstOrDefault(s => s.Link.Contains("facebook")).Id})">Update Twitter Link</a>
-                            <a href="@Url.Action("UserSocialDelete","Home",new { SocialId=Model.UserSocials.FirstOrDefault(s => s.Link.Contains("facebook")).Id})">Delete Twitter Link</a>
-                        }
-                    </div>
-                </form>
-                <form class="personal" method="post" action="@Url.Action("UserSocialCreate","Home")">
-                    <div class="item">
-                        <h4>Your Instagram Link</h4>
-                        <div class="detail">
-                            @if (Model.UserSocials.Any(s => s.Link.Contains("instagram")))
-                            {
-                                <h6>@Model.UserSocials.FirstOrDefault(s => s.Link.Contains("instagram")).Link</h6>
-                            }
-                            else
-                            {
-                                <h6>Your Link Is Empty</h6>
-                            }
-                        </div>
-                        <p>Create/Change Link?</p>
-                        <div class="edit">
-                            <input type="text" name="Link" placeholder="Enter Your Insta Link">
-                        </div>
-                        @if (!Model.UserSocials.Any(u => u.Link.Contains("instagram")))
-                        {
-                            <button type="submit" name="Create">Save</button>
-                        }
-                        else
-                        {
-                            <a href="@Url.Action("UserSocialUpdate","Home",new { SocialId=Model.UserSocials.FirstOrDefault(s => s.Link.Contains("instagram")).Id})">Update Twitter Link</a>
-                            <a href="@Url.Action("UserSocialDelete","Home",new { SocialId=Model.UserSocials.FirstOrDefault(s => s.Link.Contains("instagram")).Id})">Delete Twitter Link</a>
-                        }
                     </div>
                 </form>
             </div>
