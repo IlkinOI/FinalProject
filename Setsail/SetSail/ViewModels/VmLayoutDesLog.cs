@@ -26,7 +26,7 @@ namespace SetSail.ViewModels
         public Blog Blog { get; set; }
         public string Page { get; set; }
         public int? pdId { get; set; }
-        public int blogId { get; set; }
+        public int bblogId { get; set; }
         public int BlogCategoryId { get; set; }
         [Required]
         public string REmail { get; set; }

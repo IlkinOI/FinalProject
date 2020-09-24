@@ -251,13 +251,23 @@
                                     <h4 class="tour">
                                         <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.TourId })">@item.Tour.TourCity.Name @item.Tour.Name</a>
                                     </h4>
-                                    @*<div class="starts">
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                    </div>*@
+                                    <div class="starts">
+                                        @{
+                                            double total = (double)((item.Rating + item.Comfort + item.Food + item.Hospitality + item.Hygiene + item.Reception) / 6.0);
+
+                                            for (int s = 0; s < 5; s++)
+                                            {
+                                                if (total <= s)
+                                                {
+                                                    <span><i class="far fa-star"></i></span>
+                                                }
+                                                else
+                                                {
+                                                    <span><i class="fas fa-star"></i></span>
+                                                }
+                                            }
+                                        }
+                                    </div>
                                     <div class="text">
                                         <p>
                                             @(item.Message.Length>65? item.Message.Substring(0,65)+"...":item.Message)
@@ -316,7 +326,7 @@
                 <div class="bestOffer">
                     <div class="bg">
                         <a href="@Url.Action("TourDetailIndex","Tour", new {id=Model.BestTour.Id })"><img src="~/Front/img/home/bestofferimg1.jpg" alt=""></a>
-                        <a href="#" class="advert">
+                        <a href="@Url.Action("TourDetailIndex","Tour", new {id=Model.BestTour.Id })" class="advert">
                             <p class="site">Setsail.com</p>
                             <h5>Our Best Offer @Model.BestTour.Name</h5>
                         </a>

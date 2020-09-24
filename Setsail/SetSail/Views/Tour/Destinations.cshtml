@@ -42,23 +42,27 @@
                 <img src="~/Front/img/logo3.png" alt="logo">
                 <i class="far fa-window-close"></i>
             </div>
-            <div class="use">
-                <span><i class="search fas fa-search"></i></span>
-                @if (user != null)
-                {
+            @if (user != null)
+            {
+                <div class="use">
+                    <span><i class="search fas fa-search" style="margin-right: 6px;"></i></span>
                     <div class="userImage">
-                        <a href="@Url.Action("MyPage","Home",new {id=user.Id })"><img src="~/Uploads/@user.Photo" alt=""></a>
+                        <a href="@Url.Action("MyPage","Home",new {id=user.Id })">
+                            <img src="~/Uploads/@user.Photo" alt="">
+                        </a>
                     </div>
                     <a href="@Url.Action("Logout","Home")" class="lo"><i class="fas fa-sign-out-alt"></i></a>
-
-                }
-                else
-                {
+                </div>
+            }
+            else
+            {
+                <div class="use">
+                    <span><i class="search fas fa-search"></i></span>
                     <div class="user">
                         <a href="#"><i class="far fa-user-circle"></i></a>
                     </div>
-                }
-            </div>
+                </div>
+            }
             <ul class="des-navbar-nav mr-auto ">
                 <li class="des-nav-item">
                     <a class="des-nav-link" href="@Url.Action("Index","Home")">Home</a>
@@ -143,7 +147,7 @@
                                             <a href="@Url.Action("DestinationDetails","Tour", new { id=des.Id})"><img src="~/Uploads/@des.SliderImage" alt=""></a>
                                         </div>
                                         <div class="title">
-                                            <p> Including Travel Types</p>
+                                            <p style="font-family: Satisfy;"> Including Travel Types</p>
                                             @foreach (var item in des.DesToTypes)
                                             {
                                                 <h4>@item.TourType.Name</h4>

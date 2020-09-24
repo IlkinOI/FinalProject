@@ -735,15 +735,6 @@ $(document).ready(function () {
     });
 
 
-    // tour datepicker //
-
-    // $("#datepicker").datepicker({
-    //     dateFormat: "dd/mm/yy",
-    //     changeMonth: true,
-    //     changeYear: true,
-    //     yearRange: "-20:+2"
-    // });
-
     // TOUR SWITCH//
 
     var infoView = $("#myTour .information");

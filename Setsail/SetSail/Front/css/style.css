@@ -429,9 +429,12 @@ a {
             }
 
         #barRes .use .userImage {
-            display: none;
-            margin: 3px 7px 0 7px;
+            margin: 0 7px;
+            background-color: white;
             border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            overflow: hidden;
         }
 
             #barRes .use .userImage img {
@@ -1386,6 +1389,7 @@ a {
         overflow: hidden;
         transition: all 1s linear;
         cursor: pointer;
+
     }
 
         #Tours .tourCountry .BgImg {
@@ -1411,6 +1415,7 @@ a {
             left: 75px;
             font-size: 50px;
             display: block;
+            text-shadow: 3px 2px 2px black;
         }
 
     #Tours .tourCity {
@@ -1443,6 +1448,7 @@ a {
 
             #Tours .tourCity .info .name {
                 margin-bottom: 5px;
+                text-shadow: 3px 2px 2px black;
             }
 
                 #Tours .tourCity .info .name a {
@@ -1458,6 +1464,7 @@ a {
 
             #Tours .tourCity .info .details {
                 display: flex;
+                text-shadow: 3px 2px 2px black;
             }
 
                 #Tours .tourCity .info .details .star {
@@ -1902,6 +1909,7 @@ a {
                 position: absolute;
                 bottom: 30px;
                 left: 30px;
+                text-shadow: 3px 2px 2px black;
             }
 
                 #medi .wrap .mediTour .info .name {
@@ -1999,7 +2007,7 @@ a {
                 color: #505050;
                 font-weight: 600;
                 transition: all 0.3s linear;
-                font-size:16px;
+                font-size:10px;
             }
 
             #parallaxReviews .reviewsCarousel .owl-carousel .item .info .tour:hover a {
@@ -2200,6 +2208,7 @@ a {
                 margin: auto;
                 text-align: center;
                 padding: 137px 0px;
+                text-shadow: 3px 2px 2px black;
             }
 
                 #Destinations .wrap .destination .name a {
@@ -3464,6 +3473,42 @@ a {
                 box-shadow: unset;
             }
 
+    #searchPage .latestPosts {
+        margin: 30px 20px;
+    }
+
+        #searchPage .latestPosts h5 {
+            text-align: center;
+        }
+
+        #searchPage .latestPosts .post {
+            margin-bottom: 15px;
+            padding: 20px 10px;
+            box-shadow: 0 0 45.92px 0.08px rgba(0, 0, 0, 0.07);
+        }
+
+            #searchPage .latestPosts .post .img img {
+                width: 100%;
+            }
+
+            #searchPage .latestPosts .post a {
+                color: #505050;
+                transition: all 0.3s linear;
+                text-decoration: none;
+            }
+
+                #searchPage .latestPosts .post a h6 {
+                    margin: 10px 0;
+                }
+
+                #searchPage .latestPosts .post a:hover {
+                    color: #3abdc1;
+                }
+
+            #searchPage .latestPosts .post p {
+                margin-bottom: 0;
+            }
+
 #introWinter .introCarousel .owl-carousel .owl-stage-outer .owl-stage .item .sliderWrapper .imageWrapper {
     max-height: 408px;
     overflow: hidden;
@@ -4322,6 +4367,7 @@ a {
                 margin: auto;
                 text-align: center;
                 padding: 137px 0px;
+                text-shadow: 3px 2px 2px black;
             }
 
                 #DestinationsExotic .wrap .destination .name a {
@@ -4379,6 +4425,7 @@ a {
             color: white;
             font-size: 17px;
             font-weight: 500;
+            text-shadow: 3px 2px 2px black;
         }
 
             #ToursExotic .tourCity .info .name {
@@ -4664,6 +4711,7 @@ a {
             color: white;
             font-size: 17px;
             font-weight: 500;
+            text-shadow: 3px 2px 2px black;
         }
 
             #ToursCities .tourCity .info .name {
@@ -4962,6 +5010,7 @@ a {
             color: white;
             font-size: 24px;
             font-weight: 600;
+            text-shadow: 3px 2px 2px black;
         }
 
             #popularToursWine .tourCity .info a {
@@ -5312,9 +5361,12 @@ a {
             }
 
         #barResD .use .userImage {
-            display: none;
-            margin: 3px 7px 0 7px;
+            margin: 0 7px;
+            background-color: white;
             border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            overflow: hidden;
         }
 
             #barResD .use .userImage img {
@@ -5496,6 +5548,7 @@ a {
             position: absolute;
             bottom: 10px;
             left: 15px;
+            text-shadow: 1px 2px 2px black;
         }
 
             #DestinationsCarousel .desCarousel .owl-carousel .title h4 {

@@ -69,34 +69,14 @@
                     </div>
                     <div class="rating">
                         <div class="starts">
-                            <!-- review-->
-                            @{ int ra = 0;}
-                            @{ int co = 0;}
-                            @{ int fo = 0;}
-                            @{ int hos = 0;}
-                            @{ int hy = 0;}
-                            @{ int rec = 0;}
-                            @foreach (var item in Model.Tour.TourReviews)
-                            {
-                                ra += item.Rating;
-                                co += item.Comfort;
-                                fo += item.Food;
-                                hos += item.Hospitality;
-                                hy += item.Hygiene;
-                                rec += item.Reception;
-                            }
-                            @{ double total = ((ra + co + fo + hos + hy + rec) / 6.0);}
-                            @for (int star = 0; star < 5; star++)
-                            {
-                                
-                            }
-                            <span><i class="fas fa-star"></i></span>
-                            <span><i class="fas fa-star"></i></span>
-                            <span><i class="fas fa-star"></i></span>
-                            <span><i class="fas fa-star"></i></span>
-                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="far fa-star"></i></span>
+                            <span><i class="far fa-star"></i></span>
+                            <span><i class="far fa-star"></i></span>
+                            <span><i class="far fa-star"></i></span>
+                            <span><i class="far fa-star"></i></span>
                         </div>
                         <span>(@Model.Tour.TourReviews.Count().ToString("0") Reviews)</span>
+
                     </div>
                     <p class="content">
                         @Model.Tour.About
@@ -270,11 +250,20 @@
                                         <span class="rateWord">
                                             <span><i class="fas fa-star"></i>SuperB</span>
                                         </span>
+
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-9">
                                 <div class="bar">
+                                    @*@{
+                                            int rat = ((Model.TourReview.Rating / 100) * 5);
+                                            int com = ((Model.TourReview.Comfort / 100) * 5);
+                                            int foo = ((Model.TourReview.Food / 100) * 5);
+                                            int hos = ((Model.TourReview.Hospitality / 100) * 5);
+                                            int hyg = ((Model.TourReview.Hygiene / 100) * 5);
+                                            int rec = ((Model.TourReview.Reception / 100) * 5);
+                                        }*@
                                     <div class="rateName">
                                         <span class="name">
                                             Rating
@@ -482,23 +471,23 @@
                         {
                             <form action="@Url.Action("TourReviewCreate","Tour")" class="comment" method="post">
                                 <h1 class="title">
-                                    Post a comment
+                                    Post a review
                                 </h1>
                                 <div class="ratingUse">
                                     <div class="ratwrap">
                                         <h5>Rating</h5>
                                         <div id="rating" class="stars"></div>
-                                        <input type="hidden" class="ratval" readonly id="ratingInput" name="Rating"/>
+                                        <input type="hidden" class="ratval" readonly id="ratingInput" name="Rating" />
                                     </div>
                                     <div class="ratwrap">
                                         <h5>Comfort</h5>
                                         <div id="comfort" class="stars"></div>
-                                        <input type="hidden" class="comval" readonly id="comfortInput" name="Comfort"/>
+                                        <input type="hidden" class="comval" readonly id="comfortInput" name="Comfort" />
                                     </div>
                                     <div class="ratwrap">
                                         <h5>Food</h5>
                                         <div id="food" class="stars"></div>
-                                        <input type="hidden" class="fooval" readonly id="foodInput" name="Food"/>
+                                        <input type="hidden" class="fooval" readonly id="foodInput" name="Food" />
                                     </div>
                                     <div class="ratwrap">
                                         <h5>Hospitality</h5>
@@ -521,7 +510,7 @@
                                     <textarea class="form-control" style="color:white;" type="text" name="Message"
                                               placeholder="Comment*" required></textarea>
                                 </div>
-                                
+
                                 <input type="hidden" name="TourId" value="@Model.Tour.Id" />
                                 <button class="btn" type="submit">SUBMIT</button>
                                 @if (Session["TourReviewSent"] != null)

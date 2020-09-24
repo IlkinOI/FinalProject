@@ -140,7 +140,7 @@ namespace SetSail.Controllers
                 !string.IsNullOrEmpty(blogonly.Blog.Text1) || !string.IsNullOrEmpty(blogonly.Blog.Text2) ||
                 !string.IsNullOrEmpty(blogonly.Blog.Text3) || !string.IsNullOrEmpty(blogonly.Blog.Quote))
             {
-                Blog blogg = db.Blogs.Include("BlogCategory").FirstOrDefault(b => b.Id == blogonly.blogId);
+                Blog blogg = db.Blogs.Include("BlogCategory").FirstOrDefault(b => b.Id == blogonly.bblogId);
                 if (blogonly.Blog.BgImageFile != null)
                 {
                     string bgimageName = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + blogonly.Blog.BgImageFile.FileName;
@@ -201,7 +201,7 @@ namespace SetSail.Controllers
                 db.Entry(blogg).State = EntityState.Modified;
                 db.SaveChanges();
 
-                return RedirectToAction("BlogDetailsIndex", "Blog", new { id = blogonly.blogId });
+                return RedirectToAction("BlogDetailsIndex", "Blog", new { id = blogonly.bblogId });
             }
 
             ViewBag.Categories = db.BlogCategories.Include("Blogs").ToList();
@@ -258,10 +258,10 @@ namespace SetSail.Controllers
                 Session["EmptyComment"] = true;
                 return RedirectToAction("BlogDetailsIndex", "Blog", new { id = vmbc.BlogId });
             }
-            if (Session["User"]!=null)
+            if (Session["User"] != null)
             {
                 BlogComment bc = new BlogComment();
-                
+
                 bc.Message = vmbc.Message;
                 bc.BlogId = vmbc.BlogId;
                 bc.CreatedDate = DateTime.Now;
@@ -274,6 +274,7 @@ namespace SetSail.Controllers
             }
             return RedirectToAction("BlogDetailsIndex", "Blog", new { id = vmbc.BlogId });
         }
+
 
         // BLOG COMMENT CRUD END //
 

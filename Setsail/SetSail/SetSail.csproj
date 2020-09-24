@@ -283,7 +283,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\VmAbout.cs" />
     <Compile Include="ViewModels\VmAdminLogin.cs" />
-    <Compile Include="ViewModels\VmBlogComment.cs" />
     <Compile Include="ViewModels\VmBlogDetails.cs" />
     <Compile Include="ViewModels\VmBlogs.cs" />
     <Compile Include="ViewModels\VmCity.cs" />

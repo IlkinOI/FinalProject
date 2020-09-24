@@ -128,25 +128,23 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-12 col-sm-12">
-                <form action="@Url.Action("Search","Tour")" method="post" class="searchOptions">
-                    <h4>Search Options</h4>
-                    <p>It’s time to plan just the perfect vacation!</p>
-                    @foreach (var item in Model.TourCategories)
+                <div class="latestPosts">
+                    <h5>Latest Tours</h5>
+                    @foreach (var item in Model.MostTours)
                     {
-                        <div class="formWrap">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="tourCategoryId" value="@item.Id">
-                                <label class="form-check-label" for="exampleRadios1">
-                                    @item.Name Tours
-                                </label>
+                        <div class="post">
+                            <div class="img">
+                                <a href="@Url.Action("BlogDetailsIndex","Blog",new { id=item.Id})"><img src="~/Uploads/@item.FrontImage" alt=""></a>
                             </div>
+                            <a href="@Url.Action("BlogDetailsIndex","Blog",new { id=item.Id})">
+                                <h6>@item.Name</h6>
+                            </a>
+                            
+                            <p>@item.CreatedDate.ToString("MMMM dd, yyyy")</p>
                         </div>
                     }
 
-                    <div class="submit">
-                        <button type="submit">SEARCH</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>

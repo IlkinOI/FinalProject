@@ -33,7 +33,10 @@ namespace SetSail.Controllers
                                   (!string.IsNullOrEmpty(search) ? t.TourCity.Destination.Name.Contains(search) : true) ||
                                   (!string.IsNullOrEmpty(search) ? t.TourCity.Destination.DesToCats.Any(dc => dc.TourCategory.Name.Contains(search)) : true) ||
                                   (!string.IsNullOrEmpty(search) ? t.TourCity.Destination.DesToTypes.Any(dc => dc.TourType.Name.Contains(search)) : true)
-                                  ).OrderByDescending(o => o.Id).Skip((page - 1) * 8).Take(8).ToList();
+                                  ).OrderBy(o => o.Id).Skip((page - 1) * 8).Take(8).ToList();
+            model.MostTours = db.Tours.Include("TourReviews").OrderByDescending(t=>t.Id).Take(3).ToList();
+            model.Dddestinations = db.Destinations.ToList();
+            model.TourCitiess = db.TourCities.ToList();
             model.CurrentPage = page;
             model.PageCount = Convert.ToInt32(Math.Ceiling(db.Tours.Count() / 8.0));
             ViewBag.Tour = true;
