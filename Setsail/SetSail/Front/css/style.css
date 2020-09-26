@@ -18,6 +18,9 @@
 a {
     text-decoration: none;
 }
+.page-link:focus{
+    box-shadow:unset!important;
+}
 .filech {
     width: 250px !important;
     padding: 10px !important;
@@ -927,6 +930,10 @@ a {
                     color: white;
                     transition: all 0.2s linear;
                 }
+        #Log .wrapper .log .inputs button:focus {
+
+            outline: unset;
+        }
 
         #Log .wrapper .reg {
             display: none;
@@ -1415,7 +1422,7 @@ a {
             left: 75px;
             font-size: 50px;
             display: block;
-            text-shadow: 3px 2px 2px black;
+            text-shadow: 3px 2px 2px #086d70;
         }
 
     #Tours .tourCity {
@@ -1448,7 +1455,7 @@ a {
 
             #Tours .tourCity .info .name {
                 margin-bottom: 5px;
-                text-shadow: 3px 2px 2px black;
+                text-shadow: 3px 2px 2px #086d70;
             }
 
                 #Tours .tourCity .info .name a {
@@ -1464,7 +1471,7 @@ a {
 
             #Tours .tourCity .info .details {
                 display: flex;
-                text-shadow: 3px 2px 2px black;
+                text-shadow: 3px 2px 2px #086d70;
             }
 
                 #Tours .tourCity .info .details .star {
@@ -1684,6 +1691,7 @@ a {
             background-color: #3fd0d4;
             padding: 5px 10px;
             display: flex;
+            position:sticky;
         }
 
             #winter .winterCarousel .owl-carousel .item .reviews .span {
@@ -1909,7 +1917,7 @@ a {
                 position: absolute;
                 bottom: 30px;
                 left: 30px;
-                text-shadow: 3px 2px 2px black;
+                text-shadow: 3px 2px 2px #086d70;
             }
 
                 #medi .wrap .mediTour .info .name {
@@ -2208,7 +2216,7 @@ a {
                 margin: auto;
                 text-align: center;
                 padding: 137px 0px;
-                text-shadow: 3px 2px 2px black;
+                text-shadow: 3px 2px 2px #086d70;
             }
 
                 #Destinations .wrap .destination .name a {
@@ -2941,6 +2949,7 @@ a {
             color: white;
             font-size: 17px;
             font-weight: 500;
+            text-shadow: 3px 2px 2px #086d70;
         }
 
             #popularTours .tourCity .info a {
@@ -3344,6 +3353,7 @@ a {
                 background-color: #3fd0d4;
                 padding: 5px 10px;
                 display: flex;
+                position:sticky;
             }
 
                 #searchPage .toursContent .item .reviews .span {
@@ -3668,6 +3678,7 @@ a {
                 background-color: #3fd0d4;
                 padding: 5px 10px;
                 display: flex;
+                position:sticky;
             }
 
                 #WinterItemsCarousel .winterCarousel .owl-carousel .item .reviews .span {
@@ -4115,6 +4126,7 @@ a {
                 right: 0;
                 margin: auto;
                 padding: 140px 0px;
+                text-shadow: 3px 2px 2px #086d70;
             }
 
                 #DestinationsWinter .wrap .destination .name a {
@@ -4367,7 +4379,7 @@ a {
                 margin: auto;
                 text-align: center;
                 padding: 137px 0px;
-                text-shadow: 3px 2px 2px black;
+                text-shadow: 3px 2px 2px #086d70;
             }
 
                 #DestinationsExotic .wrap .destination .name a {
@@ -4425,7 +4437,7 @@ a {
             color: white;
             font-size: 17px;
             font-weight: 500;
-            text-shadow: 3px 2px 2px black;
+            text-shadow: 3px 2px 2px #086d70;
         }
 
             #ToursExotic .tourCity .info .name {
@@ -4711,7 +4723,7 @@ a {
             color: white;
             font-size: 17px;
             font-weight: 500;
-            text-shadow: 3px 2px 2px black;
+            text-shadow: 3px 2px 2px #086d70;
         }
 
             #ToursCities .tourCity .info .name {
@@ -5010,7 +5022,7 @@ a {
             color: white;
             font-size: 24px;
             font-weight: 600;
-            text-shadow: 3px 2px 2px black;
+            text-shadow: 3px 2px 2px #086d70;
         }
 
             #popularToursWine .tourCity .info a {
@@ -5548,7 +5560,7 @@ a {
             position: absolute;
             bottom: 10px;
             left: 15px;
-            text-shadow: 1px 2px 2px black;
+            text-shadow: 1px 2px 2px #086d70;
         }
 
             #DestinationsCarousel .desCarousel .owl-carousel .title h4 {
@@ -5595,7 +5607,42 @@ a {
     margin: 0 30px;
     padding: 40px 25px;
 }
+    #desDetail .latestPosts {
+        margin: 30px 20px;
+    }
 
+        #desDetail .latestPosts h5 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        #desDetail .latestPosts .post {
+            margin-bottom: 15px;
+            padding: 20px 10px;
+            box-shadow: 0 0 45.92px 0.08px rgba(0, 0, 0, 0.07);
+        }
+
+            #desDetail .latestPosts .post .img img {
+                width: 100%;
+            }
+
+            #desDetail .latestPosts .post a {
+                color: #505050;
+                transition: all 0.3s linear;
+                text-decoration: none;
+            }
+
+                #desDetail .latestPosts .post a h6 {
+                    margin: 10px 0;
+                }
+
+                #desDetail .latestPosts .post a:hover {
+                    color: #3abdc1;
+                }
+
+            #desDetail .latestPosts .post p {
+                margin-bottom: 0;
+            }
     #desDetail .wrap {
         padding: 5px 25px;
     }
@@ -5617,7 +5664,7 @@ a {
 
             #desDetail .wrap .pics .pic {
                 margin: 5px 5px;
-                width: 490px;
+                width: 48%;
             }
 
                 #desDetail .wrap .pics .pic img {
@@ -6015,7 +6062,45 @@ a {
     box-sizing: border-box;
     margin: 0 30px;
     padding: 40px 25px;
+
 }
+    #Blogs .latestPosts {
+        margin: 30px 20px;
+    }
+
+        #Blogs .latestPosts h5 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        #Blogs .latestPosts .post {
+            margin-bottom: 15px;
+            padding: 20px 10px;
+            box-shadow: 0 0 45.92px 0.08px rgba(0, 0, 0, 0.07);
+        }
+
+            #Blogs .latestPosts .post .img img {
+                width: 100%;
+            }
+
+            #Blogs .latestPosts .post a {
+                color: #505050;
+                transition: all 0.3s linear;
+                text-decoration: none;
+            }
+
+                #Blogs .latestPosts .post a h6 {
+                    margin: 10px 0;
+                }
+
+                #Blogs .latestPosts .post a:hover {
+                    color: #3abdc1;
+                }
+
+            #Blogs .latestPosts .post p {
+                margin-bottom: 0;
+            }
+
     #Blogs .srch {
         display: flex;
         margin: 0px 40px 25px;
@@ -6123,8 +6208,9 @@ a {
             }
 
             #Blogs .blog .quote .text {
-                padding: 10px 100px;
+                padding: 10px;
                 margin: 0 5px;
+                color: #3abdc1;
             }
 
                 #Blogs .blog .quote .text p {
@@ -6405,7 +6491,7 @@ a {
             }
 
             #myBlog .blog .quote .text {
-                padding: 10px 100px;
+                padding: 10px 40px;
                 margin: 0 5px;
             }
 

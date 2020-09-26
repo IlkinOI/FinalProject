@@ -24,6 +24,7 @@ namespace SetSail.ViewModels
         public List<Destination> Ddestinations { get; set; }
         public Destination Ddestionation { get; set; }
         public Blog Blog { get; set; }
+        public List<Tour> DesTours { get; set; }
         public string Page { get; set; }
         public int? pdId { get; set; }
         public int bblogId { get; set; }

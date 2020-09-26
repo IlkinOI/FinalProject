@@ -25,10 +25,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-        <td style="display:flex;flex-wrap:wrap">
+        <td style="display:flex;">
             @foreach (var image in item.TourImages)
             {
-                <img src="~/Uploads/@image.ImageName" alt="@image.ImageName" height="100" />
+                <img src="~/Uploads/@image.ImageName" alt="@image.ImageName" height="100" style="margin-right:2px;" />
             }
         </td>
         <td>

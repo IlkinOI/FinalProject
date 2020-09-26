@@ -18,11 +18,8 @@ namespace SetSail.Controllers
             VmAbout about = new VmAbout();
             about.About = db.Abouts.FirstOrDefault();
             about.Tours = db.Tours.Include("TourReviews").Include("TourCity").ToList();
-            about.TourReviews = db.TourReviews.Include("Tour").ToList();
             about.Blogs = db.Blogs.Include("BlogComments").Include("User").ToList();
-            about.BlogComments = db.BlogComments.Include("Blog").Include("User").ToList();
             about.Teams = db.Teams.Include("TeamSocials").Include("Position").ToList();
-            about.TeamSocials = db.TeamSocials.Include("Team").ToList();
             ViewBag.About = true;
             ViewBag.Page = "About";
             return View(about);

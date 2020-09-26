@@ -622,16 +622,17 @@ $(document).ready(function () {
         $("#popupWine").css("display", "flex").fadeIn(400);
     });
 
+
     // wine counter //
 
-    $("#Counter .count").counterUp({
+    $("#Counter .count").countUp({
         delay: 10,
         time: 1000,
     });
 
     // wine counter//
 
-    $(".num").counterUp({
+    $(".num").countUp({
         delay: 10,
         time: 1000,
     });

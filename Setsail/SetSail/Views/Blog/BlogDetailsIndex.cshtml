@@ -84,7 +84,7 @@
                                     </button>
                                 </h2>
                             </div>
-                            @foreach (var item in Model.BlogComments.Where(c => c.BlogId == Model.Blog.Id))
+                            @foreach (var item in Model.Blog.BlogComments)
                             {
                                 <div id="collapse1" class="collapse" aria-labelledby="heading1"
                                      data-parent="#accordionExample">

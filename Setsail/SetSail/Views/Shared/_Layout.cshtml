@@ -445,7 +445,7 @@
                                 <i class="fas fa-unlock-alt"></i>
                             </div>
                             <div class="input">
-                                @Html.TextBoxFor(u => u.RPhotoFile, null, new {@class="filech", @type = "file" })
+                                @Html.TextBoxFor(u => u.RPhotoFile, null, new { @class = "filech", @type = "file" })
                                 @Html.ValidationMessageFor(u => u.RPhotoFile, null, new { @class = "text-danger", })
                             </div>
                             <button type="submit">REGISTER</button>
@@ -483,10 +483,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
     <script src="https://kit.fontawesome.com/2f7f0af2bf.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.3.3/dist/sweetalert2.all.min.js"></script>
+    <script src="~/Front/assets/counter/jquery.countup.js"></script>
     <script src="~/Front/assets/rating/dist/rating.js"></script>
     <script src="~/Front/js/script.js"></script>
 </body>

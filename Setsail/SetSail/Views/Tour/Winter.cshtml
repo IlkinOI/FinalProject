@@ -82,7 +82,7 @@
                                     <div class="reviews">
                                         <div class="span">
                                             <span><i class="far fa-comment"></i></span>
-                                            <span>@(tour.TourReviews!=null?tour.TourReviews.Count.ToString():"")</span>
+                                            <span>@(tour.TourReviews!=null?tour.TourReviews.Count.ToString():"0")</span>
                                         </div>
                                         <div class="span">
                                             <span><i class="fas fa-user"></i></span>
@@ -239,7 +239,7 @@
                             <h6>@man.Fullname</h6>
                             <p class="p">@(man.About.Length>50?man.About.Substring(0,50)+"...":man.About)</p>
                             <div class="socials">
-                                @foreach (var social in Model.TeamSocials.Where(s => s.TeamId == man.Id))
+                                @foreach (var social in man.TeamSocials)
                                 {
                                     <a href="@social.Link"><span><i class="fab fa-@social.Icon" aria-hidden="true"></i></span></a>
                                 }
@@ -266,7 +266,7 @@
                         </div>
                         <div class="title">
                             <h1>
-                                Winter Resort
+                                Winter Countries
                             </h1>
                         </div>
                         <div class="text">

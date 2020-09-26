@@ -23,13 +23,11 @@ namespace SetSail.Controllers
             home.HomePage = db.HomePages.FirstOrDefault();
             home.WinterPage = db.WinterPages.FirstOrDefault();
             home.CityPage = db.CityPages.FirstOrDefault();
-            home.TourCategories = db.TourCategories.Include("DesToCats").Include("DesToCats.Destination").ToList();
             home.Destinations = db.Destinations.Include("DesToCats").Include("DesToTypes").ToList();
-            home.TourCities = db.TourCities.Include("Destination").ToList();
             home.wDesToCats = db.DesToCats.Include("Destination").Include("TourCategory").Where(dc=>dc.TourCategory.Name=="Winter").ToList();
             home.eDesToCats = db.DesToCats.Include("Destination").Include("TourCategory").Where(dc=>dc.TourCategory.Name=="Exotic").ToList();
             home.Tours = db.Tours.Include("TourDates").Include("TourCity").Include("TourCity.Destination").ToList();
-            home.TourReviews = db.TourReviews.Include("User").Include("Tour").Include("Tour.TourCity").OrderBy(t=>t.Id).Take(9).ToList();
+            home.TourReviews = db.TourReviews.Include("User").Include("Tour").Include("Tour.TourCity").OrderByDescending(t=>t.Id).Take(9).ToList();
             home.Blogs = db.Blogs.Include("User").Include("BlogComments").ToList();
             home.Destination1 = db.Destinations.FirstOrDefault(d=>d.Name == "Spain");
             home.ToursDes1 = db.Tours.Include("TourImages").Include("TourCity").Where(t=>t.TourCity.DestinationId == home.Destination1.Id).ToList();
@@ -221,6 +219,9 @@ namespace SetSail.Controllers
                 
                 db.Users.Add(User);
                 db.SaveChanges();
+                Session["User"] = User;
+                Session["UserId"] = User.Id;
+                Session.Timeout = 600;
                 if (user.Page == "About")
                 {
                     return RedirectToAction("Index", "About");

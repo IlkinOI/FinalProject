@@ -10,6 +10,7 @@ namespace SetSail.ViewModels
     {
         public About About { get; set; }
         public List<Blog> Blogs { get; set; }
+        public List<Tour> LatestTours { get; set; }
         public int PageCount { get; set; }
         public int CurrentPage { get; set; }
     }

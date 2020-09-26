@@ -27,7 +27,26 @@
 <section id="desDetail">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-3 col-md-3 col-sm-12 order-2">
+                <div class="latestPosts">
+                    <h5>@Model.Ddestionation.Name Tours</h5>
+                    @foreach (var item in Model.DesTours)
+                    {
+                        <div class="post">
+                            <div class="img">
+                                <a href="@Url.Action("TourDetailIndex","Tour",new { id=item.Id})"><img src="~/Uploads/@item.FrontImage" alt=""></a>
+                            </div>
+                            <a href="@Url.Action("TourDetailIndex","Tour",new { id=item.Id})">
+                                <h6>@item.Name</h6>
+                            </a>
+
+                            <p>@item.CreatedDate.ToString("MMMM dd, yyyy")</p>
+                        </div>
+                    }
+
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-12 order-1">
                 <div class="wrap">
                     <h2 class="title">
                         @Model.Ddestionation.Name
@@ -36,15 +55,11 @@
                         @Model.Ddestionation.Text1
                     </p>
                     <div class="pics">
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="pic">
-                                <img src="~/Uploads/@Model.Ddestionation.Pic1" alt="">
-                            </div>
+                        <div class="pic">
+                            <img src="~/Uploads/@Model.Ddestionation.Pic1" alt="">
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="pic">
-                                <img src="~/Uploads/@Model.Ddestionation.Pic2" alt="">
-                            </div>
+                        <div class="pic">
+                            <img src="~/Uploads/@Model.Ddestionation.Pic2" alt="">
                         </div>
                     </div>
                     <p class="text">
@@ -86,25 +101,19 @@
                         @Model.Ddestionation.MunText
                     </p>
                     <div class="pics">
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="pic">
-                                <img src="~/Uploads/@Model.Ddestionation.Pic3" alt="">
-                            </div>
+                        <div class="pic">
+                            <img src="~/Uploads/@Model.Ddestionation.Pic3" alt="">
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="pic">
-                                <img src="~/Uploads/@Model.Ddestionation.Pic4" alt="">
-                            </div>
+                        <div class="pic">
+                            <img src="~/Uploads/@Model.Ddestionation.Pic4" alt="">
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="pic">
-                                <img src="~/Uploads/@Model.Ddestionation.Pic5" alt="">
-                            </div>
+                    </div>
+                    <div class="pics">
+                        <div class="pic">
+                            <img src="~/Uploads/@Model.Ddestionation.Pic5" alt="">
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="pic">
-                                <img src="~/Uploads/@Model.Ddestionation.Pic6" alt="">
-                            </div>
+                        <div class="pic">
+                            <img src="~/Uploads/@Model.Ddestionation.Pic6" alt="">
                         </div>
                     </div>
                 </div>

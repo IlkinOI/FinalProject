@@ -9,7 +9,6 @@ namespace SetSail.ViewModels
 {
     public class VmBlogDetails: VmLayoutDesLog
     {
-        public List<BlogComment> BlogComments { get; set; }
         public List<Blog> LatestBlogs { get; set; }
         public List<BlogCategory> BlogCategories { get; set; }
         [Required]

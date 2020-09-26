@@ -12,8 +12,6 @@ namespace SetSail.ViewModels
         public WinterPage WinterPage { get; set; }
         public CityPage CityPage { get; set; }
         public List<Destination> Destinations { get; set; } 
-        public List<TourCategory> TourCategories { get; set; } 
-        public List<TourCity> TourCities { get; set; } 
         public List<DesToCat> wDesToCats { get; set; } 
         public List<DesToCat> eDesToCats { get; set; }
         public Destination Destination1 { get; set; } 

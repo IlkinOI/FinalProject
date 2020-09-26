@@ -28,9 +28,10 @@ namespace SetSail.Controllers
                           (!string.IsNullOrEmpty(search) ? b.Text1.Contains(search) : true) ||
                           (!string.IsNullOrEmpty(search) ? b.Text2.Contains(search) : true) ||
                           (!string.IsNullOrEmpty(search) ? b.Text3.Contains(search) : true))
-                          .OrderByDescending(o => o.Id).Skip((page - 1) * 4).Take(4).ToList();
+                          .OrderByDescending(o => o.Id).Skip((page - 1) * 3).Take(3).ToList();
+            blogs.LatestTours = db.Tours.OrderByDescending(t => t.Id).Take(8).ToList();
             blogs.CurrentPage = page;
-            blogs.PageCount = Convert.ToInt32(Math.Ceiling(db.Blogs.Count() / 4.0));
+            blogs.PageCount = Convert.ToInt32(Math.Ceiling(db.Blogs.Count() / 3.0));
             ViewBag.Blog = true;
             ViewBag.Page = "Blog";
             return View(blogs);
@@ -39,8 +40,7 @@ namespace SetSail.Controllers
         public ActionResult BlogDetailsIndex(int id)  // Blog Details Page //
         {
             VmBlogDetails bldet = new VmBlogDetails();
-            bldet.Blog = db.Blogs.Include("BlogComments").Include("User").FirstOrDefault(b=>b.Id==id);
-            bldet.BlogComments = db.BlogComments.Include("User").Include("Blog").Where(bc=>bc.BlogId==id).ToList();
+            bldet.Blog = db.Blogs.Include("BlogComments").Include("BlogComments.User").Include("User").FirstOrDefault(b=>b.Id==id);
             bldet.BlogCategories = db.BlogCategories.ToList();
             bldet.LatestBlogs = db.Blogs.OrderByDescending(b => b.Id).Take(3).ToList();
             ViewBag.Blog = true;

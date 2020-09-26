@@ -31,9 +31,29 @@
                 <input type="text" name="search" placeholder="Search...">
                 <button type="submit">Find</button>
             </form>
-            @foreach (var item in Model.Blogs)
-            {
-                <div class="col-lg-12">
+            <div class="col-lg-3 col-md-12 col-sm-12">
+                <div class="latestPosts">
+                    <h5>Latest Tours</h5>
+                    @foreach (var item in Model.LatestTours)
+                    {
+                        <div class="post">
+                            <div class="img">
+                                <a href="@Url.Action("TourDetailIndex","Tour",new { id=item.Id})"><img src="~/Uploads/@item.FrontImage" alt=""></a>
+                            </div>
+                            <a href="@Url.Action("TourDetailIndex","Tour",new { id=item.Id})">
+                                <h6>@item.Name</h6>
+                            </a>
+
+                            <p>@item.CreatedDate.ToString("MMMM dd, yyyy")</p>
+                        </div>
+                    }
+
+                </div>
+            </div>
+            <div class="col-lg-9">
+                @foreach (var item in Model.Blogs)
+                {
+
                     <div class="blog">
                         <div class="pic">
                             <a href="@Url.Action("BlogDetailsIndex","Blog",new { id=item.Id})"><img src="~/Uploads/@item.MainImage" alt=""></a>
@@ -64,9 +84,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            }
-            <div class="col-lg-12">
+
+                }
                 <div class="pages">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">

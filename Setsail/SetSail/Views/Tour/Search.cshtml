@@ -130,13 +130,13 @@
             <div class="col-lg-3 col-md-12 col-sm-12">
                 <div class="latestPosts">
                     <h5>Latest Tours</h5>
-                    @foreach (var item in Model.MostTours)
+                    @foreach (var item in Model.LatestTours)
                     {
                         <div class="post">
                             <div class="img">
-                                <a href="@Url.Action("BlogDetailsIndex","Blog",new { id=item.Id})"><img src="~/Uploads/@item.FrontImage" alt=""></a>
+                                <a href="@Url.Action("TourDetailIndex","Tour",new { id=item.Id})"><img src="~/Uploads/@item.FrontImage" alt=""></a>
                             </div>
-                            <a href="@Url.Action("BlogDetailsIndex","Blog",new { id=item.Id})">
+                            <a href="@Url.Action("TourDetailIndex","Tour",new { id=item.Id})">
                                 <h6>@item.Name</h6>
                             </a>
                             

@@ -1971,6 +1971,8 @@
     <Content Include="Areas\Administrator\Front\vendor\jquery\jquery.slim.js" />
     <Content Include="Areas\Administrator\Front\vendor\jquery\jquery.slim.min.js" />
     <Content Include="favicon.ico" />
+    <Content Include="Front\assets\counter\jquery.countup.js" />
+    <Content Include="Front\assets\counter\jquery.countup.min.js" />
     <Content Include="Front\assets\dtp\bootstrap-datepicker.css" />
     <Content Include="Front\assets\dtp\bootstrap-datepicker.js" />
     <Content Include="Front\assets\dtp\bootstrap-datepicker.min.js" />

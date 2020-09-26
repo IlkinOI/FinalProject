@@ -9,14 +9,6 @@ namespace SetSail.ViewModels
     public class VmTourDetails: VmLayoutDesLog
     {
         public Tour Tour { get; set; }
-        public TourCity TourCity { get; set; }
-        public List<TourImage> TourImages { get; set; }
-        public List<TourReview> TourReviews { get; set; }
-        public List<TourDates> TourDates { get; set; }
-        public List<Include> Includes { get; set; }
-        public List<NotInclude> NotIncludes { get; set; }
-        public List<Day> Days { get; set; }
-        public List<DayInclude> DayIncludes { get; set; }
         public string BookingFullname { get; set; }
         public string BookingEmail { get; set; }
         public string BookingPhone { get; set; }

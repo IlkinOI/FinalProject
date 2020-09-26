@@ -10,9 +10,7 @@ namespace SetSail.ViewModels
     {
         public CityPage CityPage { get; set; }
         public List<Tour> Tours { get; set; }
-        public List<TourCategory> TourCategories { get; set; }
         public List<DesToCat> DesToCats { get; set; }
         public List<Team> Teams { get; set; }
-        public List<TeamSocial> TeamSocials { get; set; }
     }
 }
