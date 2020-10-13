@@ -106,24 +106,29 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="tourCountry">
                     <div class="BgImg">
                         <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination1.Id })"><img src="~/Uploads/@Model.Destination1.Pic3" alt=""></a>
+                        <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination1.Id })" class="dark"></a>
                     </div>
-                    <h5>
-                        @Model.Destination1.Name
-                    </h5>
+                    <div class="cname">
+                        <h5>
+                            @Model.Destination1.Name
+                        </h5>
+                    </div>
+
                 </div>
             </div>
 
             @foreach (var item in Model.ToursDes1.Take(3))
             {
-                <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="tourCity">
                         <div class="BgImg">
                             <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.Id })"><img src="~/Uploads/@item.FrontImage" alt=""></a>
                         </div>
+                        <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.Id })" class="dark"></a>
                         <div class="info">
                             <div class="name">
                                 <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.Id })">
@@ -143,11 +148,12 @@
 
             @foreach (var item in Model.ToursDes2.Take(3))
             {
-                <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="tourCity">
                         <div class="BgImg">
                             <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.Id })"><img src="~/Uploads/@item.FrontImage" alt=""></a>
                         </div>
+                        <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.Id })" class="dark"></a>
                         <div class="info">
                             <div class="name">
                                 <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.Id })">
@@ -165,33 +171,40 @@
                 </div>
             }
 
-            <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="tourCountry">
                     <div class="BgImg">
                         <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination2.Id })"><img src="~/Uploads/@Model.Destination2.Pic4" alt=""></a>
+                        <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination2.Id })" class="dark"></a>
                     </div>
-                    <h5>
-                        @Model.Destination2.Name
-                    </h5>
+                    <div class="cname">
+                        <h5>
+                            @Model.Destination2.Name
+                        </h5>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="tourCountry">
                     <div class="BgImg">
                         <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination3.Id })"><img src="~/Uploads/@Model.Destination3.Pic5" alt=""></a>
+                        <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination3.Id })" class="dark"></a>
                     </div>
-                    <h5>
-                        @Model.Destination3.Name
-                    </h5>
+                    <div class="cname">
+                        <h5>
+                            @Model.Destination3.Name
+                        </h5>
+                    </div>
                 </div>
             </div>
             @foreach (var item in Model.ToursDes3.Take(3))
             {
-                <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="tourCity">
                         <div class="BgImg">
                             <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.Id })"><img src="~/Uploads/@item.FrontImage" alt=""></a>
                         </div>
+                        <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.Id })" class="dark"></a>
                         <div class="info">
                             <div class="name">
                                 <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.Id })">
@@ -315,7 +328,7 @@
                                     <div class="reviews">
                                         <div class="span">
                                             <span><i class="far fa-comment"></i></span>
-                                            <span>@(tour.TourReviews!=null?tour.TourReviews.Count.ToString():"0")</span>
+                                            <span>@(tour.TourReviews!=null?tour.TourReviews.Count.ToString("0"):"0")</span>
                                         </div>
                                         <div class="span">
                                             <span><i class="fas fa-user"></i></span>
@@ -423,6 +436,7 @@
                                     <div class="img">
                                         <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"><img src="~/Uploads/@tour.FrontImage" alt=""></a>
                                     </div>
+                                    <a href="@Url.Action("TourDetailIndex","Tour", new {id=tour.Id })" class="dark"></a>
                                     <div class="info">
                                         <div class="name">
                                             <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})">
@@ -541,7 +555,7 @@
                             </div>
                             <div class="about">
                                 <h4 class="tourName">
-                                    <a href="#">@item.Name</a>
+                                    <a href="@Url.Action("BlogDetailsIndex","Blog",new { id=item.Id})">@item.Name</a>
                                 </h4>
                                 <p class="tourtext">
                                     @(item.TopText.Length>65? item.TopText.Substring(0,65)+"...":item.TopText)
@@ -607,6 +621,7 @@
                             <div class="img">
                                 <a href="@Url.Action("DestinationDetails","Tour", new {id=item.Id })"><img src="~/Uploads/@item.Pic6" alt=""></a>
                             </div>
+                            <a href="@Url.Action("DestinationDetails","Tour", new {id=item.Id })" class="dark"></a>
                             <div class="name">
                                 <a href="@Url.Action("DestinationDetails","Tour", new {id=item.Id })">
                                     <h5>@item.Name</h5>

@@ -185,7 +185,29 @@ namespace SetSail.Areas.Administrator.Controllers
             {
                 return HttpNotFound();
             }
+            if (blog.BgImageFile != null)
+            {
+                string OldbgImagePath = Path.Combine(Server.MapPath("~/Uploads/"), blog.BgImage);
+                System.IO.File.Delete(OldbgImagePath);
+            }
 
+            if (blog.MainImageFile != null)
+            {
+                string OldmImagePath = Path.Combine(Server.MapPath("~/Uploads/"), blog.MainImage);
+                System.IO.File.Delete(OldmImagePath);
+            }
+
+            if (blog.Image1File != null)
+            {
+                string OldImage1Path = Path.Combine(Server.MapPath("~/Uploads/"), blog.Image1);
+                System.IO.File.Delete(OldImage1Path);
+            }
+
+            if (blog.Image2File != null)
+            {
+                string OldImage2Path = Path.Combine(Server.MapPath("~/Uploads/"), blog.Image2);
+                System.IO.File.Delete(OldImage2Path);
+            }
             db.Blogs.Remove(blog);
             db.SaveChanges();
 

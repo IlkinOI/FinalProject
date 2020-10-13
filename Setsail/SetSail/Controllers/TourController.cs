@@ -90,7 +90,7 @@ namespace SetSail.Controllers
             winter.WinterPage = db.WinterPages.FirstOrDefault();
             winter.Destinations = db.Destinations.Include("DesToCats").Include("DesToCats.TourCategory").ToList();
             winter.DesToCats = db.DesToCats.Include("Destination").Include("TourCategory").Where(dc => dc.TourCategory.Name == "Winter").ToList();
-            winter.Tours = db.Tours.Include("TourDates").Include("TourCity").Include("TourCity.Destination").ToList();
+            winter.Tours = db.Tours.Include("TourDates").Include("TourReviews").Include("TourCity").Include("TourCity.Destination").ToList();
             winter.TourReviews = db.TourReviews.Include("User").Include("Tour").Include("Tour.TourCity").OrderBy(t=>t.Id).Take(9).ToList();
             winter.Teams = db.Teams.Include("TeamSocials").Include("Position").ToList();
             ViewBag.Winter = true;

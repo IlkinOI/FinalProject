@@ -211,6 +211,38 @@ namespace SetSail.Areas.Administrator.Controllers
                 return HttpNotFound();
             }
 
+            if (about.BgImageFile != null)
+            {
+                string bgoldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), about.BgImage);
+                System.IO.File.Delete(bgoldImagePath);
+            }
+            if (about.ImageFile != null)
+            {
+                string bgoldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), about.Image);
+                System.IO.File.Delete(bgoldImagePath);
+            }
+            
+            if (about.PopImageFile != null)
+            {
+                string popoldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), about.PopImage);
+                System.IO.File.Delete(popoldImagePath);
+            }
+            if (about.VideoImageFile != null)
+            {
+                string vidoldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), about.VideoImage);
+                System.IO.File.Delete(vidoldImagePath);
+            }
+            if (about.MPImageFile != null)
+            {
+                string mpoldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), about.MPImage);
+                System.IO.File.Delete(mpoldImagePath);
+            }
+            if (about.BlogsBgImageFile != null)
+            {
+                string bbgoldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), about.BlogsBgImage);
+                System.IO.File.Delete(bbgoldImagePath);
+            }
+
             db.Abouts.Remove(about);
             db.SaveChanges();
 
@@ -301,7 +333,11 @@ namespace SetSail.Areas.Administrator.Controllers
             {
                 return HttpNotFound();
             }
-
+            if (faq.BgImageFile != null)
+            {
+                string bgoldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), faq.BgImage);
+                System.IO.File.Delete(bgoldImagePath);
+            }
             db.Faqs.Remove(faq);
             db.SaveChanges();
 

@@ -149,11 +149,12 @@
             {
                 foreach (var tour in Model.Tours.Where(t => t.TourCity.DestinationId == dc.DestinationId))
                 {
-                    <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="col-lg-4 col-md-4 col-sm-12">
                         <div class="tourCity">
                             <div class="BgImg">
                                 <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"><img src="~/Uploads/@tour.FrontImage" alt=""></a>
                             </div>
+                            <a href="@Url.Action("TourDetailIndex","Tour", new {id=tour.Id })" class="dark"></a>
                             <div class="info">
                                 <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})">
                                     <p>@tour.Name @tour.TourCity.Name</p>

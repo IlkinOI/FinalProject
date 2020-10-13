@@ -8,19 +8,43 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     transition: padding 0.2s linear;
 }
-.navActive {
-    color: #3abdc1  !important;
+
+.mr10 {
+    margin-right: 10px;
 }
+
+.ml5 {
+    margin-left: 5px;
+}
+
+.dark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(to bottom, #ff000000, #00000080);
+    opacity: 0.2;
+    transition: all 0.5s linear;
+}
+
+.navActive {
+    color: #3abdc1 !important;
+}
+
 .centered {
     padding: 13px !important;
     height: 52px !important;
 }
+
 a {
     text-decoration: none;
 }
-.page-link:focus{
-    box-shadow:unset!important;
+
+.page-link:focus {
+    box-shadow: unset !important;
 }
+
 .filech {
     width: 250px !important;
     padding: 10px !important;
@@ -241,6 +265,7 @@ a {
                     height: 100%;
                     object-fit: cover;
                 }
+
             .myNavbar .navbar .use .lo {
                 margin: 3px 0px 0 3px;
             }
@@ -249,6 +274,7 @@ a {
                     font-size: 18px;
                     color: #3fd0d4;
                 }
+
 #navSearch {
     text-align: center;
     padding: 0 70px;
@@ -444,6 +470,7 @@ a {
                 margin-left: 15px;
                 width: 100%;
             }
+
         #barRes .use .lo {
             margin: 3px 0px 0 3px;
         }
@@ -620,10 +647,11 @@ a {
 
         .footer .contacts .logo {
             margin-bottom: 25px;
+            width: 190px;
         }
 
             .footer .contacts .logo img {
-                width: 250px;
+                width: 100%;
             }
 
         .footer .contacts .text {
@@ -930,10 +958,10 @@ a {
                     color: white;
                     transition: all 0.2s linear;
                 }
-        #Log .wrapper .log .inputs button:focus {
 
-            outline: unset;
-        }
+                #Log .wrapper .log .inputs button:focus {
+                    outline: unset;
+                }
 
         #Log .wrapper .reg {
             display: none;
@@ -1037,6 +1065,12 @@ a {
                 color: white;
             }
 
+@media screen and (min-width:993) {
+    .myNavbar {
+        display: block;
+    }
+}
+
 @media screen and (max-width: 992px) {
     .commons {
         display: none;
@@ -1122,7 +1156,7 @@ a {
 }
 /* intro carousel */
 #intro .introCarousel .owl-carousel .owl-stage-outer .owl-stage .item .sliderWrapper .imageWrapper {
-    max-height: 509.93px;
+    max-height: 399px;
     overflow: hidden;
 }
 
@@ -1204,6 +1238,7 @@ a {
         #intro .introCarousel .owl-carousel .owl-stage-outer .owl-stage .item .sliderWrapper .textWrapper .text .textContent {
             font-weight: 200;
             color: white;
+            font-size: 14px;
         }
 
 #intro .introCarousel .owl-carousel .owl-nav {
@@ -1254,25 +1289,25 @@ a {
 
 /* SEARCH */
 #search {
-    position: absolute;
-    top: 590px;
-    z-index: 1;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    bottom: 0;
+    position: relative;
 }
 
     #search .searchInputs {
         background-color: white;
         box-shadow: 0 3px 13px 0 rgba(0, 0, 0, 0.07);
         display: flex;
+        position: absolute;
+        top: -45px;
+        z-index: 1;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
     }
 
         #search .searchInputs .form-group {
             margin-bottom: 0;
             position: relative;
-            width:73%;
+            width: 73%;
         }
 
             #search .searchInputs .form-group select {
@@ -1363,7 +1398,7 @@ a {
     }
 
         #Tours .slogan .textWrapper {
-            padding: 0px 250px 0;
+            padding: 0px 50px 0;
         }
 
             #Tours .slogan .textWrapper .upperTitle h3 {
@@ -1390,59 +1425,67 @@ a {
     #Tours .tourCountry {
         border-radius: 50%;
         margin: 10px;
-        position: relative;
-        width: 250px;
-        height: 250px;
         overflow: hidden;
-        transition: all 1s linear;
+        transition: all 0.5s linear;
         cursor: pointer;
-
     }
 
         #Tours .tourCountry .BgImg {
-            transition: all 1s linear;
+            transition: all 0.5s linear;
+            position: relative;
         }
 
             #Tours .tourCountry .BgImg img {
-                transition: all 1s linear;
+                transition: all 0.5s linear;
                 width: 100%;
             }
 
         #Tours .tourCountry:hover .BgImg img {
             transform: scale(1.05);
-            transition: all 1s linear;
+            transition: all 0.5s linear;
         }
 
-        #Tours .tourCountry h5 {
-            font-family: Satisfy;
-            color: white;
-            font-weight: 500;
-            position: absolute;
-            top: 95px;
-            left: 75px;
-            font-size: 50px;
-            display: block;
-            text-shadow: 3px 2px 2px #086d70;
+        #Tours .tourCountry:hover .dark {
+            opacity: 1;
+            transition: all 0.5s linear;
         }
+
+        #Tours .tourCountry .cname {
+            position: absolute;
+            top: 0;
+            text-align: center;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+            #Tours .tourCountry .cname h5 {
+                font-family: Satisfy;
+                color: white;
+                font-weight: 500;
+                padding-top: 38%;
+                font-size: 50px;
+                display: block;
+                text-shadow: 3px 2px 2px #086d70;
+            }
 
     #Tours .tourCity {
         margin: 10px;
         position: relative;
-        width: 250px;
-        height: 250px;
         overflow: hidden;
-        transition: all 1s linear;
         cursor: pointer;
+        transition: all 0.5s linear;
     }
 
         #Tours .tourCity .BgImg {
-            transition: all 1s linear;
+            transition: all 0.5s linear;
         }
 
             #Tours .tourCity .BgImg img {
-                transition: all 1s linear;
+                transition: all 0.5s linear;
                 width: 100%;
             }
+
 
         #Tours .tourCity .info {
             position: absolute;
@@ -1492,7 +1535,11 @@ a {
 
         #Tours .tourCity:hover .BgImg img {
             transform: scale(1.05);
-            transition: all 1s linear;
+        }
+
+        #Tours .tourCity:hover .dark {
+            opacity: 1;
+            transition: all 0.5s linear;
         }
 
 #ourOffer {
@@ -1641,7 +1688,7 @@ a {
 }
 
     #winter .slogan .textWrapper {
-        padding: 0px 250px 0;
+        padding: 0px 200px 0;
     }
 
         #winter .slogan .textWrapper .upperTitle h3 {
@@ -1679,19 +1726,19 @@ a {
     }
 
         #winter .winterCarousel .owl-carousel .item .img {
-            transition: all 1s linear;
+            transition: all 0.5s linear;
         }
 
             #winter .winterCarousel .owl-carousel .item .img:hover {
                 transform: scale(1.05);
-                transition: all 1s linear;
+                transition: all 0.5s linear;
             }
 
         #winter .winterCarousel .owl-carousel .item .reviews {
             background-color: #3fd0d4;
             padding: 5px 10px;
             display: flex;
-            position:sticky;
+            position: sticky;
         }
 
             #winter .winterCarousel .owl-carousel .item .reviews .span {
@@ -1709,7 +1756,7 @@ a {
 
         #winter .winterCarousel .owl-carousel .item .info {
             padding: 20px;
-            transition: all 0.5 linear;
+            transition: all 0.5s linear;
         }
 
             #winter .winterCarousel .owl-carousel .item .info a {
@@ -1720,12 +1767,12 @@ a {
                     font-size: 20px;
                     font-weight: 600;
                     color: black;
-                    transition: all 0.5 linear;
+                    transition: all 0.5s linear;
                 }
 
                     #winter .winterCarousel .owl-carousel .item .info a span:hover {
                         color: #3fd0d4;
-                        transition: all 0.5 linear;
+                        transition: all 0.5s linear;
                     }
 
             #winter .winterCarousel .owl-carousel .item .info p {
@@ -1856,7 +1903,7 @@ a {
     }
 
         #medi .slogan .textWrapper {
-            padding: 0px 250px 0;
+            padding: 0px 200px 0;
         }
 
             #medi .slogan .textWrapper .upperTitle h3 {
@@ -1883,13 +1930,13 @@ a {
     #medi .wrap {
         display: flex;
         padding: 30px 100px 0;
-        overflow:hidden;
+        overflow: hidden;
     }
 
         #medi .wrap .mediTour {
             overflow: hidden;
             position: relative;
-            margin: 0 18px 0;
+            margin: 0 10px 0;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
 
@@ -1900,8 +1947,13 @@ a {
             }
 
             #medi .wrap .mediTour:hover img {
-                transition: all 1s linear;
+                transition: all 0.5s linear;
                 transform: scale(1.1);
+            }
+
+            #medi .wrap .mediTour:hover .dark {
+                opacity: 1;
+                transition: all 0.5s linear;
             }
 
             #medi .wrap .mediTour .img {
@@ -1909,7 +1961,7 @@ a {
             }
 
                 #medi .wrap .mediTour .img img {
-                    transition: all 1s linear;
+                    transition: all 0.5s linear;
                     width: 100%;
                 }
 
@@ -1930,7 +1982,7 @@ a {
 
                         #medi .wrap .mediTour .info .name a h6 {
                             font-weight: 500;
-                            font-size: 27px;
+                            font-size: 25px;
                             color: white;
                         }
 
@@ -1989,16 +2041,17 @@ a {
         background-color: white;
         border-radius: 5px;
         display: flex;
-        width: 395px;
         height: 215px;
         padding: 30px;
     }
+
         #parallaxReviews .reviewsCarousel .owl-carousel .item .img {
             width: 100px;
             height: 100px;
             border-radius: 50%;
             overflow: hidden;
         }
+
             #parallaxReviews .reviewsCarousel .owl-carousel .item .img img {
                 width: 100%;
                 height: 100%;
@@ -2015,7 +2068,7 @@ a {
                 color: #505050;
                 font-weight: 600;
                 transition: all 0.3s linear;
-                font-size:10px;
+                font-size: 10px;
             }
 
             #parallaxReviews .reviewsCarousel .owl-carousel .item .info .tour:hover a {
@@ -2094,7 +2147,12 @@ a {
                     text-decoration: none;
                     color: #505050;
                     font-weight: 700;
+                    transition: all 0.3s linear;
                 }
+
+                    #Blog .blogText .userblogs .about .tourName a:hover {
+                        color: #3fd0d4;
+                    }
 
                 #Blog .blogText .userblogs .about .tourtext {
                     padding-right: 50px;
@@ -2158,7 +2216,7 @@ a {
     }
 
         #Destinations .slogan .textWrapper {
-            padding: 0px 250px 0;
+            padding: 0px 200px 0;
         }
 
             #Destinations .slogan .textWrapper .upperTitle h3 {
@@ -2195,8 +2253,13 @@ a {
         }
 
             #Destinations .wrap .destination:hover img {
-                transition: all 1s linear;
+                transition: all 0.5s linear;
                 transform: scale(1.1);
+            }
+
+            #Destinations .wrap .destination:hover .dark {
+                opacity: 1;
+                transition: all 0.5s linear;
             }
 
             #Destinations .wrap .destination .img {
@@ -2204,7 +2267,7 @@ a {
             }
 
                 #Destinations .wrap .destination .img img {
-                    transition: all 1s linear;
+                    transition: all 0.5s linear;
                     width: 100%;
                 }
 
@@ -2215,7 +2278,6 @@ a {
                 right: 0;
                 margin: auto;
                 text-align: center;
-                padding: 137px 0px;
                 text-shadow: 3px 2px 2px #086d70;
             }
 
@@ -2227,6 +2289,7 @@ a {
                         font-size: 35px;
                         font-family: Satisfy;
                         color: white;
+                        padding-top: 38%;
                     }
 
 @media screen and (max-width: 992px) {
@@ -2269,7 +2332,7 @@ a {
         }
 
         #search .searchInputs .submit button {
-            padding: 0px 44px !important;
+            padding: -1px 44px !important;
         }
 
     #Tours .textWrapper {
@@ -2407,6 +2470,7 @@ a {
         #search .searchInputs {
             box-shadow: 0 3px 13px 0 rgba(0, 0, 0, 0.07);
             display: block !important;
+            position: unset !important;
         }
 
             #search .searchInputs .form-group .form-control {
@@ -2472,6 +2536,10 @@ a {
                 margin-bottom: 0 !important;
             }
 
+                #medi .wrap .info .name a h6 {
+                    font-size: 12px !important;
+                }
+
     #parallaxReviews .slogan .textWrapper {
         padding: 0 !important;
     }
@@ -2491,7 +2559,6 @@ a {
 
             #Destinations .wrap .destination .name {
                 padding: 0 !important;
-                top: 86px !important;
             }
 
                 #Destinations .wrap .destination .name h5 {
@@ -2652,13 +2719,9 @@ a {
         margin: 0 12px 0 !important;
     }
 
-        #Destinations .wrap .destination .name {
-            top: 60px !important;
+        #Destinations .wrap .destination .name h5 {
+            font-size: 30px !important;
         }
-
-            #Destinations .wrap .destination .name h5 {
-                font-size: 30px !important;
-            }
 }
 
 #introAbout {
@@ -2768,7 +2831,7 @@ a {
 }
 
 .disappear {
-    bottom: -154px;
+    bottom: -177px;
 }
 
 #ourTeam {
@@ -2783,7 +2846,7 @@ a {
     }
 
         #ourTeam .slogan .textWrapper {
-            padding: 0px 250px 0;
+            padding: 0px 200px 0;
         }
 
             #ourTeam .slogan .textWrapper .upperTitle h3 {
@@ -2811,7 +2874,7 @@ a {
         position: relative;
         margin: 0 12px;
         overflow: hidden;
-        width: 260px;
+        width: 100%;
     }
 
         #ourTeam .team .img {
@@ -2912,21 +2975,19 @@ a {
 }
 
     #popularTours .tourCity {
-        margin-bottom: 20px;
+        margin: 10px;
         position: relative;
-        width: 250px;
-        height: 250px;
         overflow: hidden;
-        transition: all 1s linear;
+        transition: all 0.5s linear;
         cursor: pointer;
     }
 
         #popularTours .tourCity .BgImg {
-            transition: all 1s linear;
+            transition: all 0.5s linear;
         }
 
             #popularTours .tourCity .BgImg img {
-                transition: all 1s linear;
+                transition: all 0.5s linear;
                 width: 100%;
             }
 
@@ -2969,7 +3030,12 @@ a {
 
         #popularTours .tourCity:hover .BgImg img {
             transform: scale(1.05);
-            transition: all 1s linear;
+            transition: all 0.5s linear;
+        }
+
+        #popularTours .tourCity:hover .dark {
+            opacity: 1;
+            transition: all 0.5s linear;
         }
 
 #testmonial {
@@ -3246,18 +3312,19 @@ a {
             border-top-right-radius: unset;
             outline: unset;
             border: unset;
-            padding: 28px 50px 28px 0;
+            padding: 29px 20px;
             text-decoration: none;
             color: black;
             font-weight: 600;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             transition: all 0.3s linear;
             cursor: pointer;
+            font-size: 12px;
         }
 
             #searchPage .nav .nav-item .nav-link i {
                 transition: all 0.3s linear;
-                padding: 0 15px 0 25px;
+                padding-right: 15px;
             }
 
         #searchPage .nav .nav-item:hover {
@@ -3282,7 +3349,7 @@ a {
 
     #searchPage .srch {
         display: flex;
-        margin: 40px 40px 0px;
+        margin: 40px 20px 0px;
         height: 55px;
     }
 
@@ -3337,7 +3404,7 @@ a {
         }
 
             #searchPage .toursContent .item .img {
-                transition: all 1s linear;
+                transition: all 0.5s linear;
             }
 
                 #searchPage .toursContent .item .img img {
@@ -3346,14 +3413,14 @@ a {
 
                 #searchPage .toursContent .item .img:hover {
                     transform: scale(1.05);
-                    transition: all 1s linear;
+                    transition: all 0.5s linear;
                 }
 
             #searchPage .toursContent .item .reviews {
                 background-color: #3fd0d4;
                 padding: 5px 10px;
                 display: flex;
-                position:sticky;
+                position: sticky;
             }
 
                 #searchPage .toursContent .item .reviews .span {
@@ -3371,7 +3438,7 @@ a {
 
             #searchPage .toursContent .item .info {
                 padding: 20px;
-                transition: all 0.5 linear;
+                transition: all 0.5s linear;
             }
 
                 #searchPage .toursContent .item .info a {
@@ -3382,12 +3449,12 @@ a {
                         font-size: 20px;
                         font-weight: 600;
                         color: black;
-                        transition: all 0.5 linear;
+                        transition: all 0.5s linear;
                     }
 
                         #searchPage .toursContent .item .info a span:hover {
                             color: #3fd0d4;
-                            transition: all 0.5 linear;
+                            transition: all 0.5s linear;
                         }
 
                 #searchPage .toursContent .item .info p {
@@ -3519,8 +3586,31 @@ a {
                 margin-bottom: 0;
             }
 
+@media screen and (max-width: 992px) {
+    #searchPage .nav .nav-item .nav-link {
+        padding: 29px 20px !important;
+        font-size: 12px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #searchPage .nav .nav-item .nav-link {
+        padding: 29px 15px !important;
+        font-size: 9px !important;
+        letter-spacing: 0px !important;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    #searchPage .nav .nav-item .nav-link {
+        padding: 29px 10px !important;
+        font-size: 8px !important;
+        letter-spacing: 0px !important;
+    }
+}
+
 #introWinter .introCarousel .owl-carousel .owl-stage-outer .owl-stage .item .sliderWrapper .imageWrapper {
-    max-height: 408px;
+    max-height: 324px;
     overflow: hidden;
 }
 
@@ -3666,19 +3756,19 @@ a {
         }
 
             #WinterItemsCarousel .winterCarousel .owl-carousel .item .img {
-                transition: all 1s linear;
+                transition: all 0.5s linear;
             }
 
                 #WinterItemsCarousel .winterCarousel .owl-carousel .item .img:hover {
                     transform: scale(1.05);
-                    transition: all 1s linear;
+                    transition: all 0.5s linear;
                 }
 
             #WinterItemsCarousel .winterCarousel .owl-carousel .item .reviews {
                 background-color: #3fd0d4;
                 padding: 5px 10px;
                 display: flex;
-                position:sticky;
+                position: sticky;
             }
 
                 #WinterItemsCarousel .winterCarousel .owl-carousel .item .reviews .span {
@@ -3696,7 +3786,7 @@ a {
 
             #WinterItemsCarousel .winterCarousel .owl-carousel .item .info {
                 padding: 20px;
-                transition: all 0.5 linear;
+                transition: all 0.5s linear;
             }
 
                 #WinterItemsCarousel .winterCarousel .owl-carousel .item .info a {
@@ -3707,12 +3797,12 @@ a {
                         font-size: 20px;
                         font-weight: 600;
                         color: black;
-                        transition: all 0.5 linear;
+                        transition: all 0.5s linear;
                     }
 
                         #WinterItemsCarousel .winterCarousel .owl-carousel .item .info a span:hover {
                             color: #3fd0d4;
-                            transition: all 0.5 linear;
+                            transition: all 0.5s linear;
                         }
 
                 #WinterItemsCarousel .winterCarousel .owl-carousel .item .info p {
@@ -3792,56 +3882,66 @@ a {
                     font-size: 70px;
                     font-weight: 600;
                 }
+
     #videoWinter .video {
         position: relative;
     }
 
-    #videoWinter .video .picture {
-        margin: 0 auto;
-        height: 450px;
-        overflow:hidden;
-    }
-
-        #videoWinter .video .picture img {
-            width: 100%;
-            object-fit:cover;
+        #videoWinter .video .picture {
+            margin: 0 auto;
+            height: 450px;
+            overflow: hidden;
         }
 
-        #videoWinter .video .picture .icon {
-            position: absolute;
-            top: 41%;
-            left: 46%;
-        }
-
-            #videoWinter .video .picture .icon i {
-                color: #3fd0d4;
-                font-size: 82px;
-                cursor: pointer;
-                transition: all 0.5s linear;
+            #videoWinter .video .picture img {
+                width: 100%;
+                object-fit: cover;
             }
 
-            #videoWinter .video .picture .icon:hover {
-                transition: all 0.5s linear;
-                transform: scale(1.1);
+            #videoWinter .video .picture .icon {
+                position: absolute;
+                top: 41%;
+                left: 46%;
             }
+
+                #videoWinter .video .picture .icon i {
+                    color: #3fd0d4;
+                    font-size: 82px;
+                    cursor: pointer;
+                    transition: all 0.5s linear;
+                }
+
+                #videoWinter .video .picture .icon:hover {
+                    transition: all 0.5s linear;
+                    transform: scale(1.1);
+                }
 
     #videoWinter .text {
         margin: 20px auto;
     }
-    #videoWinter .text p{
-        margin: 0 40px;
-    }
+
+        #videoWinter .text p {
+            margin: 0 40px;
+        }
 
     #videoWinter .button {
         margin: 40px 0;
     }
 
         #videoWinter .button a {
+            text-decoration: none;
             background-color: #3abdc1;
             color: white;
             font-weight: 600;
             padding: 10px 45px;
+            transition: all 0.2s linear;
         }
+
+            #videoWinter .button a:hover {
+                color: #3fd0d4;
+                background-color: white;
+            }
+
 
 #parallaxReviewsWinter {
     background-attachment: fixed;
@@ -3890,6 +3990,7 @@ a {
         display: flex;
         padding: 30px;
     }
+
         #parallaxReviewsWinter .reviewsCarousel .owl-carousel .item .img {
             width: 100px;
             height: 100px;
@@ -3958,7 +4059,7 @@ a {
 }
 
 .disappearWinter {
-    bottom: -154px;
+    bottom: -177px;
 }
 
 #ourTeamWinter {
@@ -4105,8 +4206,13 @@ a {
         }
 
             #DestinationsWinter .wrap .destination:hover img {
-                transition: all 1s linear;
+                transition: all 0.5s linear;
                 transform: scale(1.1);
+            }
+
+            #DestinationsWinter .wrap .destination:hover .dark {
+                opacity: 1;
+                transition: all 0.5s linear;
             }
 
             #DestinationsWinter .wrap .destination .img {
@@ -4114,7 +4220,7 @@ a {
             }
 
                 #DestinationsWinter .wrap .destination .img img {
-                    transition: all 1s linear;
+                    transition: all 0.5s linear;
                     width: 100%;
                 }
 
@@ -4125,7 +4231,6 @@ a {
                 left: 0;
                 right: 0;
                 margin: auto;
-                padding: 140px 0px;
                 text-shadow: 3px 2px 2px #086d70;
             }
 
@@ -4137,6 +4242,7 @@ a {
                         font-size: 35px;
                         font-family: Satisfy;
                         color: white;
+                        padding-top: 38%;
                     }
 
 @media screen and (max-width: 992px) {
@@ -4321,7 +4427,7 @@ a {
     }
 
         #DestinationsExotic .slogan .textWrapper {
-            padding: 0px 250px 0;
+            padding: 0px 200px 0;
         }
 
             #DestinationsExotic .slogan .textWrapper .upperTitle h3 {
@@ -4358,8 +4464,13 @@ a {
         }
 
             #DestinationsExotic .wrap .destination:hover img {
-                transition: all 1s linear;
+                transition: all 0.5s linear;
                 transform: scale(1.1);
+            }
+
+            #DestinationsExotic .wrap .destination:hover .dark {
+                opacity: 1;
+                transition: all 0.5s linear;
             }
 
             #DestinationsExotic .wrap .destination .img {
@@ -4367,7 +4478,7 @@ a {
             }
 
                 #DestinationsExotic .wrap .destination .img img {
-                    transition: all 1s linear;
+                    transition: all 0.5s linear;
                     width: 100%;
                 }
 
@@ -4378,7 +4489,6 @@ a {
                 right: 0;
                 margin: auto;
                 text-align: center;
-                padding: 137px 0px;
                 text-shadow: 3px 2px 2px #086d70;
             }
 
@@ -4390,6 +4500,7 @@ a {
                         font-size: 35px;
                         font-family: Satisfy;
                         color: white;
+                        padding-top: 38%;
                     }
 
 #ToursExotic {
@@ -4406,16 +4517,16 @@ a {
         margin: 2px;
         position: relative;
         overflow: hidden;
-        transition: all 1s linear;
+        transition: all 0.5s linear;
         cursor: pointer;
     }
 
         #ToursExotic .tourCity .BgImg {
-            transition: all 1s linear;
+            transition: all 0.5s linear;
         }
 
             #ToursExotic .tourCity .BgImg img {
-                transition: all 1s linear;
+                transition: all 0.5s linear;
                 width: 100%;
             }
 
@@ -4477,7 +4588,12 @@ a {
 
         #ToursExotic .tourCity:hover .BgImg img {
             transform: scale(1.05);
-            transition: all 1s linear;
+            transition: all 0.5s linear;
+        }
+
+        #ToursExotic .tourCity:hover .dark {
+            opacity: 1;
+            transition: all 0.5s linear;
         }
 
 @media screen and (max-width: 992px) {
@@ -4496,7 +4612,6 @@ a {
 
             #DestinationsExotic .wrap .destination .name {
                 padding: 0 !important;
-                top: 86px !important;
             }
 }
 
@@ -4508,7 +4623,6 @@ a {
 
         #DestinationsExotic .wrap .destination .name {
             padding: 0 !important;
-            top: 86px !important;
         }
 }
 
@@ -4529,13 +4643,10 @@ a {
         margin: 0 12px 0 !important;
     }
 
-        #DestinationsExotic .wrap .destination .name {
-            top: 60px !important;
-        }
 
-            #DestinationsExotic .wrap .destination .name h5 {
-                font-size: 30px !important;
-            }
+        #DestinationsExotic .wrap .destination .name h5 {
+            font-size: 30px !important;
+        }
 }
 
 #parallaxSummer {
@@ -4692,16 +4803,16 @@ a {
     #ToursCities .tourCity {
         position: relative;
         overflow: hidden;
-        transition: all 1s linear;
+        transition: all 0.5s linear;
         cursor: pointer;
     }
 
         #ToursCities .tourCity .BgImg {
-            transition: all 1s linear;
+            transition: all 0.5s linear;
         }
 
             #ToursCities .tourCity .BgImg img {
-                transition: all 1s linear;
+                transition: all 0.5s linear;
                 width: 100%;
             }
 
@@ -4763,15 +4874,21 @@ a {
 
         #ToursCities .tourCity:hover .BgImg img {
             transform: scale(1.05);
-            transition: all 1s linear;
+            transition: all 0.5s linear;
         }
+
+        #ToursCities .tourCity:hover .dark {
+            opacity: 1;
+            transition: all 0.5s linear;
+        }
+
 
 .appearCities {
     bottom: 0px;
 }
 
 .disappearCities {
-    bottom: -154px;
+    bottom: -177px;
 }
 
 #ourTeamCities {
@@ -4971,7 +5088,7 @@ a {
     }
 
         #popularToursWine .slogan .textWrapper {
-            padding: 0px 250px 0;
+            padding: 0px 200px 0;
         }
 
             #popularToursWine .slogan .textWrapper .title {
@@ -4991,16 +5108,16 @@ a {
         margin: 0px 5px 10px;
         position: relative;
         overflow: hidden;
-        transition: all 1s linear;
+        transition: all 0.5s linear;
         cursor: pointer;
     }
 
         #popularToursWine .tourCity .BgImg {
-            transition: all 1s linear;
+            transition: all 0.5s linear;
         }
 
             #popularToursWine .tourCity .BgImg img {
-                transition: all 1s linear;
+                transition: all 0.5s linear;
                 width: 100%;
             }
 
@@ -5037,7 +5154,12 @@ a {
 
         #popularToursWine .tourCity:hover .BgImg img {
             transform: scale(1.05);
-            transition: all 1s linear;
+            transition: all 0.5s linear;
+        }
+
+        #popularToursWine .tourCity:hover .dark {
+            opacity: 1;
+            transition: all 0.5s linear;
         }
 
 #Counter {
@@ -5075,8 +5197,9 @@ a {
 
         #videoWine .video .picture .icon {
             position: absolute;
-            top: 160px;
-            left: 525px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
             #videoWine .video .picture .icon i {
@@ -5115,6 +5238,10 @@ a {
             margin-bottom: 20px;
             display: flex;
         }
+
+            #ourToursWine .text .wrap .item img {
+                object-fit: contain;
+            }
 
             #ourToursWine .text .wrap .item p {
                 margin: 0px 10px;
@@ -5195,10 +5322,6 @@ a {
             margin-bottom: 30px;
         }
 
-    #videoWine .icon {
-        top: 35% !important;
-        left: 44% !important;
-    }
 
     #ourToursWine .text {
         padding: 0 !important;
@@ -5258,10 +5381,6 @@ a {
         margin: 0 !important;
     }
 
-        #videoWine .icon {
-            top: 32% !important;
-            left: 42% !important;
-        }
 
     #ourToursWine {
         text-align: center;
@@ -5384,6 +5503,7 @@ a {
             #barResD .use .userImage img {
                 width: 100%;
             }
+
         #barResD .use .lo {
             margin: 3px 0px 0 3px;
         }
@@ -5535,7 +5655,7 @@ a {
         }
 
             #DestinationsCarousel .desCarousel .owl-carousel .item .img {
-                transition: all 1s linear;
+                transition: all 0.5s linear;
                 overflow: hidden;
                 height: 578px;
                 max-height: 1200px;
@@ -5545,15 +5665,23 @@ a {
                 #DestinationsCarousel .desCarousel .owl-carousel .item .img img {
                     display: block;
                     width: 100%;
-                    height: auto;
+                    height: 100%;
                     position: absolute;
+                    top: 0;
                     bottom: 0;
+                    object-fit: cover;
                 }
 
-                #DestinationsCarousel .desCarousel .owl-carousel .item .img:hover {
-                    transform: scale(1.05);
-                    transition: all 1s linear;
-                }
+            #DestinationsCarousel .desCarousel .owl-carousel .item:hover .img {
+                transform: scale(1.05);
+                transition: all 0.5s linear;
+            }
+
+            #DestinationsCarousel .desCarousel .owl-carousel .item:hover .dark {
+                opacity: 1;
+                transition: all 0.5s linear;
+            }
+
 
         #DestinationsCarousel .desCarousel .owl-carousel .title {
             color: white;
@@ -5607,6 +5735,7 @@ a {
     margin: 0 30px;
     padding: 40px 25px;
 }
+
     #desDetail .latestPosts {
         margin: 30px 20px;
     }
@@ -5643,6 +5772,7 @@ a {
             #desDetail .latestPosts .post p {
                 margin-bottom: 0;
             }
+
     #desDetail .wrap {
         padding: 5px 25px;
     }
@@ -6062,8 +6192,8 @@ a {
     box-sizing: border-box;
     margin: 0 30px;
     padding: 40px 25px;
-
 }
+
     #Blogs .latestPosts {
         margin: 30px 20px;
     }
@@ -6337,12 +6467,10 @@ a {
         }
 
             #myBlog .blog .images .img {
-                margin: auto auto;
-                height: 238px;
             }
 
                 #myBlog .blog .images .img img {
-                    height: 100%;
+                    width: 100%;
                 }
 
         #myBlog .blog .content {
@@ -6374,7 +6502,7 @@ a {
 
                 #myBlog .blog .accordion .card .card-header h2 .btn {
                     font-weight: 600;
-                    transition: all 0.2 linear;
+                    transition: all 0.2s linear;
                 }
 
                     #myBlog .blog .accordion .card .card-header h2 .btn:focus {
@@ -6393,79 +6521,81 @@ a {
                 #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent {
                     padding: 0 30px;
                 }
+
                 #myBlog .blog .accordion .card .collapse .card-body .smooth .img {
                     border-radius: 50%;
                     overflow: hidden;
                     width: 150px;
                     height: 150px;
                 }
+
                     #myBlog .blog .accordion .card .collapse .card-body .smooth .img img {
                         object-fit: cover;
                         width: 100%;
                         height: 100%;
                     }
 
-                    #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .name h5 {
-                        font-weight: 600;
+                #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .name h5 {
+                    font-weight: 600;
+                }
+
+                #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent p {
+                    margin-bottom: 8px;
+                }
+
+                #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .date {
+                    font-weight: 600;
+                }
+
+                #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .showSpan {
+                    display: block !important;
+                }
+
+                #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .hideSpan {
+                    display: none;
+                }
+
+                #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .rep {
+                    display: none;
+                    float: right;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.2s linear;
+                }
+
+                    #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .rep:hover {
+                        color: #3abdc1;
                     }
 
-                    #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent p {
-                        margin-bottom: 8px;
-                    }
-
-                    #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .date {
-                        font-weight: 600;
-                    }
-
-                    #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .showSpan {
-                        display: block !important;
-                    }
-
-                    #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .hideSpan {
-                        display: none;
-                    }
-
-                    #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .rep {
-                        display: none;
-                        float: right;
-                        font-weight: 600;
-                        cursor: pointer;
+                    #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .rep a {
+                        text-decoration: none;
                         transition: all 0.2s linear;
                     }
 
-                        #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .rep:hover {
+                        #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .rep a:hover {
                             color: #3abdc1;
                         }
 
-                        #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .rep a {
-                            text-decoration: none;
-                            transition: all 0.2 linear;
-                        }
+                #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .cancel {
+                    float: right;
+                    font-weight: 600;
+                    display: none;
+                    cursor: pointer;
+                    transition: all 0.2s linear;
+                }
 
-                            #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .rep a:hover {
-                                color: #3abdc1;
-                            }
+                    #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .cancel:hover {
+                        color: #3abdc1;
+                    }
 
-                    #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .cancel {
-                        float: right;
-                        font-weight: 600;
-                        display: none;
-                        cursor: pointer;
+                    #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .cancel a {
+                        text-decoration: none;
                         transition: all 0.2s linear;
                     }
 
-                        #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .cancel:hover {
+                        #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .cancel a:hover {
                             color: #3abdc1;
                         }
-
-                        #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .cancel a {
-                            text-decoration: none;
-                            transition: all 0.2 linear;
-                        }
-
-                            #myBlog .blog .accordion .card .collapse .card-body .smooth .comContent .cancel a:hover {
-                                color: #3abdc1;
-                            }
 
         #myBlog .blog .quote {
             padding: 40px 0px 30px;
@@ -6979,40 +7109,34 @@ a {
 
     #Switch .wrapper .nav {
         background-color: #f8f8f8;
+        display: flex;
     }
 
-        #Switch .wrapper .nav .nav-item {
-            width: 200px;
-            margin-bottom: 0;
-            text-align: center;
-            position: relative;
+
+        #Switch .wrapper .nav .nav-item .nav-link {
+            border-top-left-radius: unset;
+            border-top-right-radius: unset;
+            outline: unset;
+            border: unset;
+            padding: 29px 42px;
+            text-decoration: none;
+            color: black;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s linear;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        #Switch .wrapper .nav .nav-item:hover .nav-link {
+            outline: unset;
+            border: unset;
+            color: #3fd0d4 !important;
         }
 
-            #Switch .wrapper .nav .nav-item i {
-                position: absolute;
-                top: 33px;
-                left: 23px;
-            }
-
-            #Switch .wrapper .nav .nav-item .nav-link {
-                padding: 28px 0;
-                font-size: 12px;
-                border-top-left-radius: unset;
-                border-top-right-radius: unset;
-                outline: unset;
-                border: unset;
-                text-decoration: none;
-                color: black;
-                font-weight: 600;
-                letter-spacing: 1px;
+            #Switch .wrapper .nav .nav-item .nav-link i {
                 transition: all 0.3s linear;
-                cursor: pointer;
+                padding-right: 15px;
             }
-
-                #Switch .wrapper .nav .nav-item .nav-link i {
-                    transition: all 0.3s linear;
-                    padding: 0 15px 0 25px;
-                }
 
         #Switch .wrapper .nav .active {
             background-color: white;
@@ -7385,7 +7509,8 @@ a {
                 font-size: 30px;
                 margin-bottom: 30px;
             }
-            #myTour .setReviews .comment .ratingUse{
+
+            #myTour .setReviews .comment .ratingUse {
                 display: flex;
                 margin-bottom: 10px;
                 flex-wrap: wrap;
@@ -7395,25 +7520,25 @@ a {
                     display: flex;
                 }
 
-                #myTour .setReviews .comment .ratingUse .ratwrap .stars {
-                    margin: 5px 40px 5px 0px;
-                    display: flex;
-                    align-items: baseline;
-                }
+                    #myTour .setReviews .comment .ratingUse .ratwrap .stars {
+                        margin: 5px 40px 5px 0px;
+                        display: flex;
+                        align-items: baseline;
+                    }
 
-                #myTour .setReviews .comment .ratingUse .ratwrap h5 {
-                    margin-right: 10px;
-                    font-size: 15px;
-                    font-weight: 600;
-                    color: white;
-                    line-height: unset;
-                }
+                    #myTour .setReviews .comment .ratingUse .ratwrap h5 {
+                        margin-right: 10px;
+                        font-size: 15px;
+                        font-weight: 600;
+                        color: white;
+                        line-height: unset;
+                    }
 
-                #myTour .setReviews .comment .ratingUse .ratwrap .stars span i {
-                    margin-right: 2px;
-                    color: white;
-                    cursor: pointer;
-                }
+                    #myTour .setReviews .comment .ratingUse .ratwrap .stars span i {
+                        margin-right: 2px;
+                        color: white;
+                        cursor: pointer;
+                    }
 
             #myTour .setReviews .comment .hei {
                 height: 120px;
@@ -7674,6 +7799,10 @@ select.ui-datepicker-year {
     }
 
 @media screen and (max-width: 992px) {
+    #Switch .wrapper .nav .nav-item .nav-link {
+        padding: 29px 26px;
+        font-size: 10px;
+    }
     #myTour .tourGallery .grid .grid-item {
         width: 305px !important;
         float: left;
@@ -7701,6 +7830,10 @@ select.ui-datepicker-year {
 }
 
 @media screen and (max-width: 768px) {
+    #Switch .wrapper .nav .nav-item .nav-link {
+        padding: 29px 10px;
+        letter-spacing:0px;
+    }
     #myTour .tourGallery .grid .grid-item {
         width: 195px !important;
         float: left;
@@ -7724,6 +7857,10 @@ select.ui-datepicker-year {
 }
 
 @media screen and (max-width: 576px) {
+    #Switch .wrapper .nav .nav-item .nav-link {
+        padding: 29px 8px;
+        font-size: 8px;
+    }
     #myTour .tourGallery .grid .grid-item {
         width: 160px !important;
         float: left;
@@ -7837,32 +7974,33 @@ select.ui-datepicker-year {
                     padding-left: 10px;
                     margin-bottom: 3px;
                 }
-            #myPage .personal .item .edit button {
-                display: block;
-                width: 100%;
-                height: 55px;
-                border: unset;
-                background-color: #3abdc1;
-                color: white;
-                transition: all 0.2s linear;
-            }
 
-                #myPage .personal .item .edit button:focus {
-                    outline: unset;
+                #myPage .personal .item .edit button {
+                    display: block;
+                    width: 100%;
+                    height: 55px;
+                    border: unset;
+                    background-color: #3abdc1;
+                    color: white;
+                    transition: all 0.2s linear;
                 }
 
-                #myPage .personal .item .edit button:hover {
-                    color: black;
-                    background-color: white;
-                }
-
-                    #myPage .personal .item .edit input:focus {
+                    #myPage .personal .item .edit button:focus {
                         outline: unset;
                     }
 
-                    #myPage .personal .item .edit input::placeholder {
-                        color: white;
+                    #myPage .personal .item .edit button:hover {
+                        color: black;
+                        background-color: white;
                     }
+
+                #myPage .personal .item .edit input:focus {
+                    outline: unset;
+                }
+
+                #myPage .personal .item .edit input::placeholder {
+                    color: white;
+                }
 
             #myPage .personal .item button {
                 display: block;
@@ -7882,9 +8020,10 @@ select.ui-datepicker-year {
                     color: black;
                     background-color: white;
                 }
+
             #myPage .personal .item a {
                 display: inline-block;
-                text-align:center;
+                text-align: center;
                 width: calc(99%/2);
                 border: unset;
                 padding: 15px 0;
@@ -7892,17 +8031,17 @@ select.ui-datepicker-year {
                 color: white;
                 transition: all 0.2s linear;
             }
+
                 #myPage .personal .item a:hover {
                     color: black;
                     background-color: white;
                     text-decoration: none;
                 }
+
     #myPage .myBlogs {
         margin: 5px;
         padding: 15px;
         box-shadow: 0 9px 16px 13px rgba(0, 0, 0, 0.03);
-        min-height: 1477px;
-        max-height: 1477px;
     }
 
         #myPage .myBlogs .title {
@@ -7954,6 +8093,17 @@ select.ui-datepicker-year {
                 #myPage .myBlogs .blog a:hover {
                     color: #3abdc1;
                 }
+
+@media screen and (max-width:992px) {
+    #myPage .myBlogs .blog h6 {
+        font-size: 12px;
+    }
+
+    #myPage .myBlogs .blog a {
+        font-size: 12px;
+    }
+}
+
 
 #introCreate {
     background-attachment: fixed;

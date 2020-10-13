@@ -29,26 +29,24 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="wrapper">
+                    
                     <ul class="nav nav-tabs">
                         <li class="nav-item active infor">
-                            <i class="fas fa-info-circle"></i>
-                            <a class="nav-link">INFORMATION</a>
+                            <span class="nav-link"><i class="fas fa-info-circle"></i>INFORMATION</span>
                         </li>
                         <li class="nav-item plan">
-                            <i class="far fa-calendar"></i>
-                            <a class="nav-link">TOUR PLAN</a>
+                            <span class="nav-link"><i class="far fa-calendar"></i>TOUR PLAN</span>
                         </li>
                         <li class="nav-item loc">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <a class="nav-link">LOCATION</a>
+                            <span class="nav-link">
+                                <i class="fas fa-map-marker-alt"></i>LOCATION
+                            </span>
                         </li>
                         <li class="nav-item gal">
-                            <i class="far fa-images"></i>
-                            <a class="nav-link">GALLERY</a>
+                            <span class="nav-link"><i class="far fa-images"></i>GALLERY</span>
                         </li>
                         <li class="nav-item rev">
-                            <i class="far fa-comment"></i>
-                            <a class="nav-link">REVIEWS</a>
+                            <span class="nav-link"><i class="far fa-comment"></i>REVIEWS</span>
                         </li>
                     </ul>
                 </div>
@@ -257,14 +255,6 @@
                         </div>
                         <div class="col-lg-9">
                             <div class="bar">
-                                @*@{
-                            int rat = ((Model.TourReview.Rating / 100) * 5);
-                            int com = ((Model.TourReview.Comfort / 100) * 5);
-                            int foo = ((Model.TourReview.Food / 100) * 5);
-                            int hos = ((Model.TourReview.Hospitality / 100) * 5);
-                            int hyg = ((Model.TourReview.Hygiene / 100) * 5);
-                            int rec = ((Model.TourReview.Reception / 100) * 5);
-                        }*@
                                 <div class="rateName">
                                     <span class="name">
                                         Rating

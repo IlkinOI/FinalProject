@@ -170,7 +170,11 @@ namespace SetSail.Areas.Administrator.Controllers
             {
                 return HttpNotFound();
             }
-
+            if (team.PhotoFile != null)
+            {
+                string OldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), team.Photo);
+                System.IO.File.Delete(OldImagePath);
+            }
             db.Teams.Remove(team);
             db.SaveChanges();
 

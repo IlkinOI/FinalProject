@@ -26,7 +26,7 @@ namespace SetSail.Controllers
             home.Destinations = db.Destinations.Include("DesToCats").Include("DesToTypes").ToList();
             home.wDesToCats = db.DesToCats.Include("Destination").Include("TourCategory").Where(dc=>dc.TourCategory.Name=="Winter").ToList();
             home.eDesToCats = db.DesToCats.Include("Destination").Include("TourCategory").Where(dc=>dc.TourCategory.Name=="Exotic").ToList();
-            home.Tours = db.Tours.Include("TourDates").Include("TourCity").Include("TourCity.Destination").ToList();
+            home.Tours = db.Tours.Include("TourDates").Include("TourReviews").Include("TourCity").Include("TourCity.Destination").ToList();
             home.TourReviews = db.TourReviews.Include("User").Include("Tour").Include("Tour.TourCity").OrderByDescending(t=>t.Id).Take(9).ToList();
             home.Blogs = db.Blogs.Include("User").Include("BlogComments").ToList();
             home.Destination1 = db.Destinations.FirstOrDefault(d=>d.Name == "Spain");

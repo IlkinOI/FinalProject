@@ -27,11 +27,11 @@
 <section id="Blogs">
     <div class="container-fluid">
         <div class="row">
-            <form action="@Url.Action("Index","Blog")" class="srch">
+            <form action="@Url.Action("Index","Blog")" class="srch order-lg-first order-md-first order-sm-first">
                 <input type="text" name="search" placeholder="Search...">
                 <button type="submit">Find</button>
             </form>
-            <div class="col-lg-3 col-md-12 col-sm-12">
+            <div class="col-lg-3 col-md-12 col-sm-12 order-lg-first order-md-last order-sm-last order-3">
                 <div class="latestPosts">
                     <h5>Latest Tours</h5>
                     @foreach (var item in Model.LatestTours)
@@ -50,7 +50,7 @@
 
                 </div>
             </div>
-            <div class="col-lg-9">
+            <div class="col-lg-9 col-md-12 col-sm-12 order-lg-last order-md-first order-sm-first">
                 @foreach (var item in Model.Blogs)
                 {
 

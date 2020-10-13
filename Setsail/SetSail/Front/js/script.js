@@ -271,8 +271,8 @@ $(document).ready(function () {
             992:{
                 items: 3,
             },
-            1000: {
-                items: 4
+            1280: {
+                items: 4,
             }
         },
     })
@@ -485,7 +485,7 @@ $(document).ready(function () {
             992:{
                 items: 3,
             },
-            1000: {
+            1280: {
                 items: 4
             }
         },

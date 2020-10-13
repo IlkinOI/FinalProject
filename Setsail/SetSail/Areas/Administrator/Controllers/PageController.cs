@@ -200,7 +200,33 @@ namespace SetSail.Areas.Administrator.Controllers
             {
                 return HttpNotFound();
             }
+            if (hom.IntroImage1File != null)
+            {
+                string i1oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), hom.IntroImage1);
+                System.IO.File.Delete(i1oldImagePath);
+            }
 
+            if (hom.IntroImage2File != null)
+            {
+                string i2oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), hom.IntroImage2);
+                System.IO.File.Delete(i2oldImagePath);
+            }
+
+            if (hom.ParallaxImage1File != null)
+            {
+                string p1oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), hom.ParallaxImage1);
+                System.IO.File.Delete(p1oldImagePath);
+            }
+            if (hom.ParallaxImage2File != null)
+            {
+                string p2oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), hom.ParallaxImage2);
+                System.IO.File.Delete(p2oldImagePath);
+            }
+            if (hom.VideoImageFile != null)
+            {
+                string voldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), hom.VideoImage);
+                System.IO.File.Delete(voldImagePath);
+            }
             db.HomePages.Remove(hom);
             db.SaveChanges();
 
@@ -442,7 +468,42 @@ namespace SetSail.Areas.Administrator.Controllers
             {
                 return HttpNotFound();
             }
+            if (sum.IntroImage1File != null)
+            {
+                string i1oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), sum.IntroImage1);
+                System.IO.File.Delete(i1oldImagePath);
+            }
 
+            if (sum.IntroImage2File != null)
+            {
+                string i2oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), sum.IntroImage2);
+                System.IO.File.Delete(i2oldImagePath);
+            }
+            if (sum.IntroImage3File != null)
+            {
+                string i3oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), sum.IntroImage3);
+                System.IO.File.Delete(i3oldImagePath);
+            }
+            if (sum.IntroImage4File != null)
+            {
+                string i4oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), sum.IntroImage4);
+                System.IO.File.Delete(i4oldImagePath);
+            }
+            if (sum.ParallaxImage1File != null)
+            {
+                string p1oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), sum.ParallaxImage1);
+                System.IO.File.Delete(p1oldImagePath);
+            }
+            if (sum.ParallaxImage2File != null)
+            {
+                string p2oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), sum.ParallaxImage2);
+                System.IO.File.Delete(p2oldImagePath);
+            }
+            if (sum.VideoImageFile != null)
+            {
+                string voldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), sum.VideoImage);
+                System.IO.File.Delete(voldImagePath);
+            }
             db.SummerPages.Remove(sum);
             db.SaveChanges();
 
@@ -615,7 +676,29 @@ namespace SetSail.Areas.Administrator.Controllers
             {
                 return HttpNotFound();
             }
+            if (win.IntroImage1File != null)
+            {
+                string i1oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), win.IntroImage1);
+                System.IO.File.Delete(i1oldImagePath);
+            }
 
+            if (win.IntroImage2File != null)
+            {
+                string i2oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), win.IntroImage2);
+                System.IO.File.Delete(i2oldImagePath);
+            }
+
+            if (win.ParallaxImage1File != null)
+            {
+                string p1oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), win.ParallaxImage1);
+                System.IO.File.Delete(p1oldImagePath);
+            }
+
+            if (win.VideoImageFile != null)
+            {
+                string voldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), win.VideoImage);
+                System.IO.File.Delete(voldImagePath);
+            }
             db.WinterPages.Remove(win);
             db.SaveChanges();
 
@@ -765,7 +848,22 @@ namespace SetSail.Areas.Administrator.Controllers
             {
                 return HttpNotFound();
             }
+            if (cit.IntroImage1File != null)
+            {
+                string i1oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), cit.IntroImage1);
+                System.IO.File.Delete(i1oldImagePath);
+            }
 
+            if (cit.IntroImage2File != null)
+            {
+                string i2oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), cit.IntroImage2);
+                System.IO.File.Delete(i2oldImagePath);
+            }
+            if (cit.IntroImage3File != null)
+            {
+                string i3oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), cit.IntroImage3);
+                System.IO.File.Delete(i3oldImagePath);
+            }
             db.CityPages.Remove(cit);
             db.SaveChanges();
 
@@ -886,7 +984,17 @@ namespace SetSail.Areas.Administrator.Controllers
             {
                 return HttpNotFound();
             }
+            if (exo.IntroImage1File != null)
+            {
+                string i1oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), exo.IntroImage1);
+                System.IO.File.Delete(i1oldImagePath);
+            }
 
+            if (exo.IntroImage2File != null)
+            {
+                string i2oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), exo.IntroImage2);
+                System.IO.File.Delete(i2oldImagePath);
+            }
             db.ExoticPages.Remove(exo);
             db.SaveChanges();
 
@@ -1247,7 +1355,75 @@ namespace SetSail.Areas.Administrator.Controllers
             {
                 return HttpNotFound();
             }
+            if (wn.IntroImage1File != null)
+            {
+                string i1oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), wn.IntroImage1);
+                System.IO.File.Delete(i1oldImagePath);
+            }
 
+            if (wn.IntroImage1sFile != null)
+            {
+                string i1soldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), wn.IntroImage1s);
+                System.IO.File.Delete(i1soldImagePath);
+            }
+
+            if (wn.IntroImage2File != null)
+            {
+                string i2oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), wn.IntroImage2);
+                System.IO.File.Delete(i2oldImagePath);
+            }
+
+            if (wn.IntroImage2sFile != null)
+            {
+                string i2soldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), wn.IntroImage2s);
+                System.IO.File.Delete(i2soldImagePath);
+            }
+
+            if (wn.IntroImage3File != null)
+            {
+                string i3oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), wn.IntroImage3);
+                System.IO.File.Delete(i3oldImagePath);
+            }
+
+            if (wn.IntroImage3sFile != null)
+            {
+                string i3soldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), wn.IntroImage3s);
+                System.IO.File.Delete(i3soldImagePath);
+            }
+
+            if (wn.introTitleImage1File != null)
+            {
+                string it1oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), wn.introTitleImage1);
+                System.IO.File.Delete(it1oldImagePath);
+            }
+            if (wn.introTitleImage2File != null)
+            {
+                string it2oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), wn.introTitleImage2);
+                System.IO.File.Delete(it2oldImagePath);
+            }
+            if (wn.introTitleImage3File != null)
+            {
+                string it3oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), wn.introTitleImage3);
+                System.IO.File.Delete(it3oldImagePath);
+            }
+
+            if (wn.PopImage1File != null)
+            {
+                string p1oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), wn.PopImage1);
+                System.IO.File.Delete(p1oldImagePath);
+            }
+
+            if (wn.PopImage2File != null)
+            {
+                string p2oldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), wn.PopImage2);
+                System.IO.File.Delete(p2oldImagePath);
+            }
+
+            if (wn.VideoImageFile != null)
+            {
+                string voldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), wn.VideoImage);
+                System.IO.File.Delete(voldImagePath);
+            }
             db.WinePages.Remove(wn);
             db.SaveChanges();
 

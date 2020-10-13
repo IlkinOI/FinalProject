@@ -125,7 +125,11 @@ namespace SetSail.Areas.Administrator.Controllers
             {
                 return HttpNotFound();
             }
-
+            if (user.PhotoFile != null)
+            {
+                string photo = Path.Combine(Server.MapPath("~/Uploads/"), user.Photo);
+                System.IO.File.Delete(photo);
+            }
             db.Users.Remove(user);
             db.SaveChanges();
 

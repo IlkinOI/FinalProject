@@ -317,7 +317,7 @@ namespace SetSail.Areas.Administrator.Controllers
                     string pic1Name = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + des.Pic1File.FileName;
                     string pic1Path = Path.Combine(Server.MapPath("~/Uploads/"), pic1Name);
 
-                    string oldpic1Path = Path.Combine(Server.MapPath("~/Uploads/"), des.Pic1);
+                    string oldpic1Path = Path.Combine(Server.MapPath("~/Uploads/"), dess.Pic1);
                     System.IO.File.Delete(oldpic1Path);
 
                     des.Pic1File.SaveAs(pic1Path);
@@ -329,7 +329,7 @@ namespace SetSail.Areas.Administrator.Controllers
                     string pic1Name = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + des.Pic1File.FileName;
                     string pic1Path = Path.Combine(Server.MapPath("~/Uploads/"), pic1Name);
 
-                    string oldpic1Path = Path.Combine(Server.MapPath("~/Uploads/"), des.Pic1);
+                    string oldpic1Path = Path.Combine(Server.MapPath("~/Uploads/"), dess.Pic1);
                     System.IO.File.Delete(oldpic1Path);
 
                     des.Pic1File.SaveAs(pic1Path);
@@ -341,7 +341,7 @@ namespace SetSail.Areas.Administrator.Controllers
                     string pic2Name = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + des.Pic2File.FileName;
                     string pic2Path = Path.Combine(Server.MapPath("~/Uploads/"), pic2Name);
 
-                    string oldpic2Path = Path.Combine(Server.MapPath("~/Uploads/"), des.Pic2);
+                    string oldpic2Path = Path.Combine(Server.MapPath("~/Uploads/"), dess.Pic2);
                     System.IO.File.Delete(oldpic2Path);
 
                     des.Pic2File.SaveAs(pic2Path);
@@ -352,7 +352,7 @@ namespace SetSail.Areas.Administrator.Controllers
                     string pic3Name = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + des.Pic3File.FileName;
                     string pic3Path = Path.Combine(Server.MapPath("~/Uploads/"), pic3Name);
 
-                    string oldpic3Path = Path.Combine(Server.MapPath("~/Uploads/"), des.Pic3);
+                    string oldpic3Path = Path.Combine(Server.MapPath("~/Uploads/"), dess.Pic3);
                     System.IO.File.Delete(oldpic3Path);
 
                     des.Pic3File.SaveAs(pic3Path);
@@ -363,7 +363,7 @@ namespace SetSail.Areas.Administrator.Controllers
                     string pic4Name = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + des.Pic4File.FileName;
                     string pic4Path = Path.Combine(Server.MapPath("~/Uploads/"), pic4Name);
 
-                    string oldpic4Path = Path.Combine(Server.MapPath("~/Uploads/"), des.Pic4);
+                    string oldpic4Path = Path.Combine(Server.MapPath("~/Uploads/"), dess.Pic4);
                     System.IO.File.Delete(oldpic4Path);
 
                     des.Pic4File.SaveAs(pic4Path);
@@ -374,7 +374,7 @@ namespace SetSail.Areas.Administrator.Controllers
                     string pic5Name = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + des.Pic5File.FileName;
                     string pic5Path = Path.Combine(Server.MapPath("~/Uploads/"), pic5Name);
 
-                    string oldpic5Path = Path.Combine(Server.MapPath("~/Uploads/"), des.Pic5);
+                    string oldpic5Path = Path.Combine(Server.MapPath("~/Uploads/"), dess.Pic5);
                     System.IO.File.Delete(oldpic5Path);
 
                     des.Pic5File.SaveAs(pic5Path);
@@ -385,7 +385,7 @@ namespace SetSail.Areas.Administrator.Controllers
                     string pic6Name = DateTime.Now.ToString("ddMMyyyyHHmmssfff") + des.Pic6File.FileName;
                     string pic6Path = Path.Combine(Server.MapPath("~/Uploads/"), pic6Name);
 
-                    string oldpic6Path = Path.Combine(Server.MapPath("~/Uploads/"), des.Pic6);
+                    string oldpic6Path = Path.Combine(Server.MapPath("~/Uploads/"), dess.Pic6);
                     System.IO.File.Delete(oldpic6Path);
 
                     des.Pic6File.SaveAs(pic6Path);
@@ -415,7 +415,56 @@ namespace SetSail.Areas.Administrator.Controllers
             {
                 return HttpNotFound();
             }
+            if (des.BgImageFile != null)
+            {
+                string bgoldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), des.BgImage);
+                System.IO.File.Delete(bgoldImagePath);
+            }
 
+            if (des.SlideImageFile != null)
+            {
+                string soldImagePath = Path.Combine(Server.MapPath("~/Uploads/"), des.SliderImage);
+                System.IO.File.Delete(soldImagePath);
+            }
+
+
+            if (des.Pic1File != null)
+            {
+                string oldpic1Path = Path.Combine(Server.MapPath("~/Uploads/"), des.Pic1);
+                System.IO.File.Delete(oldpic1Path);
+            }
+
+            if (des.Pic1File != null)
+            {
+                string oldpic1Path = Path.Combine(Server.MapPath("~/Uploads/"), des.Pic1);
+                System.IO.File.Delete(oldpic1Path);
+            }
+
+            if (des.Pic2File != null)
+            {
+                string oldpic2Path = Path.Combine(Server.MapPath("~/Uploads/"), des.Pic2);
+                System.IO.File.Delete(oldpic2Path);
+            }
+            if (des.Pic3File != null)
+            {
+                string oldpic3Path = Path.Combine(Server.MapPath("~/Uploads/"), des.Pic3);
+                System.IO.File.Delete(oldpic3Path);
+            }
+            if (des.Pic4File != null)
+            {
+                string oldpic4Path = Path.Combine(Server.MapPath("~/Uploads/"), des.Pic4);
+                System.IO.File.Delete(oldpic4Path);
+            }
+            if (des.Pic5File != null)
+            {
+                string oldpic5Path = Path.Combine(Server.MapPath("~/Uploads/"), des.Pic5);
+                System.IO.File.Delete(oldpic5Path);
+            }
+            if (des.Pic6File != null)
+            {
+                string oldpic6Path = Path.Combine(Server.MapPath("~/Uploads/"), des.Pic6);
+                System.IO.File.Delete(oldpic6Path);
+            }
             db.Destinations.Remove(des);
             db.SaveChanges();
 
@@ -817,12 +866,20 @@ namespace SetSail.Areas.Administrator.Controllers
         }
         public ActionResult Delete(int id)
         {
-            Tour tour = db.Tours.Find(id);
+            Tour tour = db.Tours.Include("TourImages").FirstOrDefault(t=>t.Id==id);
             if (tour == null)
             {
                 return HttpNotFound();
             }
+            foreach (var image in db.TourImages.Where(ti=>ti.TourId==id).ToList())
+            {
+                string imagePath = Path.Combine(Server.MapPath("~/Uploads"), image.ImageName);
 
+                System.IO.File.Delete(imagePath);
+                db.TourImages.Remove(image);
+            }
+
+            db.SaveChanges();
             db.Tours.Remove(tour);
             db.SaveChanges();
 

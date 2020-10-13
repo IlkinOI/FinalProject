@@ -146,6 +146,7 @@
                                         <div class="img">
                                             <a href="@Url.Action("DestinationDetails","Tour", new { id=des.Id})"><img src="~/Uploads/@des.SliderImage" alt=""></a>
                                         </div>
+                                        <a href="@Url.Action("DestinationDetails","Tour", new { id=des.Id})" class="dark"></a>
                                         <div class="title">
                                             <p style="font-family: Satisfy;"> Including Travel Types</p>
                                             @foreach (var item in des.DesToTypes)

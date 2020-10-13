@@ -82,7 +82,7 @@
                                     <div class="reviews">
                                         <div class="span">
                                             <span><i class="far fa-comment"></i></span>
-                                            <span>@(tour.TourReviews!=null?tour.TourReviews.Count.ToString():"0")</span>
+                                            <span>@(tour.TourReviews!=null?tour.TourReviews.Count.ToString("0"):"0")</span>
                                         </div>
                                         <div class="span">
                                             <span><i class="fas fa-user"></i></span>
@@ -230,7 +230,7 @@
         <div class="row">
             @foreach (var man in Model.Teams.Where(t => t.Position.Name == "Winter Quide"))
             {
-                <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="team">
                         <div class="img">
                             <img src="~/Uploads/@man.Photo" alt="">
@@ -289,6 +289,7 @@
                                 <div class="img">
                                     <a href="@Url.Action("DestinationDetails","Tour", new {id=des.Id })"><img src="~/Uploads/@des.Pic6" alt=""></a>
                                 </div>
+                                <a href="@Url.Action("DestinationDetails","Tour", new {id=des.Id })" class="dark"></a>
                                 <div class="name">
                                     <a href="@Url.Action("DestinationDetails","Tour", new {id=des.Id })">
                                         <h5>@des.Name</h5>

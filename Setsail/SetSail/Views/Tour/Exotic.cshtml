@@ -99,6 +99,7 @@
                                 <div class="img">
                                     <a href="@Url.Action("DestinationDetails","Tour", new {id=des.Id })"><img src="~/Uploads/@des.Pic6" alt=""></a>
                                 </div>
+                                <a href="@Url.Action("DestinationDetails","Tour", new {id=des.Id })" class="dark"></a>
                                 <div class="name">
                                     <a href="@Url.Action("DestinationDetails","Tour", new {id=des.Id })">
                                         <h5>@des.Name</h5>
@@ -127,6 +128,7 @@
                             <div class="BgImg">
                                 <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"><img src="~/Uploads/@tour.FrontImage" alt=""></a>
                             </div>
+                            <a href="@Url.Action("TourDetailIndex","Tour", new {id=tour.Id })" class="dark"></a>
                             <div class="info">
                                 <div class="name">
                                     <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})">

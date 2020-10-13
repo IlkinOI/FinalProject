@@ -91,28 +91,28 @@
 <section id="Details">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="item">
                     <img src="/Front/img/cities/icon1.png" alt="">
                     <h6>Restaurants</h6>
                     <p class="text">Aenean commodo ligula eget dolor. Lorem ipsum</p>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="item">
                     <img src="/Front/img/cities/icon2.png" alt="">
                     <h6>Sightseeing</h6>
                     <p class="text">Aenean commodo ligula eget dolor. Lorem ipsum</p>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="item">
                     <img src="/Front/img/cities/icon3.png" alt="">
                     <h6>Shops & Boutiques</h6>
                     <p class="text">Aenean commodo ligula eget dolor. Lorem ipsum</p>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="item">
                     <img src="/Front/img/cities/icon4.png" alt="">
                     <h6>Where to Stay</h6>
@@ -134,11 +134,12 @@
                     count--;
                     if (count >= 0)
                     {
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="tourCity">
                                 <div class="BgImg">
                                     <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"><img src="~/Uploads/@tour.FrontImage" alt=""></a>
                                 </div>
+                                <a href="@Url.Action("TourDetailIndex","Tour", new {id=tour.Id })" class="dark"></a>
                                 <div class="info">
                                     <div class="name">
                                         <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})">
@@ -236,7 +237,7 @@
         <div class="row">
             @foreach (var man in Model.Teams.Where(t => t.Position.Name == "Winter Quide"))
             {
-                <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="team">
                         <div class="img">
                             <img src="~/Uploads/@man.Photo" alt="">

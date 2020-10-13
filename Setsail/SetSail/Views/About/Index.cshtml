@@ -186,6 +186,7 @@
                         <div class="BgImg">
                             <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"><img src="~/Uploads/@tour.FrontImage" alt=""></a>
                         </div>
+                        <a href="@Url.Action("TourDetailIndex","Tour", new {id=tour.Id })" class="dark"></a>
                         <div class="info">
                             <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})">
                                 <p>@tour.Name</p>
