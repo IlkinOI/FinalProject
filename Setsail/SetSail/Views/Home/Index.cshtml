@@ -113,9 +113,8 @@
                         <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination1.Id })" class="dark"></a>
                     </div>
                     <div class="cname">
-                        <h5>
-                            @Model.Destination1.Name
-                        </h5>
+                        <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination1.Id })"><h5>@Model.Destination1.Name</h5>
+                        </a>
                     </div>
 
                 </div>
@@ -178,9 +177,11 @@
                         <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination2.Id })" class="dark"></a>
                     </div>
                     <div class="cname">
-                        <h5>
-                            @Model.Destination2.Name
-                        </h5>
+                        <div class="cname">
+                            <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination2.Id })">
+                                <h5>@Model.Destination2.Name</h5>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -191,9 +192,11 @@
                         <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination3.Id })" class="dark"></a>
                     </div>
                     <div class="cname">
-                        <h5>
-                            @Model.Destination3.Name
-                        </h5>
+                        <div class="cname">
+                            <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination3.Id })">
+                                <h5>@Model.Destination3.Name</h5>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

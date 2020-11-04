@@ -27,7 +27,8 @@ namespace SetSail.Controllers
                           (!string.IsNullOrEmpty(search) ? b.TopText.Contains(search) : true) ||
                           (!string.IsNullOrEmpty(search) ? b.Text1.Contains(search) : true) ||
                           (!string.IsNullOrEmpty(search) ? b.Text2.Contains(search) : true) ||
-                          (!string.IsNullOrEmpty(search) ? b.Text3.Contains(search) : true))
+                          (!string.IsNullOrEmpty(search) ? b.Text3.Contains(search) : true) ||
+                          (!string.IsNullOrEmpty(search) ? b.User.Fullname.Contains(search) : true))
                           .OrderByDescending(o => o.Id).Skip((page - 1) * 3).Take(3).ToList();
             blogs.LatestTours = db.Tours.OrderByDescending(t => t.Id).Take(8).ToList();
             blogs.CurrentPage = page;

@@ -467,8 +467,8 @@ a {
         }
 
             #barRes .use .userImage img {
-                margin-left: 15px;
                 width: 100%;
+                object-fit:cover;
             }
 
         #barRes .use .lo {
@@ -1459,7 +1459,8 @@ a {
             bottom: 0;
         }
 
-            #Tours .tourCountry .cname h5 {
+            
+            #Tours .tourCountry .cname a h5 {
                 font-family: Satisfy;
                 color: white;
                 font-weight: 500;
@@ -1467,6 +1468,9 @@ a {
                 font-size: 50px;
                 display: block;
                 text-shadow: 3px 2px 2px #086d70;
+            }
+            #Tours .tourCountry .cname a:hover {
+                text-decoration: none;
             }
 
     #Tours .tourCity {
