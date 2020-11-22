@@ -70,43 +70,40 @@
             <div class="col-lg-12">
                 <div class="winterCarousel">
                     <div class="owl-carousel owl-theme">
-                        
-                        @foreach (var dc in Model.DesToCats)
+
+                        @foreach (var tour in Model.Tours.Where(t => t.TourCategory.Name == "Winter"))
                         {
-                            foreach (var tour in Model.Tours.Where(t => t.TourCity.DestinationId == dc.DestinationId))
-                            {
-                                <div class="item">
-                                    <div class="img">
-                                        <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"><img src="~/Uploads/@tour.FrontImage" alt=""></a>
+                            <div class="item">
+                                <div class="img">
+                                    <a href="@Url.Action("TourDetailIndex", "Tour", new { id = tour.Id })"><img src="~/Uploads/@tour.FrontImage" alt=""></a>
+                                </div>
+                                <div class="reviews">
+                                    <div class="span">
+                                        <span><i class="far fa-comment"></i></span>
+                                        <span>@(tour.TourReviews != null ? tour.TourReviews.Count.ToString("0") : "0")</span>
                                     </div>
-                                    <div class="reviews">
-                                        <div class="span">
-                                            <span><i class="far fa-comment"></i></span>
-                                            <span>@(tour.TourReviews!=null?tour.TourReviews.Count.ToString("0"):"0")</span>
-                                        </div>
-                                        <div class="span">
-                                            <span><i class="fas fa-user"></i></span>
-                                            <span>@tour.TourDates.FirstOrDefault(d => d.TourId == tour.Id).TicketsNum B/L</span>
-                                        </div>
-                                        <div class="span">
-                                            <span><i class="fas fa-map-marker-alt"></i></span>
-                                            <a href="@Url.Action("DestinationDetails","Tour", new {id=tour.TourCity.DestinationId })"><span>@tour.TourCity.Destination.Name</span></a>
-                                        </div>
+                                    <div class="span">
+                                        <span><i class="fas fa-user"></i></span>
+                                        <span>@tour.TourDates.FirstOrDefault(d => d.TourId == tour.Id).TicketsNum B/L</span>
                                     </div>
-                                    <div class="info">
-                                        <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"> <span>@tour.TourCity.Name</span> </a>
-                                        <p>
-                                            @(tour.About.Length>50?tour.About.Substring(0,50)+"...":tour.About)
-                                        </p>
-                                        <div class="details">
-                                            <span class="price">$@tour.Price.ToString("0")</span>
-                                            <span class="star"><i class="fas fa-star-half-alt"></i></span>
-                                            <span class="rating">5.0</span>
-                                            <span class="expression">Good</span>
-                                        </div>
+                                    <div class="span">
+                                        <span><i class="fas fa-map-marker-alt"></i></span>
+                                        <a href="@Url.Action("DestinationDetails", "Tour", new { id = tour.TourCity.DestinationId })"><span>@tour.TourCity.Destination.Name</span></a>
                                     </div>
                                 </div>
-                            }
+                                <div class="info">
+                                    <a href="@Url.Action("TourDetailIndex", "Tour", new { id = tour.Id })"> <span>@tour.TourCity.Name</span> </a>
+                                    <p>
+                                        @(tour.About.Length > 50 ? tour.About.Substring(0, 50) + "..." : tour.About)
+                                    </p>
+                                    <div class="details">
+                                        <span class="price">$@tour.Price.ToString("0")</span>
+                                        <span class="star"><i class="fas fa-star-half-alt"></i></span>
+                                        <span class="rating">5.0</span>
+                                        <span class="expression">Good</span>
+                                    </div>
+                                </div>
+                            </div>
                         }
                     </div>
                 </div>
@@ -148,7 +145,7 @@
                     </p>
                 </div>
                 <div class="button">
-                    <a href="@Url.Action("Search","Tour")">VIEW MORE</a>
+                    <a href="@Url.Action("Search", "Tour")">VIEW MORE</a>
                 </div>
             </div>
         </div>
@@ -190,7 +187,7 @@
                                 </div>
                                 <div class="info">
                                     <h4 class="tour">
-                                        <a href="@Url.Action("TourDetailIndex","Tour", new {id=item.TourId })">@item.Tour.Name</a>
+                                        <a href="@Url.Action("TourDetailIndex", "Tour", new { id = item.TourId })">@item.Tour.Name</a>
                                     </h4>
                                     @{
                                         decimal total = (decimal)((item.Rating + item.Comfort + item.Food + item.Hospitality + item.Hygiene + item.Reception) / 6.0);
@@ -209,7 +206,7 @@
                                     }
                                     <div class="text">
                                         <p>
-                                            @(item.Message.Length>20? item.Message.Substring(0,20)+"...":item.Message)
+                                            @(item.Message.Length > 20 ? item.Message.Substring(0, 20) + "..." : item.Message)
                                         </p>
                                     </div>
                                     <h6 class="fullname">
@@ -217,7 +214,7 @@
                                     </h6>
                                 </div>
                             </div>
-                        }
+                                        }
                     </div>
                 </div>
             </div>
@@ -237,7 +234,7 @@
                         </div>
                         <div class="info disappear">
                             <h6>@man.Fullname</h6>
-                            <p class="p">@(man.About.Length>50?man.About.Substring(0,50)+"...":man.About)</p>
+                            <p class="p">@(man.About.Length > 50 ? man.About.Substring(0, 50) + "..." : man.About)</p>
                             <div class="socials">
                                 @foreach (var social in man.TeamSocials)
                                 {
@@ -280,9 +277,10 @@
                 </div>
             </div>
             <div class="wrap">
-                @foreach (var cat in Model.DesToCats)
-                {
-                    foreach (var des in Model.Destinations.Where(d => d.Id == cat.DestinationId))
+                @foreach (var tour in Model.Tours.Where(t=>t.TourCategory.Name == "Winter"))
+                { 
+
+                    foreach (var des in Model.Destinations.Where(d=>d.Id==tour.TourCity.DestinationId).ToList().Distinct())
                     {
                         <div class="col-lg-4">
                             <div class="destination">
@@ -298,7 +296,6 @@
                             </div>
                         </div>
                     }
-
                 }
             </div>
         </div>

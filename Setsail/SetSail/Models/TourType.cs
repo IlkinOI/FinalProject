@@ -11,6 +11,6 @@ namespace SetSail.Models
         public int Id { get; set; }
         [Required, MaxLength(30)]
         public string Name { get; set; }
-        public List<DesToType> DesToTypes { get; set; }
+        public List<Tour> Tours { get; set; }
     }
 }

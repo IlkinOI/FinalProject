@@ -148,11 +148,6 @@
                                         </div>
                                         <a href="@Url.Action("DestinationDetails","Tour", new { id=des.Id})" class="dark"></a>
                                         <div class="title">
-                                            <p style="font-family: Satisfy;"> Including Travel Types</p>
-                                            @foreach (var item in des.DesToTypes)
-                                            {
-                                                <h4>@item.TourType.Name</h4>
-                                            }
                                             <h2>@des.Name</h2>
                                         </div>
                                     </div>

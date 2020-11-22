@@ -16,7 +16,31 @@
                 <label>Tour City</label>
                 <select class="form-control" name="TourCityId">
                     <option value="value">Choose</option>
+                    @foreach (var item in ViewBag.Cities)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <label>Tour Category</label>
+                <select class="form-control" name="TourCategoryId">
+                    <option value="value">Choose</option>
                     @foreach (var item in ViewBag.Categories)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+         <div class="form-group">
+            <div class="col-md-10">
+                <label>Tour Type</label>
+                <select class="form-control" name="TourTypeId">
+                    <option value="value">Choose</option>
+                    @foreach (var item in ViewBag.Types)
                     {
                         <option value="@item.Id">@item.Name</option>
                     }
@@ -81,15 +105,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DepartureTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.DepartureTimes, new { @class = "form-control tmpick" })
-                @Html.ValidationMessageFor(model => model.DepartureTimes, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.DepartureTime, new { @class = "form-control tmpick" })
+                @Html.ValidationMessageFor(model => model.DepartureTime, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.ReturnTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.ReturnTimes, new { @class = "form-control tmpick" })
-                @Html.ValidationMessageFor(model => model.ReturnTimes, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.ReturnTime, new { @class = "form-control tmpick" })
+                @Html.ValidationMessageFor(model => model.ReturnTime, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">

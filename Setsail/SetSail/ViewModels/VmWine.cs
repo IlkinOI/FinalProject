@@ -10,6 +10,5 @@ namespace SetSail.ViewModels
     {
         public WinePage WinePage { get; set; }
         public List<Tour> Tours { get; set; }
-        public List<DesToCat> DesToCats { get; set; }
     }
 }

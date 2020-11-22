@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -49,10 +48,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -136,6 +135,7 @@
     <Compile Include="Areas\Administrator\Controllers\ContactController.cs" />
     <Compile Include="Areas\Administrator\Controllers\HomeController.cs" />
     <Compile Include="Areas\Administrator\Controllers\PageController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\ShopController.cs" />
     <Compile Include="Areas\Administrator\Controllers\TeamController.cs" />
     <Compile Include="Areas\Administrator\Controllers\TourController.cs" />
     <Compile Include="Areas\Administrator\Filters\filterAdmin.cs" />
@@ -144,6 +144,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\TourController.cs" />
     <Compile Include="DAL\SetSailContext.cs" />
     <Compile Include="Filters\filterUser.cs" />
@@ -242,6 +243,30 @@
     <Compile Include="Migrations\202009231903269_usls.designer.cs">
       <DependentUpon>202009231903269_usls.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011071445104_dbchange.cs" />
+    <Compile Include="Migrations\202011071445104_dbchange.designer.cs">
+      <DependentUpon>202011071445104_dbchange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011081605318_nulle.cs" />
+    <Compile Include="Migrations\202011081605318_nulle.designer.cs">
+      <DependentUpon>202011081605318_nulle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011140810561_des.cs" />
+    <Compile Include="Migrations\202011140810561_des.designer.cs">
+      <DependentUpon>202011140810561_des.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011141935590_product.cs" />
+    <Compile Include="Migrations\202011141935590_product.designer.cs">
+      <DependentUpon>202011141935590_product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011152057200_prode.cs" />
+    <Compile Include="Migrations\202011152057200_prode.Designer.cs">
+      <DependentUpon>202011152057200_prode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011152138342_rating.cs" />
+    <Compile Include="Migrations\202011152138342_rating.Designer.cs">
+      <DependentUpon>202011152138342_rating.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\About.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -258,14 +283,16 @@
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\DayInclude.cs" />
     <Compile Include="Models\Destination.cs" />
-    <Compile Include="Models\DesToCat.cs" />
-    <Compile Include="Models\DesToType.cs" />
     <Compile Include="Models\ExoticPage.cs" />
     <Compile Include="Models\Faq.cs" />
     <Compile Include="Models\HomePage.cs" />
     <Compile Include="Models\Include.cs" />
     <Compile Include="Models\NotInclude.cs" />
     <Compile Include="Models\Position.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductCategory.cs" />
+    <Compile Include="Models\ProductImage.cs" />
+    <Compile Include="Models\ProductReview.cs" />
     <Compile Include="Models\SummerPage.cs" />
     <Compile Include="Models\TeamSocial.cs" />
     <Compile Include="Models\Subscription.cs" />
@@ -305,6 +332,7 @@
     <Content Include="Areas\Administrator\Front\img\login.jpg" />
     <Content Include="Areas\Administrator\Front\img\register.jpg" />
     <Content Include="Areas\Administrator\Front\img\undraw_posting_photo.svg" />
+    <Content Include="Areas\Administrator\Front\js\ajax.js" />
     <Content Include="Areas\Administrator\Front\js\demo\chart-area-demo.js" />
     <Content Include="Areas\Administrator\Front\js\demo\chart-bar-demo.js" />
     <Content Include="Areas\Administrator\Front\js\demo\chart-pie-demo.js" />
@@ -2348,12 +2376,13 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrator\Data\" />
+    <Folder Include="Areas\Administrator\Views\Product\" />
     <Folder Include="Uploads\" />
+    <Folder Include="Views\Shop\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Front\css\main.css.map" />
@@ -2572,12 +2601,6 @@
     <Content Include="Areas\Administrator\Views\Tour\DestinationIndex.cshtml" />
     <Content Include="Areas\Administrator\Views\Tour\DestinationCreate.cshtml" />
     <Content Include="Areas\Administrator\Views\Tour\DestinationUpdate.cshtml" />
-    <Content Include="Areas\Administrator\Views\Tour\DesToCatIndex.cshtml" />
-    <Content Include="Areas\Administrator\Views\Tour\DesToCatCreate.cshtml" />
-    <Content Include="Areas\Administrator\Views\Tour\DesToCatUpdate.cshtml" />
-    <Content Include="Areas\Administrator\Views\Tour\DesToTypeIndex.cshtml" />
-    <Content Include="Areas\Administrator\Views\Tour\DesToTypeCreate.cshtml" />
-    <Content Include="Areas\Administrator\Views\Tour\DesToTypeUpdate.cshtml" />
     <Content Include="Areas\Administrator\Views\Tour\TourCityIndex.cshtml" />
     <Content Include="Areas\Administrator\Views\Tour\TourCityCreate.cshtml" />
     <Content Include="Areas\Administrator\Views\Tour\TourCityUpdate.cshtml" />
@@ -2631,6 +2654,12 @@
     <Content Include="Areas\Administrator\Views\Tour\TourDatesIndex.cshtml" />
     <Content Include="Areas\Administrator\Views\Tour\TourDatesCreate.cshtml" />
     <Content Include="Areas\Administrator\Views\Tour\TourDatesUpdate.cshtml" />
+    <Content Include="Areas\Administrator\Views\Shop\ProductCategoryIndex.cshtml" />
+    <Content Include="Areas\Administrator\Views\Shop\ProductCategoryCreate.cshtml" />
+    <Content Include="Areas\Administrator\Views\Shop\ProductCategoryUpdate.cshtml" />
+    <Content Include="Areas\Administrator\Views\Shop\ProductIndex.cshtml" />
+    <Content Include="Areas\Administrator\Views\Shop\ProductCreate.cshtml" />
+    <Content Include="Areas\Administrator\Views\Shop\ProductUpdate.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\BlogDetailsIndex.cshtml" />
@@ -2650,6 +2679,7 @@
     <Content Include="Views\Blog\Create.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Blog\Update.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -2724,6 +2754,24 @@
     <EmbeddedResource Include="Migrations\202009231903269_usls.resx">
       <DependentUpon>202009231903269_usls.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011071445104_dbchange.resx">
+      <DependentUpon>202011071445104_dbchange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011081605318_nulle.resx">
+      <DependentUpon>202011081605318_nulle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011140810561_des.resx">
+      <DependentUpon>202011140810561_des.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011141935590_product.resx">
+      <DependentUpon>202011141935590_product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011152057200_prode.resx">
+      <DependentUpon>202011152057200_prode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011152138342_rating.resx">
+      <DependentUpon>202011152138342_rating.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -2759,10 +2807,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

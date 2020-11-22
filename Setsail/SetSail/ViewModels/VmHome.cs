@@ -12,18 +12,12 @@ namespace SetSail.ViewModels
         public WinterPage WinterPage { get; set; }
         public CityPage CityPage { get; set; }
         public List<Destination> Destinations { get; set; } 
-        public List<DesToCat> wDesToCats { get; set; } 
-        public List<DesToCat> eDesToCats { get; set; }
         public Destination Destination1 { get; set; } 
         public Destination Destination2 { get; set; }
         public Destination Destination3 { get; set; }
-        public List<Tour> ToursDes1 { get; set; }
-        public List<Tour> ToursDes2 { get; set; }
-        public List<Tour> ToursDes3 { get; set; }
-        public Tour TourParis { get; set; } 
         public List<Tour> Tours { get; set; }
         public List<Blog> Blogs { get; set; } //testmonial//
         public List<TourReview> TourReviews { get; set; } //parallax tour reviews//
-        public Tour TourTaipei { get; set; } // best offer //
+        public Tour BestTour { get; set; } // best offer //
     }
 }

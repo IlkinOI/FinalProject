@@ -17,7 +17,16 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.TourCategory.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TourType.Name)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.TourCity.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TourCity.Destination.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FrontImage)
@@ -47,6 +56,9 @@
             @Html.DisplayNameFor(model => model.ReturnTime)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.TourDates)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.DressCode)
         </th>
         <th>
@@ -70,7 +82,16 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.TourCategory.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TourType.Name)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.TourCity.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TourCity.Destination.Name)
         </td>
         <td>
             <img src="~/Uploads/@item.FrontImage" alt="@item.FrontImage" height="100" />
@@ -101,6 +122,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ReturnTime)
+        </td>
+        <td>
+            @foreach (var date in item.TourDates)
+            {
+                <p>@date.DateFrom.ToString("dd.MM.yyyy") - @date.DateTo.ToString("dd.MM.yyyy")</p>
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DressCode)

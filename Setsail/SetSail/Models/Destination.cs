@@ -58,8 +58,6 @@ namespace SetSail.Models
         public HttpPostedFileBase Pic6File { get; set; }
         [Required, MaxLength(250)]
         public string Video { get; set; }
-        public List<DesToCat> DesToCats { get; set; }
-        public List<DesToType> DesToTypes { get; set; }
         public List<TourCity> TourCities { get; set; }
     }
 }

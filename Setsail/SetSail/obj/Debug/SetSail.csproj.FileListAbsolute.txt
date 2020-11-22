@@ -105,3 +105,9 @@ C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.csprojAssemblyR
 C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.Migrations.upd2.resources
 C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.Migrations.dateid.resources
 C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.Migrations.usls.resources
+C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.Migrations.dbchange.resources
+C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.Migrations.nulle.resources
+C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.Migrations.des.resources
+C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.Migrations.product.resources
+C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.Migrations.prode.resources
+C:\Users\Ilkin\Desktop\Setsail\SetSail\SetSail\obj\Debug\SetSail.Migrations.rating.resources

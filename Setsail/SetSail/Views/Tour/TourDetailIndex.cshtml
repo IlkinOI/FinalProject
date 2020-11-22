@@ -106,11 +106,11 @@
                                 </tr>
                                 <tr>
                                     <th scope="row" colspan="2">Departure Time </th>
-                                    <td colspan="2">Approximately @Model.Tour.DepartureTime</td>
+                                    <td colspan="2">Approximately <span class="mainColor">@Model.Tour.DepartureTime.ToString(@"hh\:mm")</span></td>
                                 </tr>
                                 <tr>
                                     <th scope="row" colspan="2">Return Time</th>
-                                    <td colspan="2">Approximately @Model.Tour.ReturnTime</td>
+                                    <td colspan="2">Approximately <span class="mainColor">@Model.Tour.ReturnTime.ToString(@"hh\:mm")</span></td>
                                 </tr>
                                 <tr>
                                     <th scope="row" colspan="2">Dress Code</th>

@@ -23,5 +23,6 @@ namespace SetSail.Models
         [NotMapped]
         public HttpPostedFileBase PhotoFile { get; set; }
         public List<Tour> Tours { get; set; }
+        public List<Product> Products { get; set; }
     }
 }

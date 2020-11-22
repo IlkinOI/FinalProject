@@ -184,6 +184,10 @@ namespace SetSail.Areas.Administrator.Controllers
                 homs.TopTitle2 = hom.TopTitle2;
                 homs.Title2 = hom.Title2;
                 homs.introText2 = hom.introText2;
+                homs.BestTourName = hom.BestTourName;
+                homs.Destination1 = hom.Destination1;
+                homs.Destination2 = hom.Destination2;
+                homs.Destination3 = hom.Destination3;
 
                 db.Entry(homs).State = EntityState.Modified;
                 db.SaveChanges();
@@ -452,6 +456,7 @@ namespace SetSail.Areas.Administrator.Controllers
                 sums.Title3 = sum.Title3;
                 sums.introText3 = sum.introText3;
                 sums.Video = sum.Video;
+                sums.BestTourName = sums.BestTourName;
 
                 db.Entry(sums).State = EntityState.Modified;
                 db.SaveChanges();

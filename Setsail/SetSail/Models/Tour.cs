@@ -29,10 +29,6 @@ namespace SetSail.Models
         public byte Age { get; set; }
         [Required, MaxLength(50)]
         public string DeparturePlace { get; set; }
-        [NotMapped]
-        public string DepartureTimes { get; set; }
-        [NotMapped]
-        public string ReturnTimes { get; set; }
         [Column(TypeName ="time")]
         public TimeSpan DepartureTime{ get; set; }
         [Column(TypeName = "time")]
@@ -45,8 +41,12 @@ namespace SetSail.Models
         [ForeignKey("Admin")]
         public int AdminId { get; set; }
         public int TourCityId { get; set; }
+        public int TourCategoryId { get; set; }
+        public int TourTypeId { get; set; }
         public Admin Admin { get; set; }
         public TourCity TourCity { get; set; }
+        public TourCategory TourCategory { get; set; }
+        public TourType TourType { get; set; }
         public List<Include> Includes { get; set; }
         public List<NotInclude> NotIncludes { get; set; }
         public List<Day> Days { get; set; }

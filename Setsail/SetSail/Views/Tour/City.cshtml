@@ -127,36 +127,32 @@
     <div class="container-fluid">
         <div class="row">
             @{ int count = 8;}
-            @foreach (var dc in Model.DesToCats)
+            @foreach (var tour in Model.Tours.Where(t => t.TourCategory.Name == "City"))
             {
-                foreach (var tour in Model.Tours.Where(t => t.TourCity.DestinationId == dc.DestinationId))
+                count--;
+                if (count >= 0)
                 {
-                    count--;
-                    if (count >= 0)
-                    {
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="tourCity">
-                                <div class="BgImg">
-                                    <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"><img src="~/Uploads/@tour.FrontImage" alt=""></a>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="tourCity">
+                            <div class="BgImg">
+                                <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"><img src="~/Uploads/@tour.FrontImage" alt=""></a>
+                            </div>
+                            <a href="@Url.Action("TourDetailIndex","Tour", new {id=tour.Id })" class="dark"></a>
+                            <div class="info">
+                                <div class="name">
+                                    <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})">
+                                        <p>@tour.Name @tour.TourCity.Name</p>
+                                    </a>
                                 </div>
-                                <a href="@Url.Action("TourDetailIndex","Tour", new {id=tour.Id })" class="dark"></a>
-                                <div class="info">
-                                    <div class="name">
-                                        <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})">
-                                            <p>@tour.Name @tour.TourCity.Name</p>
-                                        </a>
-                                    </div>
-                                    <div class="details">
-                                        <span class="star"><i class="fas fa-star-half-alt"></i></span>
-                                        <span class="rating">5.0</span>  <!--rating stuff-->
-                                        <span class="expression">Good</span>
-                                        <span class="price">$@tour.Price.ToString("0")</span>
-                                    </div>
+                                <div class="details">
+                                    <span class="star"><i class="fas fa-star-half-alt"></i></span>
+                                    <span class="rating">5.0</span>  <!--rating stuff-->
+                                    <span class="expression">Good</span>
+                                    <span class="price">$@tour.Price.ToString("0")</span>
                                 </div>
                             </div>
                         </div>
-                    }
-
+                    </div>
                 }
             }
 

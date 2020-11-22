@@ -109,18 +109,19 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="tourCountry">
                     <div class="BgImg">
-                        <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination1.Id })"><img src="~/Uploads/@Model.Destination1.Pic3" alt=""></a>
+                        <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination1.Id})"><img src="~/Uploads/@Model.Destination1.Pic3" alt=""></a>
                         <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination1.Id })" class="dark"></a>
                     </div>
                     <div class="cname">
-                        <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination1.Id })"><h5>@Model.Destination1.Name</h5>
+                        <a href="@Url.Action("DestinationDetails","Tour", new {id=Model.Destination1.Id })">
+                            <h5>@Model.Destination1.Name</h5>
                         </a>
                     </div>
 
                 </div>
             </div>
 
-            @foreach (var item in Model.ToursDes1.Take(3))
+            @foreach (var item in Model.Tours.Where(t=>t.TourCity.Destination.Id==Model.Destination1.Id).Take(3))
             {
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="tourCity">
@@ -145,7 +146,7 @@
                 </div>
             }
 
-            @foreach (var item in Model.ToursDes2.Take(3))
+            @foreach (var item in Model.Tours.Where(t => t.TourCity.Destination.Id == Model.Destination2.Id).Take(3))
             {
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="tourCity">
@@ -200,7 +201,7 @@
                     </div>
                 </div>
             </div>
-            @foreach (var item in Model.ToursDes3.Take(3))
+            @foreach (var item in Model.Tours.Where(t => t.TourCity.Destination.Id == Model.Destination3.Id).Take(3))
             {
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="tourCity">
@@ -228,24 +229,6 @@
     </div>
 </section>
 
-<section id="ourOffer">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="offer">
-                    <div class="upperTitle">
-                        <h3>
-                            Our Best Offer
-                        </h3>
-                    </div>
-                    <div class="img">
-                        <a href="@Url.Action("TourDetailIndex","Tour", new {id=Model.TourParis.Id })"><img src="~/Front/img/home/paris.png" alt=""></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <section id="parallaxCities" style="background-image: url(/Uploads/@Model.HomePage.ParallaxImage1);">
     <div class="container-fluid">
@@ -320,42 +303,39 @@
                 <div class="winterCarousel">
                     <!-- WINTER TOURS-->
                     <div class="owl-carousel owl-theme">
-                        @foreach (var dc in Model.wDesToCats)
+                        @foreach (var tour in Model.Tours.Where(t => t.TourCategory.Name == "Winter"))
                         {
-                            foreach (var tour in Model.Tours.Where(t => t.TourCity.DestinationId == dc.DestinationId))
-                            {
-                                <div class="item">
-                                    <div class="img">
-                                        <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"><img src="~/Uploads/@tour.FrontImage" alt=""></a>
+                            <div class="item">
+                                <div class="img">
+                                    <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"><img src="~/Uploads/@tour.FrontImage" alt=""></a>
+                                </div>
+                                <div class="reviews">
+                                    <div class="span">
+                                        <span><i class="far fa-comment"></i></span>
+                                        <span>@(tour.TourReviews!=null?tour.TourReviews.Count.ToString("0"):"0")</span>
                                     </div>
-                                    <div class="reviews">
-                                        <div class="span">
-                                            <span><i class="far fa-comment"></i></span>
-                                            <span>@(tour.TourReviews!=null?tour.TourReviews.Count.ToString("0"):"0")</span>
-                                        </div>
-                                        <div class="span">
-                                            <span><i class="fas fa-user"></i></span>
-                                            <span>@tour.TourDates.FirstOrDefault(d => d.TourId == tour.Id).TicketsNum B/L</span>
-                                        </div>
-                                        <div class="span">
-                                            <span><i class="fas fa-map-marker-alt"></i></span>
-                                            <a href="@Url.Action("DestinationDetails","Tour", new {id=tour.TourCity.DestinationId })"><span>@tour.TourCity.Destination.Name</span></a>
-                                        </div>
+                                    <div class="span">
+                                        <span><i class="fas fa-user"></i></span>
+                                        <span>@tour.TourDates.FirstOrDefault(d => d.TourId == tour.Id).TicketsNum B/L</span>
                                     </div>
-                                    <div class="info">
-                                        <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"> <span>@tour.TourCity.Name</span> </a>
-                                        <p>
-                                            @(tour.About.Length>50?tour.About.Substring(0,50)+"...":tour.About)
-                                        </p>
-                                        <div class="details">
-                                            <span class="price">$@tour.Price.ToString("0")</span>
-                                            <span class="star"><i class="fas fa-star-half-alt"></i></span>
-                                            <span class="rating">5.0</span>
-                                            <span class="expression">Good</span>
-                                        </div>
+                                    <div class="span">
+                                        <span><i class="fas fa-map-marker-alt"></i></span>
+                                        <a href="@Url.Action("DestinationDetails","Tour", new {id=tour.TourCity.DestinationId })"><span>@tour.TourCity.Destination.Name</span></a>
                                     </div>
                                 </div>
-                            }
+                                <div class="info">
+                                    <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"> <span>@tour.TourCity.Name</span> </a>
+                                    <p>
+                                        @(tour.About.Length>50?tour.About.Substring(0,50)+"...":tour.About)
+                                    </p>
+                                    <div class="details">
+                                        <span class="price">$@tour.Price.ToString("0")</span>
+                                        <span class="star"><i class="fas fa-star-half-alt"></i></span>
+                                        <span class="rating">5.0</span>
+                                        <span class="expression">Good</span>
+                                    </div>
+                                </div>
+                            </div>
                         }
                     </div>
                 </div>
@@ -425,38 +405,33 @@
             <div class="wrap">
                 <!-- EXOTIC TOURS-->
                 @{int counter = 3;}
-                @foreach (var dc in Model.eDesToCats)
+                @foreach (var tour in Model.Tours.Where(t => t.TourCategory.Name == "Exotic"))
                 {
-
-                    foreach (var tour in Model.Tours.Where(t => t.TourCity.DestinationId == dc.DestinationId))
+                    counter--;
+                    if (counter >= 0)
                     {
-                        counter--;
-                        if (counter >= 0)
-                        {
-                            <div class="col-lg-4">
-                                <div class="mediTour">
-                                    <div class="layer"></div>
-                                    <div class="img">
-                                        <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"><img src="~/Uploads/@tour.FrontImage" alt=""></a>
-                                    </div>
-                                    <a href="@Url.Action("TourDetailIndex","Tour", new {id=tour.Id })" class="dark"></a>
-                                    <div class="info">
-                                        <div class="name">
-                                            <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})">
-                                                <h6>@tour.Name</h6>
-                                            </a>
-                                        </div>
-                                        <div class="price">
-                                            <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})">
-                                                <h6>$@tour.Price.ToString("0")</h6>
-                                            </a>
-                                        </div>
-                                    </div>
-
+                        <div class="col-lg-4">
+                            <div class="mediTour">
+                                <div class="layer"></div>
+                                <div class="img">
+                                    <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})"><img src="~/Uploads/@tour.FrontImage" alt=""></a>
                                 </div>
-                            </div>
-                        }
+                                <a href="@Url.Action("TourDetailIndex","Tour", new {id=tour.Id })" class="dark"></a>
+                                <div class="info">
+                                    <div class="name">
+                                        <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})">
+                                            <h6>@tour.Name</h6>
+                                        </a>
+                                    </div>
+                                    <div class="price">
+                                        <a href="@Url.Action("TourDetailIndex","Tour",new { id=tour.Id})">
+                                            <h6>$@tour.Price.ToString("0")</h6>
+                                        </a>
+                                    </div>
+                                </div>
 
+                            </div>
+                        </div>
                     }
                 }
             </div>
@@ -578,10 +553,10 @@
             <div class="col-lg-4">
                 <div class="bestOffer">
                     <div class="bg">
-                        <a href="@Url.Action("TourDetailIndex","Tour", new {id=Model.TourTaipei.Id })"><img src="~/Front/img/home/bestofferimg1.jpg" alt=""></a>
-                        <a href="#" class="advert">
+                        <a href="@Url.Action("TourDetailIndex","Tour", new {id=Model.BestTour.Id })"><img src="~/Uploads/@Model.BestTour.FrontImage" alt=""></a>
+                        <a href="@Url.Action("TourDetailIndex","Tour", new {id=Model.BestTour.Id })" class="advert">
                             <p class="site">Setsail.com</p>
-                            <h5>Our Best Offer @Model.TourTaipei.Name</h5>
+                            <h5>Our Best Offer @Model.BestTour.Name</h5>
                         </a>
                     </div>
                 </div>

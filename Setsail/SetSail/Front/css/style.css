@@ -8,7 +8,9 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     transition: padding 0.2s linear;
 }
-
+.mainColor {
+    color: #3abdc1!important;
+}
 .mr10 {
     margin-right: 10px;
 }
@@ -1389,7 +1391,7 @@ a {
     display: flex;
     margin-bottom: 45px;
     background-color: white;
-    margin: 0px 70px 0px;
+    margin: 0px 70px 30px;
 }
 
     #Tours .slogan {
@@ -1727,10 +1729,13 @@ a {
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
         box-sizing: border-box;
         overflow: hidden;
+        margin-bottom:10px;
     }
 
         #winter .winterCarousel .owl-carousel .item .img {
             transition: all 0.5s linear;
+            overflow:hidden;
+            height:200px;
         }
 
             #winter .winterCarousel .owl-carousel .item .img:hover {
@@ -1738,6 +1743,10 @@ a {
                 transition: all 0.5s linear;
             }
 
+        #winter .winterCarousel .owl-carousel .item .img a img {
+            height:100%;
+            object-fit:cover;
+        }
         #winter .winterCarousel .owl-carousel .item .reviews {
             background-color: #3fd0d4;
             padding: 5px 10px;
@@ -2181,7 +2190,7 @@ a {
     }
 
         #Blog .bestOffer .bg {
-            width: 290px;
+            width: 315px;
         }
 
             #Blog .bestOffer .bg img {
@@ -3757,10 +3766,13 @@ a {
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
             box-sizing: border-box;
             overflow: hidden;
+            margin-bottom:10px;
         }
 
             #WinterItemsCarousel .winterCarousel .owl-carousel .item .img {
                 transition: all 0.5s linear;
+                height:230px;
+                overflow:hidden;
             }
 
                 #WinterItemsCarousel .winterCarousel .owl-carousel .item .img:hover {
@@ -3768,6 +3780,10 @@ a {
                     transition: all 0.5s linear;
                 }
 
+            #WinterItemsCarousel .winterCarousel .owl-carousel .item .img a img {
+                height:100%;
+                object-fit:cover;
+            }
             #WinterItemsCarousel .winterCarousel .owl-carousel .item .reviews {
                 background-color: #3fd0d4;
                 padding: 5px 10px;

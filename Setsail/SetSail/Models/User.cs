@@ -27,6 +27,7 @@ namespace SetSail.Models
         public List<ContactReply> ContactReplies { get; set; }
         public List<TourReview> TourReviews { get; set; }
         public List<BlogComment> BlogComments { get; set; }
+        public List<ProductReview> ProductReviews { get; set; }
         public List<Booking> Bookings { get; set; }
     }
 }

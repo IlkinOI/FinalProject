@@ -22,7 +22,8 @@ namespace SetSail.Controllers
             blogs.About = db.Abouts.FirstOrDefault();
             blogs.Blogs = db.Blogs.Include("User").Include("BlogComments")
                           .Where(b=>
-                          (!string.IsNullOrEmpty(search)? b.Name.Contains(search): true) || 
+                          (!string.IsNullOrEmpty(search)? b.Name.Contains(search): true) ||
+                          (!string.IsNullOrEmpty(search) ? b.BlogCategory.Name.Contains(search) : true) ||
                           (!string.IsNullOrEmpty(search) ? b.Quote.Contains(search) : true) ||
                           (!string.IsNullOrEmpty(search) ? b.TopText.Contains(search) : true) ||
                           (!string.IsNullOrEmpty(search) ? b.Text1.Contains(search) : true) ||

@@ -103,23 +103,22 @@
                 <div id="collapse6" class="collapse" aria-labelledby="heading6" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="@Url.Action("BookingIndex","Tour")">Bookings</a>
-                        <a class="collapse-item" href="@Url.Action("Index","Tour")">Tours</a>
-                        <a class="collapse-item" href="@Url.Action("TourDatesIndex","Tour")">Tours Dates</a>
-                        <a class="collapse-item" href="@Url.Action("TourImagesIndex","Tour")">Tour Images</a>
+                        <a class="collapse-item" href="@Url.Action("DestinationIndex","Tour")">Destinations</a>
+                        <a class="collapse-item" href="@Url.Action("TourCityIndex","Tour")">Tour Cities</a>
                         <a class="collapse-item" href="@Url.Action("TourCategoryIndex","Tour")">Tour Categories</a>
                         <a class="collapse-item" href="@Url.Action("TourTypeIndex","Tour")">Tour Types</a>
-                        <a class="collapse-item" href="@Url.Action("DestinationIndex","Tour")">Destinations</a>
-                        <a class="collapse-item" href="@Url.Action("DesToCatIndex","Tour")">Destination & Categories</a>
-                        <a class="collapse-item" href="@Url.Action("DesToTypeIndex","Tour")">Destination & Types</a>
-                        <a class="collapse-item" href="@Url.Action("TourCityIndex","Tour")">Tour Cities</a>
+                        <a class="collapse-item" href="@Url.Action("Index","Tour")">Tours</a>
+                        <a class="collapse-item" href="@Url.Action("TourDatesIndex","Tour")">Tours Dates</a>
                         <a class="collapse-item" href="@Url.Action("IncludeIndex","Tour")">Tour Includes</a>
                         <a class="collapse-item" href="@Url.Action("NotIncludeIndex","Tour")">Tour Not Includes</a>
                         <a class="collapse-item" href="@Url.Action("DayIndex","Tour")">Tour Days</a>
                         <a class="collapse-item" href="@Url.Action("DayIncludeIndex","Tour")">Tour Day Includes</a>
+                        <a class="collapse-item" href="@Url.Action("TourImagesIndex","Tour")">Tour Images</a>
                         <a class="collapse-item" href="@Url.Action("TourReviewIndex","Tour")">Tour Reviews</a>
                     </div>
                 </div>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse7" aria-expanded="true" aria-controls="collapse7">
                     <span>Team</span>
@@ -129,6 +128,20 @@
                         <a class="collapse-item" href="@Url.Action("PositionIndex","Team")">Team Positions</a>
                         <a class="collapse-item" href="@Url.Action("Index","Team")">Team</a>
                         <a class="collapse-item" href="@Url.Action("TeamSocialIndex","Team")">Team Socials</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse8" aria-expanded="true" aria-controls="collapse7">
+                    <span>Shop</span>
+                </a>
+                <div id="collapse8" class="collapse" aria-labelledby="heading8" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="@Url.Action("ProductCategoryIndex","Shop")">Product Categories</a>
+                        <a class="collapse-item" href="@Url.Action("ProductIndex","Shop")">Products</a>
+                        @*<a class="collapse-item" href="@Url.Action("ProductImageIndex","Shop")">Product Images</a>
+                        <a class="collapse-item" href="@Url.Action("ProductReviewIndex","Shop")">Product Reviews</a>*@
                     </div>
                 </div>
             </li>
@@ -236,7 +249,7 @@
     <script src="~/Areas/Administrator/Front/js/sb-admin-2.min.js"></script>
     <script src="~/Front/assets/dtp/bootstrap-datepicker.js"></script>
     <script src="~/Front/assets/tp/timepicker.js"></script>
-
+    <script src="~/Areas/Administrator/Front/js/ajax.js"></script>
     <script src="~/Areas/Administrator/Front/js/script.js"></script>
 </body>
 </html>

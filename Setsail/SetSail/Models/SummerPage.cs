@@ -34,6 +34,8 @@ namespace SetSail.Models
         public string Title4 { get; set; }
         [Required, MaxLength(150)]
         public string introText4 { get; set; }
+        [Required, MaxLength(30)]
+        public string BestTourName { get; set; }
         [MaxLength(250)]
         public string IntroImage1 { get; set; }
         [NotMapped]

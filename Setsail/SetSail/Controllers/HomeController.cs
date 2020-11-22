@@ -23,20 +23,14 @@ namespace SetSail.Controllers
             home.HomePage = db.HomePages.FirstOrDefault();
             home.WinterPage = db.WinterPages.FirstOrDefault();
             home.CityPage = db.CityPages.FirstOrDefault();
-            home.Destinations = db.Destinations.Include("DesToCats").Include("DesToTypes").ToList();
-            home.wDesToCats = db.DesToCats.Include("Destination").Include("TourCategory").Where(dc=>dc.TourCategory.Name=="Winter").ToList();
-            home.eDesToCats = db.DesToCats.Include("Destination").Include("TourCategory").Where(dc=>dc.TourCategory.Name=="Exotic").ToList();
-            home.Tours = db.Tours.Include("TourDates").Include("TourReviews").Include("TourCity").Include("TourCity.Destination").ToList();
+            home.Destinations = db.Destinations.ToList();
+            home.Tours = db.Tours.Include("TourCategory").Include("TourDates").Include("TourReviews").Include("TourCity").Include("TourCity.Destination").ToList();
             home.TourReviews = db.TourReviews.Include("User").Include("Tour").Include("Tour.TourCity").OrderByDescending(t=>t.Id).Take(9).ToList();
             home.Blogs = db.Blogs.Include("User").Include("BlogComments").ToList();
-            home.Destination1 = db.Destinations.FirstOrDefault(d=>d.Name == "Spain");
-            home.ToursDes1 = db.Tours.Include("TourImages").Include("TourCity").Where(t=>t.TourCity.DestinationId == home.Destination1.Id).ToList();
-            home.Destination2 = db.Destinations.FirstOrDefault(d => d.Name == "Taiwan");
-            home.ToursDes2 = db.Tours.Include("TourImages").Include("TourCity").Where(t => t.TourCity.DestinationId == home.Destination2.Id).ToList();
-            home.Destination3 = db.Destinations.FirstOrDefault(d => d.Name == "Italy");
-            home.ToursDes3 = db.Tours.Include("TourImages").Include("TourCity").Where(t => t.TourCity.DestinationId == home.Destination3.Id).ToList();
-            home.TourParis = db.Tours.Include("TourCity").FirstOrDefault(t => t.TourCity.Name == "Paris");
-            home.TourTaipei = db.Tours.Include("TourCity").FirstOrDefault(t => t.TourCity.Name == "Taipei");
+            home.Destination1 = db.Destinations.FirstOrDefault(d=>d.Name == db.HomePages.FirstOrDefault().Destination1);
+            home.Destination2 = db.Destinations.FirstOrDefault(d => d.Name == db.HomePages.FirstOrDefault().Destination2);
+            home.Destination3 = db.Destinations.FirstOrDefault(d => d.Name == db.HomePages.FirstOrDefault().Destination3);
+            home.BestTour = db.Tours.Include("TourCity").FirstOrDefault(t=>t.TourCity.Name == db.HomePages.FirstOrDefault().BestTourName.ToString());
 
             ViewBag.Home = true;
             ViewBag.Page = "Home";

@@ -12,7 +12,6 @@ namespace SetSail.ViewModels
         public List<Blog> Blogs { get; set; }
         public List<Tour> Tours { get; set; }
         public List<TourReview> TourReviews{ get; set; }
-        public List<DesToCat> DesToCats{ get; set; }
         public Tour BestTour { get; set; }
     }
 }

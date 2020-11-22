@@ -22,16 +22,15 @@ namespace SetSail.Controllers
                                   .Include("TourDates")
                                   .Include("TourCity")
                                   .Include("TourCity.Destination")
-                                  .Include("TourCity.Destination.DesToCats")
-                                  .Include("TourCity.Destination.DesToCats.TourCategory")
-                                  .Include("TourCity.Destination.DesToTypes")
-                                  .Include("TourCity.Destination.DesToTypes.TourType")
+                                  .Include("TourCategory")
+                                  .Include("TourType")
                                   .Where(t=>
                                   (!string.IsNullOrEmpty(search) ? t.Name.Contains(search) : true) ||
                                   (!string.IsNullOrEmpty(search) ? t.TourCity.Name.Contains(search) : true) ||
                                   (!string.IsNullOrEmpty(search) ? t.TourCity.Destination.Name.Contains(search) : true) ||
-                                  (!string.IsNullOrEmpty(search) ? t.TourCity.Destination.DesToCats.Any(dc => dc.TourCategory.Name.Contains(search)) : true) ||
-                                  (!string.IsNullOrEmpty(search) ? t.TourCity.Destination.DesToTypes.Any(dc => dc.TourType.Name.Contains(search)) : true)
+                                  (!string.IsNullOrEmpty(search) ? t.TourCategory.Name.Contains(search) : true) ||
+                                  (!string.IsNullOrEmpty(search) ? t.TourType.Name.Contains(search) : true) ||
+                                  (!string.IsNullOrEmpty(search) ? t.Price.ToString().Contains(search) : true)
                                   ).OrderBy(o => o.Id).Skip((page - 1) * 8).Take(8).ToList();
             model.LatestTours = db.Tours.OrderByDescending(t=>t.Id).Take(3).ToList();
             model.CurrentPage = page;
@@ -56,7 +55,7 @@ namespace SetSail.Controllers
         public ActionResult Destinations()
         {
             VmLayoutDesLog des = new VmLayoutDesLog();
-            des.Ddestinations = db.Destinations.Include("DesToTypes").Include("DesToTypes.TourType").ToList();
+            des.Ddestinations = db.Destinations.ToList();
             ViewBag.Destination = true;
             ViewBag.Page = "Destinations";
             return View(des);
@@ -75,11 +74,10 @@ namespace SetSail.Controllers
         {
             VmSummer summer = new VmSummer();
             summer.SummerPage = db.SummerPages.FirstOrDefault();
-            summer.DesToCats = db.DesToCats.Include("Destination").Include("TourCategory").Where(dc => dc.TourCategory.Name == "Summer").ToList();
-            summer.Tours = db.Tours.Include("TourCity").Include("TourCity.Destination").ToList();
+            summer.Tours = db.Tours.Include("TourCategory").Include("TourCity").Include("TourCity.Destination").ToList();
             summer.Blogs = db.Blogs.Include("User").Include("BlogComments").ToList();
             summer.TourReviews = db.TourReviews.Include("User").Include("Tour").Include("Tour.TourCity").ToList();
-            summer.BestTour = db.Tours.Include("TourCity").FirstOrDefault(t => t.TourCity.Name == "Zermatt");
+            summer.BestTour = db.Tours.Include("TourCity").FirstOrDefault(t => t.TourCity.Name == db.SummerPages.FirstOrDefault().BestTourName);
             ViewBag.Summer = true;
             ViewBag.Page = "Summer";
             return View(summer);
@@ -88,9 +86,8 @@ namespace SetSail.Controllers
         {
             VmWinter winter = new VmWinter();
             winter.WinterPage = db.WinterPages.FirstOrDefault();
-            winter.Destinations = db.Destinations.Include("DesToCats").Include("DesToCats.TourCategory").ToList();
-            winter.DesToCats = db.DesToCats.Include("Destination").Include("TourCategory").Where(dc => dc.TourCategory.Name == "Winter").ToList();
-            winter.Tours = db.Tours.Include("TourDates").Include("TourReviews").Include("TourCity").Include("TourCity.Destination").ToList();
+            winter.Destinations = db.Destinations.ToList();
+            winter.Tours = db.Tours.Include("TourCategory").Include("TourDates").Include("TourReviews").Include("TourCity").Include("TourCity.Destination").ToList();
             winter.TourReviews = db.TourReviews.Include("User").Include("Tour").Include("Tour.TourCity").OrderBy(t=>t.Id).Take(9).ToList();
             winter.Teams = db.Teams.Include("TeamSocials").Include("Position").ToList();
             ViewBag.Winter = true;
@@ -101,8 +98,7 @@ namespace SetSail.Controllers
         {
             VmCity city = new VmCity();
             city.CityPage = db.CityPages.FirstOrDefault();
-            city.Tours = db.Tours.Include("TourCity").Include("TourCity.Destination").ToList();
-            city.DesToCats = db.DesToCats.Include("Destination").Include("TourCategory").Where(dc => dc.TourCategory.Name == "City").ToList();
+            city.Tours = db.Tours.Include("TourCategory").Include("TourCity").Include("TourCity.Destination").ToList();
             city.Teams = db.Teams.Include("TeamSocials").Include("Position").ToList();
             ViewBag.City = true;
             ViewBag.Page = "City";
@@ -113,9 +109,8 @@ namespace SetSail.Controllers
             VmExotic ex = new VmExotic();
             ex.ExoticPage = db.ExoticPages.FirstOrDefault();
             ex.Blogs = db.Blogs.Include("User").Include("BlogComments").ToList();
-            ex.DesToCats = db.DesToCats.Include("Destination").Include("TourCategory").Where(dc => dc.TourCategory.Name == "Exotic").ToList();
-            ex.Destinations = db.Destinations.Include("DesToCats").Include("DesToCats.TourCategory").ToList();
-            ex.Tours = db.Tours.Include("TourCity").Include("TourCity.Destination").ToList();
+            ex.Destinations = db.Destinations.ToList();
+            ex.Tours = db.Tours.Include("TourCategory").Include("TourCity").Include("TourCity.Destination").ToList();
             ex.Teams = db.Teams.Include("TeamSocials").Include("Position").ToList();
             ViewBag.Exotic = true;
             ViewBag.Page = "Exotic";
@@ -125,8 +120,7 @@ namespace SetSail.Controllers
         {
             VmWine wine = new VmWine();
             wine.WinePage = db.WinePages.FirstOrDefault();
-            wine.Tours = db.Tours.Include("TourCity").Include("TourCity.Destination").ToList();
-            wine.DesToCats = db.DesToCats.Include("Destination").Include("TourCategory").Where(dc => dc.TourCategory.Name == "Wine").ToList();
+            wine.Tours = db.Tours.Include("TourCategory").Include("TourCity").Include("TourCity.Destination").ToList();
             ViewBag.Wine = true;
             ViewBag.Page = "Wine";
             return View(wine);

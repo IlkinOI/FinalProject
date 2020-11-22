@@ -27,8 +27,6 @@ namespace SetSail.DAL
         public DbSet<Day> Days { get; set; }
         public DbSet<DayInclude> DayIncludes { get; set; }
         public DbSet<Destination> Destinations { get; set; }
-        public DbSet<DesToCat> DesToCats { get; set; }
-        public DbSet<DesToType> DesToTypes { get; set; }
         public DbSet<Faq> Faqs { get; set; }
         public DbSet<Include> Includes { get; set; }
         public DbSet<NotInclude> NotIncludes { get; set; }
@@ -50,6 +48,10 @@ namespace SetSail.DAL
         public DbSet<ExoticPage> ExoticPages { get; set; }
         public DbSet<HomePage> HomePages { get; set; }
         public DbSet<TourDates> TourDates { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<ProductReview> ProductReviews { get; set; }
 
     }
 }

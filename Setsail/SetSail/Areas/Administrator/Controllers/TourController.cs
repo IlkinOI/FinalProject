@@ -39,7 +39,6 @@ namespace SetSail.Areas.Administrator.Controllers
         {
             if (ModelState.IsValid)
             {
-                
                 db.TourCategories.Add(cat);
                 db.SaveChanges();
 
@@ -473,155 +472,7 @@ namespace SetSail.Areas.Administrator.Controllers
 
         // Destination CRUD  END//
 
-        // Destination to Categories CRUD START//
-
-        public ActionResult DesToCatIndex()
-        {
-            List<DesToCat> descats = db.DesToCats.Include("Destination").Include("TourCategory").ToList();
-            return View(descats);
-        }
-        public ActionResult DesToCatCreate()
-        {
-            ViewBag.Categories1 = db.Destinations.ToList();
-            ViewBag.Categories2 = db.TourCategories.ToList();
-            return View();
-        }
-        [HttpPost]
-        public ActionResult DesToCatCreate(DesToCat descat)
-        {
-            if (ModelState.IsValid)
-            {
-                db.DesToCats.Add(descat);
-                db.SaveChanges();
-
-                return RedirectToAction("DesToCatIndex");
-            }
-            ViewBag.Categories1 = db.Destinations.ToList();
-            ViewBag.Categories2 = db.TourCategories.ToList();
-            return View(descat);
-        }
-        public ActionResult DesToCatUpdate(int id)
-        {
-            DesToCat descat = db.DesToCats.Find(id);
-            if (descat == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.Categories1 = db.Destinations.ToList();
-            ViewBag.Categories2 = db.TourCategories.ToList();
-            return View(descat);
-        }
-
-        [HttpPost]
-        public ActionResult DesToCatUpdate(DesToCat descat)
-        {
-            if (ModelState.IsValid)
-            {
-                DesToCat descatt = db.DesToCats.Find(descat.Id);
-
-                descatt.DestinationId = descat.DestinationId;
-                descatt.TourCategoryId = descat.TourCategoryId;
-
-                db.Entry(descatt).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("DesToCatIndex");
-            }
-
-            ViewBag.Categories1 = db.Destinations.ToList();
-            ViewBag.Categories2 = db.TourCategories.ToList();
-            return View(descat);
-        }
-
-        public ActionResult DesToCatDelete(int id)
-        {
-            DesToCat descat = db.DesToCats.Find(id);
-            if (descat == null)
-            {
-                return HttpNotFound();
-            }
-
-            db.DesToCats.Remove(descat);
-            db.SaveChanges();
-
-            return RedirectToAction("DesToCatIndex");
-        }
-
-        // Destination to Categories CRUD END//
-
-        // Destination to Type CRUD START//
-
-        public ActionResult DesToTypeIndex()
-        {
-            List<DesToType> destypes = db.DesToTypes.Include("Destination").Include("TourType").ToList();
-            return View(destypes);
-        }
-        public ActionResult DesToTypeCreate()
-        {
-            ViewBag.Categories1 = db.Destinations.ToList();
-            ViewBag.Categories2 = db.TourTypes.ToList();
-            return View();
-        }
-        [HttpPost]
-        public ActionResult DesToTypeCreate(DesToType destype)
-        {
-            if (ModelState.IsValid)
-            {
-                db.DesToTypes.Add(destype);
-                db.SaveChanges();
-
-                return RedirectToAction("DesToTypeIndex");
-            }
-            ViewBag.Categories1 = db.Destinations.ToList();
-            ViewBag.Categories2 = db.TourTypes.ToList();
-            return View(destype);
-        }
-        public ActionResult DesToTypeUpdate(int id)
-        {
-            DesToType destype = db.DesToTypes.Find(id);
-            if (destype == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.Categories1 = db.Destinations.ToList();
-            ViewBag.Categories2 = db.TourTypes.ToList();
-            return View(destype);
-        }
-
-        [HttpPost]
-        public ActionResult DesToTypeUpdate(DesToType destype)
-        {
-            if (ModelState.IsValid)
-            {
-                DesToType destypee = db.DesToTypes.Find(destype.Id);
-
-                destypee.DestinationId = destype.DestinationId;
-                destypee.TourTypeId = destype.TourTypeId;
-
-                db.Entry(destypee).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("DesToTypeIndex");
-            }
-
-            ViewBag.Categories1 = db.Destinations.ToList();
-            ViewBag.Categories2 = db.TourTypes.ToList();
-            return View(destype);
-        }
-
-        public ActionResult DesToTypeDelete(int id)
-        {
-            DesToType destype = db.DesToTypes.Find(id);
-            if (destype == null)
-            {
-                return HttpNotFound();
-            }
-
-            db.DesToTypes.Remove(destype);
-            db.SaveChanges();
-
-            return RedirectToAction("DesToTypeIndex");
-        }
-
-        // Destination to Type CRUD END//
+ 
 
         // TOUR CITY CRUD START //
 
@@ -693,14 +544,15 @@ namespace SetSail.Areas.Administrator.Controllers
 
         public ActionResult Index()
         {
-            
-            List<Tour> tours = db.Tours.Include("TourImages").Include("Admin").Include("TourCity").Include("TourCity.Destination").ToList();
+            List<Tour> tours = db.Tours.Include("TourCategory").Include("TourDates").Include("TourType").Include("TourImages").Include("Admin").Include("TourCity").Include("TourCity.Destination").ToList();
             return View(tours);
         }
 
         public ActionResult Create()
         {
-            ViewBag.Categories = db.TourCities.ToList();
+            ViewBag.Cities = db.TourCities.ToList();
+            ViewBag.Categories = db.TourCategories.ToList();
+            ViewBag.Types = db.TourTypes.ToList();
             return View();
         }
         [HttpPost]
@@ -740,11 +592,13 @@ namespace SetSail.Areas.Administrator.Controllers
                 Tour.DressCode = tour.DressCode;
                 Tour.Text = tour.Text;
                 Tour.TourCityId = tour.TourCityId;
+                Tour.TourCategoryId = tour.TourCategoryId;
+                Tour.TourTypeId = tour.TourTypeId;
                 Tour.CreatedDate = DateTime.Now;
                 Tour.AdminId = (int)Session["AdminId"];
 
-                Tour.DepartureTime = TimeSpan.Parse(tour.DepartureTimes);
-                Tour.ReturnTime = TimeSpan.Parse(tour.ReturnTimes);
+                Tour.DepartureTime = TimeSpan.Parse(tour.DepartureTime.ToString());
+                Tour.ReturnTime = TimeSpan.Parse(tour.ReturnTime.ToString());
 
 
                 db.Tours.Add(Tour);
@@ -768,7 +622,9 @@ namespace SetSail.Areas.Administrator.Controllers
 
                 return RedirectToAction("Index");
             }
-            ViewBag.Categories = db.TourCities.ToList();
+            ViewBag.Cities = db.TourCities.ToList();
+            ViewBag.Categories = db.TourCategories.ToList();
+            ViewBag.Types = db.TourTypes.ToList();
             return View(tour);
         }
         public ActionResult Update(int id)
@@ -778,7 +634,9 @@ namespace SetSail.Areas.Administrator.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Categories = db.TourCities.ToList();
+            ViewBag.Cities = db.TourCities.ToList();
+            ViewBag.Categories = db.TourCategories.ToList();
+            ViewBag.Types = db.TourTypes.ToList();
             return View(tour);
         }
 
@@ -819,8 +677,8 @@ namespace SetSail.Areas.Administrator.Controllers
                 Tour.DressCode = tour.DressCode;
                 Tour.Text = tour.Text;
 
-                Tour.DepartureTime = TimeSpan.Parse(tour.DepartureTimes);
-                Tour.ReturnTime = TimeSpan.Parse(tour.ReturnTimes);
+                Tour.DepartureTime = TimeSpan.Parse(tour.DepartureTime.ToString());
+                Tour.ReturnTime = TimeSpan.Parse(tour.ReturnTime.ToString());
 
 
                 db.Entry(Tour).State = EntityState.Modified;
@@ -861,7 +719,9 @@ namespace SetSail.Areas.Administrator.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Categories = db.TourCities.ToList();
+            ViewBag.Cities = db.TourCities.ToList();
+            ViewBag.Categories = db.TourCategories.ToList();
+            ViewBag.Types = db.TourTypes.ToList();
             return View(tour);
         }
         public ActionResult Delete(int id)
@@ -871,15 +731,20 @@ namespace SetSail.Areas.Administrator.Controllers
             {
                 return HttpNotFound();
             }
-            foreach (var image in db.TourImages.Where(ti=>ti.TourId==id).ToList())
+            if (tour.ImageFile[0] != null)
             {
-                string imagePath = Path.Combine(Server.MapPath("~/Uploads"), image.ImageName);
+                using (SetSailContext db = new SetSailContext())
+                {
+                    foreach (var item in db.TourImages.Where(c => c.TourId == tour.Id))
+                    {
+                        string oldImagePath = Path.Combine(Server.MapPath("~/Uploads"), item.ImageName);
+                        System.IO.File.Delete(oldImagePath);
 
-                System.IO.File.Delete(imagePath);
-                db.TourImages.Remove(image);
+                        db.TourImages.Remove(item);
+                    }
+                    db.SaveChanges();
+                }
             }
-
-            db.SaveChanges();
             db.Tours.Remove(tour);
             db.SaveChanges();
 

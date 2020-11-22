@@ -13,6 +13,5 @@ namespace SetSail.ViewModels
         public List<Team> Teams { get; set; }
         public List<Tour> Tours { get; set; }
         public List<TourReview> TourReviews { get; set; } 
-        public List<DesToCat> DesToCats { get; set; } 
     }
 }
